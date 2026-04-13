@@ -1,0 +1,32 @@
+[
+  {
+    "id": "vr-therapy-2023",
+    "label": "VR-Therapy Integration Boundary",
+    "year": 2023,
+    "type": "integrating",
+    "concepts": ["VR", "therapy", "embodiment", "clinical protocol"],
+    "summary": "Clinical and immersive interaction terms form a durable cycle that persists across publication years.",
+    "topologySignal": "Persistent H1 cycle over three adjacent yearly windows.",
+    "interpretation": "Indicates a stable bridge where methods and application outcomes mutually reinforce."
+  },
+  {
+    "id": "playful-health-2021",
+    "label": "Playful Health Early Boundary",
+    "year": 2021,
+    "type": "integrating",
+    "concepts": ["gamification", "rehabilitation", "motivation"],
+    "summary": "An initially weak cycle becomes stronger with additional motivational constructs.",
+    "topologySignal": "Moderate H1 persistence with rising triadic closure.",
+    "interpretation": "Suggests concept maturation rather than abrupt novelty."
+  },
+  {
+    "id": "speculative-nonintegrating-2024",
+    "label": "Speculative Interaction Non-Integrating Boundary",
+    "year": 2024,
+    "type": "non-integrating",
+    "concepts": ["speculation", "ritual interface", "institutional practice"],
+    "summary": "Terms co-occur briefly but fail to sustain structural loops in subsequent periods.",
+    "topologySignal": "Short-lived H1 cycle with low triadic closure.",
+    "interpretation": "Highlights boundaries that remain conceptually adjacent but structurally disconnected."
+  }
+]
