@@ -1,1 +1,33 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>02 Topology</title><link rel="stylesheet" href="../assets/css/style.css"></head><body><main class="container"><a href="../index.html">← Home</a><section class="panel"><h1>02. Topology: Minimal Background</h1><p>トポロジーは座標の細部より接続構造に注目します。本サイトで使う語は、birth edge（局所）、persistent loop（中域）、yearly summary（大域）の3層に限定します。</p><details><summary>数理詳細（必要な読者向け）</summary><p>Vietoris-Rips複体を距離しきい値で成長させ、H_1の出生・消滅を追跡します。</p></details><p class="scope-note">解釈上の注意: representative cycleは唯一の真経路を主張しません。</p></section></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>02 Topology</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<main class="container">
+  <a href="../index.html">← Home</a>
+  <section class="panel">
+    <h1>02. Topology: Minimal Background</h1>
+    <p>Topology here means structure, not geometry. The method tracks patterns of connectedness in concept space: what becomes linked, what remains separated, and where loop-like boundaries persist before closure.</p>
+
+    <h2>Local scale: a new edge appears</h2>
+    <p>A <strong>birth edge</strong> is the connection whose appearance helps create a loop. At this local scale, the signal is not “these two concepts are always related.” Instead, it is that local proximity has become structurally important in the broader neighborhood.</p>
+
+    <h2>Meso scale: a loop exists before the middle is filled</h2>
+    <p>A <strong>persistent loop</strong> means concepts can form a ring-like relation while key shortcuts are still missing. We interpret this as an unresolved boundary: adjacency is emerging through intermediate concepts, but complete closure has not yet occurred.</p>
+
+    <h2>Macro scale: a year can be summarized</h2>
+    <p>Year-level descriptors such as total persistent H_1 and triadic closure summarize each year’s structural state. These values do not assume one loop identity persists through time; they compare independently computed yearly topological summaries.</p>
+
+    <h2>Interpretive caution</h2>
+    <p>A representative cycle is a readable reconstruction, not a unique true pathway. It supports explanation and hypothesis generation, but does not prove that integration happened through one exact historical route.</p>
+
+    <details><summary>Technical note (optional)</summary><p>We use a Vietoris–Rips filtration over yearly concept distances and read H_1 birth/death behavior as evidence of changing boundary structure.</p></details>
+    <p><a href="03-existing.html">Next: 03. Existing Approaches →</a></p>
+  </section>
+</main>
+</body>
+</html>
