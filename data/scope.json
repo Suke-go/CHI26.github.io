@@ -23,22 +23,22 @@
   ],
   "doesNotEstablish": [
     {
-      "label": "Does not establish causality",
-      "explanation": "Structural adjacency and loop persistence do not identify the social, organizational, or epistemic mechanisms that produced the pattern. A detected reorganization can therefore be discussed as evidence of condition change, but not as proof of why that change happened.",
+      "label": "Needs added evidence: causality",
+      "explanation": "Structural adjacency and loop persistence cannot by themselves identify the social, organizational, or epistemic mechanisms that produced the pattern. A detected reorganization can therefore be discussed as evidence of condition change, but not as proof of why that change happened.",
       "example": "A loop closing does not prove why that closure happened."
     },
     {
-      "label": "Does not establish author intent",
+      "label": "Needs added evidence: author intent",
       "explanation": "The method analyzes textual concept structure in the corpus rather than deliberative goals held by individual researchers. Interpretations about strategic intent require additional evidence sources beyond topology-derived outputs.",
       "example": "It cannot infer whether authors intentionally built a bridge between areas."
     },
     {
-      "label": "Does not establish institutional interdisciplinarity",
+      "label": "Needs added evidence: institutional interdisciplinarity",
       "explanation": "Cross-area in this project is semantic and operational, defined by community membership and graph adjacency. It should not be read as direct evidence of cross-department, cross-lab, or cross-institution collaboration patterns.",
       "example": "A cross-community loop does not prove collaboration across departments or institutions."
     },
     {
-      "label": "Does not establish one unique true path",
+      "label": "Needs added evidence: one unique true path",
       "explanation": "Representative cycles are readable reconstructions among multiple valid witnesses that can reflect the same structural condition. The evidence supports plausibility of boundary reorganization, but not one singular historical trajectory.",
       "example": "Multiple cycle realizations can support the same boundary interpretation."
     },
