@@ -1,0 +1,32 @@
+[
+  {
+    "label": "1. Build yearly concept space",
+    "explanation": "Extract concept units and embed them in a year-specific semantic space so local distances are comparable within that year.",
+    "consumes": "Titles and abstracts from yearly venue corpora",
+    "outputs": "Yearly concept vectors and pairwise distances"
+  },
+  {
+    "label": "2. Build filtration",
+    "explanation": "Increase a distance threshold gradually so simplices appear in order from local proximity to broader connected structure.",
+    "consumes": "Yearly concept distance matrix",
+    "outputs": "Vietoris–Rips filtration"
+  },
+  {
+    "label": "3. Extract persistent H1 loops",
+    "explanation": "Identify loop-like structures that persist before being filled by higher-order simplices.",
+    "consumes": "Filtration simplices",
+    "outputs": "Birth/death records for persistent H1"
+  },
+  {
+    "label": "4. Reconstruct representative cycles",
+    "explanation": "Produce readable cycle paths around each birth edge to support interpretive inspection.",
+    "consumes": "Persistent H1 generators and neighborhood graph",
+    "outputs": "Representative cycle sequences"
+  },
+  {
+    "label": "5. Summarize yearly structure",
+    "explanation": "Aggregate local and meso signals into yearly descriptors of unresolved boundaries versus closure tendencies.",
+    "consumes": "Cycle-level results",
+    "outputs": "Yearly topology-derived summaries"
+  }
+]

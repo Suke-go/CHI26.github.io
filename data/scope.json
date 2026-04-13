@@ -1,0 +1,51 @@
+{
+  "captures": [
+    {
+      "label": "Captures semantic adjacency",
+      "explanation": "The method shows when concepts become structurally near each other in the analyzed semantic space.",
+      "example": "A therapeutic concept can become adjacent to VR through immersion and activity terms before direct co-labeling dominates."
+    },
+    {
+      "label": "Captures community separation",
+      "explanation": "It preserves whether neighboring concepts still sit across community boundaries.",
+      "example": "Two concepts may be close but still belong to distinct semantic communities."
+    },
+    {
+      "label": "Captures unresolved loop structure",
+      "explanation": "Persistent H1 loops indicate a boundary state where closure is not yet complete.",
+      "example": "A ring of concepts appears while key filling edges are still absent."
+    },
+    {
+      "label": "Captures yearly topology-derived summaries",
+      "explanation": "Year-level aggregates describe structural condition per year.",
+      "example": "Total persistent H1 and triadic closure summarize a year without asserting stable loop identity over time."
+    }
+  ],
+  "doesNotEstablish": [
+    {
+      "label": "Does not establish causality",
+      "explanation": "Structural adjacency does not identify the social or epistemic cause of integration.",
+      "example": "A loop closing does not prove why that closure happened."
+    },
+    {
+      "label": "Does not establish author intent",
+      "explanation": "The method analyzes published concept structure, not researcher motivations.",
+      "example": "It cannot infer whether authors intentionally built a bridge between areas."
+    },
+    {
+      "label": "Does not establish institutional interdisciplinarity",
+      "explanation": "Cross-area in this project is semantic, not organizational.",
+      "example": "A cross-community loop does not prove collaboration across departments or institutions."
+    },
+    {
+      "label": "Does not establish one unique true path",
+      "explanation": "Representative cycles are readable reconstructions among valid alternatives.",
+      "example": "Multiple cycle realizations can support the same boundary interpretation."
+    },
+    {
+      "label": "Does not track the same loop across years as a persistent identity",
+      "explanation": "Yearly summaries are recomputed independently by year.",
+      "example": "A high H1 year does not imply one specific loop persisted unchanged from previous years."
+    }
+  ]
+}
