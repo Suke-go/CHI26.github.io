@@ -1,0 +1,20 @@
+{
+  "corpusSizeApprox": 30000,
+  "venues": ["CHI", "UIST", "CSCW", "UbiComp"],
+  "periodStart": 1999,
+  "periodEnd": 2025,
+  "cscwEnd": 2024,
+  "mainObject": "persistent H1 cycles",
+  "mainInterpretation": "structural gaps between semantic communities",
+  "caseExample": {
+    "name": "VR–Therapy",
+    "cycle": ["vr", "immersion", "exergames", "therapies", "therapy"]
+  },
+  "ranking": {
+    "metric": "NDCG@50",
+    "deltaVsAARA": 0.105,
+    "pValue": 0.04,
+    "medianLeadYearsApprox": 2,
+    "scibertOverlapTop50": "48–49/50"
+  }
+}

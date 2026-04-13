@@ -4,62 +4,54 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Topological Bridges | CHI 2026 Supplement</title>
-  <meta name="description" content="A visual research supplement on topological boundary structures in HCI concept space." />
+  <meta name="description" content="A visual supplement for reading boundary formation in HCI concept space." />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
-<body>
+<body data-page="home" data-root="">
   <a class="skip-link" href="#main">Skip to main content</a>
   <header class="site-header">
-    <p class="eyebrow">CHI 2026 Extended Abstract Supplement</p>
-    <h1>Topological Bridges<br/>A visual supplement for understanding boundary formation inside HCI</h1>
-    <p class="lede">This site asks a simple question: how can we detect meaningful reorganization inside HCI before it becomes visible as a stable named topic? Rather than relying only on co-occurrence volume, this project examines the shape of concept space. Persistent loops are treated as signals of unresolved boundary structure, where areas become adjacent through intermediate concepts but are not yet fully integrated.</p>
+    <p class="eyebrow">CHI 2026 Supplement</p>
+    <h1><span data-site-title></span><br><span data-site-subtitle></span></h1>
+    <p class="lede" data-site-tagline></p>
+    <p class="lede">This visual essay explains how topological summaries can reveal boundary reorganization inside HCI before emerging areas become obvious as stable named topics. The corpus covers approximately 30,000 papers across CHI, UIST, CSCW, and UbiComp from 1999–2025 (CSCW through 2024), and focuses on persistent H1 cycles as signals of unresolved structural gaps.</p>
   </header>
 
   <main id="main" class="container">
     <section class="panel">
       <h2>Site Promise</h2>
       <ul>
-        <li><strong>What this site shows:</strong> Topology-derived boundary structures in the HCI concept space.</li>
-        <li><strong>What it does not claim:</strong> Causal proof, author intent, or a single true path of integration.</li>
-        <li><strong>What you will learn:</strong> How local loop structures, yearly summaries, and representative cases fit together.</li>
+        <li><strong>What this site shows:</strong> how yearly concept-space topology can surface structural boundaries and bridge candidates.</li>
+        <li><strong>What this site does not claim:</strong> causality, author intent, institutional interdisciplinarity, or one unique true path.</li>
+        <li><strong>What you will learn:</strong> how to read local loops, meso-level ranking evidence, and macro yearly summaries together.</li>
       </ul>
     </section>
 
     <section class="panel">
-      <h2>Hero Figure (Schematic Animation)</h2>
-      <p class="note">The animation is explanatory rather than analytic: it shows a conceptual sequence from isolated regions to loop formation and closure, not a direct empirical result.</p>
+      <h2>Hero Figure</h2>
+      <div data-figure-label="Schematic · Explanatory only"></div>
       <figure class="viz-frame">
-        <svg id="hero-viz" viewBox="0 0 360 220" role="img" aria-label="Schematic loop formation and closure in concept space"></svg>
-        <figcaption>As the distance threshold increases, the structure can move from local adjacency toward loop-like boundaries, followed by partial closure.</figcaption>
+        <svg id="hero-viz" viewBox="0 0 360 220" role="img" aria-label="Conventional clustering versus loop emergence schematic"></svg>
+        <figcaption>Schematic explanatory animation — not a direct analytical figure. It contrasts static clustering with loop emergence, highlight, and closure.</figcaption>
       </figure>
     </section>
 
     <section class="panel">
       <h2>How to Read This Site</h2>
-      <p>Read from top to bottom. Chapters 1–3 define the problem and position the method. Chapters 4–6 explain what is measured and what the evidence looks like. Chapters 7–9 clarify interpretation, limits, and implications for HCI and Science of Science.</p>
+      <p>Read sequentially. Chapters 1–3 motivate and position the approach. Chapters 4–6 make data, method, and evidence concrete. Chapters 7–9 explain interpretation, scope boundaries, and implications for HCI and Science of Science.</p>
     </section>
 
-    <nav class="chapter-nav panel" aria-label="Chapters">
+    <section class="panel">
       <h2>Chapters</h2>
-      <ul>
-        <li><a href="chapters/01-why-hci.html">01. Why This Matters in HCI</a></li>
-        <li><a href="chapters/02-topology.html">02. Topology: Minimal Background</a></li>
-        <li><a href="chapters/03-existing.html">03. Existing Approaches</a></li>
-        <li><a href="chapters/04-data.html">04. Data and Operationalization</a></li>
-        <li><a href="chapters/05-detection.html">05. Detecting Boundary Structures</a></li>
-        <li><a href="chapters/06-evidence.html">06. Evidence</a></li>
-        <li><a href="chapters/07-reading.html">07. How to Read the Outputs</a></li>
-        <li><a href="chapters/08-scope.html">08. What This Captures / Does Not</a></li>
-        <li><a href="chapters/09-implications.html">09. Implications for HCI and SciSci</a></li>
-      </ul>
-    </nav>
+      <div id="chapter-cards" class="chapter-grid"></div>
+    </section>
   </main>
 
   <footer class="site-footer">
-    <p>Hosted on GitHub Pages. Mobile-first, readable-first, and intentionally didactic.</p>
+    <p>Mobile-first and readable-first. Calm visuals, explicit scope, and explanatory figures over interaction-heavy dashboards.</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="assets/js/site.js"></script>
   <script src="assets/js/hero.js"></script>
 </body>
 </html>

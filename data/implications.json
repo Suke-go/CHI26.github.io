@@ -1,0 +1,20 @@
+[
+  {
+    "group": "for HCI researchers",
+    "headline": "Use representative cycles as interpretable bridge hypotheses",
+    "shortExplanation": "Cycles provide inspectable pathways between areas before a stable topic label dominates.",
+    "takeaway": "Treat loop-derived bridges as candidates for focused literature review, not as deterministic forecasts."
+  },
+  {
+    "group": "for HCI community analysis",
+    "headline": "Read yearly structure, not only yearly volume",
+    "shortExplanation": "Topology-derived summaries help separate boundary-heavy and closure-heavy periods.",
+    "takeaway": "Combine annual H1 and closure summaries with venue narratives to discuss field reorganization."
+  },
+  {
+    "group": "for Science of Science",
+    "headline": "Complement predictive ranking with structural interpretation",
+    "shortExplanation": "Competitive ranking can coexist with interpretable reconstruction of why candidate links are plausible.",
+    "takeaway": "Use topology as a structural lens that augments, rather than replaces, citation and embedding-based methods."
+  }
+]
