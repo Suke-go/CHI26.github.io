@@ -306,3 +306,33 @@ CHI26.github.io/
 | Date | Version | Description |
 |------|---------|-------------|
 | 2026-04-13 | 0.1 | Initial design requirements |
+
+---
+
+## Implementation Notes (Mobile-first + Science Communication)
+
+### A. Mobile-first readability principles adopted
+
+1. **Single-column first**: base width is optimized for smartphones, then expanded for tablets/desktop via progressive enhancement.
+2. **Readable line height and restrained visual hierarchy**: prioritize comprehension over decorative density.
+3. **One-claim-per-panel**: each chapter page keeps one central message to reduce cognitive switching.
+4. **Scope notes from early chapters**: claim / non-claim reminders are placed from Ch.4 onward to avoid over-interpretation.
+5. **Math details in disclosure UI**: default path is interpretation-first, with optional deep math.
+
+### B. Web implementation for GitHub Pages
+
+- Static HTML/CSS/JS structure chosen to ensure low-friction GitHub Pages deployment.
+- `.nojekyll` added to avoid unintended Jekyll processing.
+- D3 loaded via CDN and used for a **non-interactive** explanatory animation on the landing page.
+
+### C. Non-interactive animation policy (D3)
+
+- Animation purpose is narrative scaffolding (state transition intuition), not data exploration.
+- No user controls required; motion is subtle, looped, and secondary to text.
+- Figure labels and captions explicitly mark schematics vs. empirical results.
+
+### D. External references checked for implementation
+
+- D3 official docs and examples for transition behavior and SVG rendering.
+- GitHub Docs for GitHub Pages static publishing behavior.
+- W3C accessibility guidance to keep keyboard navigation and structure basic-compliant.

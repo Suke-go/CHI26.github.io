@@ -1,0 +1,108 @@
+:root {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --text: #0f172a;
+  --muted: #475569;
+  --line: #cbd5e1;
+  --accent: #0ea5e9;
+  --accent-soft: #bae6fd;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
+  line-height: 1.7;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  background: #fff;
+  padding: 0.5rem;
+  border: 1px solid var(--line);
+}
+
+.site-header, .site-footer {
+  padding: 1rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+.site-footer {
+  border-top: 1px solid var(--line);
+  border-bottom: none;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.eyebrow { color: var(--muted); margin: 0; font-size: 0.85rem; }
+h1 { margin: 0.2rem 0; font-size: 1.6rem; line-height: 1.3; }
+.lede { margin: 0; color: var(--muted); }
+
+.container {
+  width: min(100%, 44rem);
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+h2, h3 {
+  line-height: 1.35;
+  margin-top: 0;
+}
+
+ul, ol { padding-left: 1.15rem; }
+li + li { margin-top: 0.45rem; }
+
+.note {
+  color: var(--muted);
+  font-size: 0.93rem;
+}
+
+.viz-frame {
+  margin: 0;
+}
+#hero-viz {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  background: #f8fbff;
+}
+
+figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.chapter-nav a {
+  color: #0369a1;
+  text-decoration: none;
+}
+.chapter-nav a:hover,
+.chapter-nav a:focus { text-decoration: underline; }
+
+.scope-note {
+  border-left: 4px solid var(--accent);
+  padding-left: 0.75rem;
+  color: var(--muted);
+}
+
+@media (min-width: 48rem) {
+  h1 { font-size: 2rem; }
+  .site-header, .site-footer { padding: 1.2rem 1.5rem; }
+  .container { padding: 1.5rem; }
+}
