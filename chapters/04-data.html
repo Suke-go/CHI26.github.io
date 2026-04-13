@@ -1,22 +1,28 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>04 Mathematical Pipeline</title><link rel="stylesheet" href="../assets/css/style.css"></head>
 <body data-chapter="04-data" data-root="../"><main class="container"><a href="../index.html">← Home</a><section class="panel chapter-body"><h1 id="chapter-title"></h1><p class="thesis-block" id="chapter-thesis"></p>
 
-<h2>Core notation and equations</h2>
+<h2>E. Mathematical pipeline</h2>
 <p class="equation">dᵢⱼ = 1 − (vᵢᵀvⱼ)/(‖vᵢ‖₂‖vⱼ‖₂)</p>
-<p>Cosine distance defines yearly local geometry between concept vectors.</p>
-<p class="equation">ℛ_ε(V_t) = {σ ⊆ V_t | dᵢⱼ ≤ ε, ∀ i,j ∈ σ}</p>
-<p>This Vietoris–Rips complex grows as threshold ε increases.</p>
-<p class="equation">H₁(ℛ_ε(V_t))</p>
-<p>The first homology group records one-dimensional loop structure at threshold ε.</p>
-<p class="equation">I_k = [b_k, d_k),  π_k = d_k − b_k</p>
-<p>Each loop feature has birth/death thresholds and persistence length.</p>
+<p>This defines concept distance from vector similarity: nearer concepts have smaller dᵢⱼ, and these distances drive all later topology.</p>
 
-<h2>Figure 2 — Loop birth/death mechanics on a fixed neighborhood</h2>
-<figure class="viz-frame"><svg viewBox="0 0 760 260" aria-label="loop birth and death">
-<text x="20" y="20">ε₁: pre-birth graph</text><text x="260" y="20">ε₂: birth edge appears</text><text x="500" y="20">ε₃: death (triangle fill)</text>
-<g transform="translate(20,35)"><circle cx="40" cy="70" r="6"/><circle cx="95" cy="30" r="6"/><circle cx="150" cy="55" r="6"/><circle cx="150" cy="125" r="6"/><circle cx="90" cy="145" r="6"/><line x1="40" y1="70" x2="95" y2="30"/><line x1="95" y1="30" x2="150" y2="55"/><line x1="150" y1="55" x2="150" y2="125"/><line x1="150" y1="125" x2="90" y2="145"/><line x1="90" y1="145" x2="40" y2="70"/><text x="10" y="180" class="fig-sub">Shortest path P_{ε₂^-}(u,v) exists</text></g>
-<g transform="translate(260,35)"><circle cx="40" cy="70" r="6"/><circle cx="95" cy="30" r="6"/><circle cx="150" cy="55" r="6"/><circle cx="150" cy="125" r="6"/><circle cx="90" cy="145" r="6"/><line x1="40" y1="70" x2="95" y2="30"/><line x1="95" y1="30" x2="150" y2="55"/><line x1="150" y1="55" x2="150" y2="125"/><line x1="150" y1="125" x2="90" y2="145"/><line x1="90" y1="145" x2="40" y2="70"/><line x1="40" y1="70" x2="150" y2="55" class="bridge-edge"/><text x="2" y="180" class="fig-sub">Birth edge e_b=(u,v) creates cycle C_k</text></g>
-<g transform="translate(500,35)"><circle cx="40" cy="70" r="6"/><circle cx="95" cy="30" r="6"/><circle cx="150" cy="55" r="6"/><circle cx="150" cy="125" r="6"/><circle cx="90" cy="145" r="6"/><line x1="40" y1="70" x2="95" y2="30"/><line x1="95" y1="30" x2="150" y2="55"/><line x1="150" y1="55" x2="150" y2="125"/><line x1="150" y1="125" x2="90" y2="145"/><line x1="90" y1="145" x2="40" y2="70"/><line x1="40" y1="70" x2="150" y2="55" class="bridge-edge"/><polygon points="40,70 95,30 150,55" fill="#fde68a" stroke="#f59e0b"/><text x="6" y="180" class="fig-sub">2-simplex fills loop ⇒ death at d_k</text></g>
-</svg><figcaption><strong>Figure 2.</strong> Same node positions across thresholds show loop birth and death mechanics. Birth occurs when edge e_b closes a pre-existing shortest path; death occurs when triangle filling removes the one-dimensional hole. This figure explains mechanism, not future-topic certainty.</figcaption></figure>
+<p class="equation">ℛ<sub>ε</sub>(V<sub>t</sub>) = {σ ⊆ V<sub>t</sub> | dᵢⱼ ≤ ε, ∀ i,j ∈ σ}</p>
+<p>This is the Vietoris–Rips complex at threshold ε: as ε increases, more edges and simplices appear.</p>
+
+<p class="equation">H₁(ℛ<sub>ε</sub>(V<sub>t</sub>))</p>
+<p>H₁ captures one-dimensional loop structure in the complex at each threshold.</p>
+
+<p class="equation">I<sub>k</sub> = [b<sub>k</sub>, d<sub>k</sub>), π<sub>k</sub> = d<sub>k</sub> − b<sub>k</sub></p>
+<p>For loop feature k, b<sub>k</sub> is birth, d<sub>k</sub> is death, and π<sub>k</sub> is persistence length. Longer persistence indicates a loop that remains unresolved over a wider threshold range.</p>
+
+<p class="equation">C<sub>k</sub> = e<sub>b</sub> ∪ P<sub>b<sub>k</sub>−</sub>(u,v)</p>
+<p>This representative cycle combines the birth edge e<sub>b</sub>=(u,v) with a shortest path just before birth; operationally, it yields a readable loop witness for interpretation.</p>
+
+<h2>Figure 2 — Loop birth and representative cycle mechanics</h2>
+<figure class="viz-frame"><svg viewBox="0 0 760 260" aria-label="loop birth and cycle reconstruction">
+<text x="20" y="20">ε₁: pre-birth</text><text x="260" y="20">ε₂=bₖ: birth</text><text x="505" y="20">ε₃: death at simplex fill</text>
+<g transform="translate(20,35)"><circle cx="35" cy="70" r="6"/><circle cx="95" cy="30" r="6"/><circle cx="155" cy="55" r="6"/><circle cx="155" cy="125" r="6"/><circle cx="95" cy="150" r="6"/><line x1="35" y1="70" x2="95" y2="30"/><line x1="95" y1="30" x2="155" y2="55"/><line x1="155" y1="55" x2="155" y2="125"/><line x1="155" y1="125" x2="95" y2="150"/><line x1="95" y1="150" x2="35" y2="70"/><text x="2" y="182" class="fig-sub">Path P_bk−(u,v) exists</text></g>
+<g transform="translate(260,35)"><circle cx="35" cy="70" r="6"/><circle cx="95" cy="30" r="6"/><circle cx="155" cy="55" r="6"/><circle cx="155" cy="125" r="6"/><circle cx="95" cy="150" r="6"/><line x1="35" y1="70" x2="95" y2="30"/><line x1="95" y1="30" x2="155" y2="55"/><line x1="155" y1="55" x2="155" y2="125"/><line x1="155" y1="125" x2="95" y2="150"/><line x1="95" y1="150" x2="35" y2="70"/><line x1="35" y1="70" x2="155" y2="55" class="bridge-edge"/><text x="3" y="182" class="fig-sub">Birth edge e_b closes the cycle</text></g>
+<g transform="translate(500,35)"><circle cx="35" cy="70" r="6"/><circle cx="95" cy="30" r="6"/><circle cx="155" cy="55" r="6"/><circle cx="155" cy="125" r="6"/><circle cx="95" cy="150" r="6"/><line x1="35" y1="70" x2="95" y2="30"/><line x1="95" y1="30" x2="155" y2="55"/><line x1="155" y1="55" x2="155" y2="125"/><line x1="155" y1="125" x2="95" y2="150"/><line x1="95" y1="150" x2="35" y2="70"/><line x1="35" y1="70" x2="155" y2="55" class="bridge-edge"/><polygon points="35,70 95,30 155,55" fill="#fde68a" stroke="#f59e0b"/><text x="5" y="182" class="fig-sub">2-simplex fills hole ⇒ d_k</text></g>
+</svg><figcaption><strong>Figure 2.</strong> Same node layout across ε-levels reveals loop mechanics without geometric ambiguity. Birth is the moment the highlighted edge appears; death is simplex filling that removes the one-dimensional hole. This supports topological interpretation of boundary states, not claims about causality.</figcaption></figure>
 
 </section><div id="prev-next-nav"></div></main><script src="../assets/js/site.js"></script><script src="../assets/js/chapters.js"></script></body></html>

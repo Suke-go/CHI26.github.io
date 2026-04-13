@@ -3,46 +3,42 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Topological Bridges | CHI 2026 Supplement</title>
-  <meta name="description" content="Evidence-centered supplement for topological bridge detection in HCI." />
+  <title>Topological Bridges | CHI 2026 Companion</title>
+  <meta name="description" content="Publication-ready CHI poster companion: topological bridge detection, ranking, and temporal validation in HCI concept space." />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body data-page="home" data-root="">
   <a class="skip-link" href="#main">Skip to main content</a>
   <header class="site-header">
-    <p class="eyebrow">CHI 2026 Supplement</p>
+    <p class="eyebrow">CHI 2026 Poster Companion Website</p>
     <h1><span data-site-title></span><br><span data-site-subtitle></span></h1>
     <p class="lede" data-site-tagline></p>
-    <p class="lede"><strong>Plain-language summary.</strong> This supplement explains how yearly topological analysis can detect boundary reorganization in HCI concept space before a stable topic label becomes dominant.</p>
-    <p class="lede"><strong>Technical summary.</strong> For each year <em>t</em>, we build a concept embedding space from papers available up to year <em>t</em>, compute a Vietoris–Rips filtration, extract persistent <em>H</em><sub>1</sub> loops, reconstruct representative cycles at loop birth, detect cross-community edges on those cycles, and rank bridge candidates for temporal validation.</p>
+    <p class="lede"><strong>Plain-language summary.</strong> This companion site explains how yearly topology of HCI concept space is used to identify <em>bridge candidates</em>: concept pairs that sit on unresolved boundaries between semantic communities before direct links become common. The goal is not to predict the future from one signal, but to provide structurally interpretable candidates and evaluate whether later evidence tends to support highly ranked ones.</p>
+    <p class="lede"><strong>Technical summary.</strong> For each year t, we construct a historical concept space from papers published up to year t, compute a Vietoris–Rips filtration, extract persistent H_1 intervals, reconstruct representative cycles from birth events, select cross-community cycle edges as candidates, rank those edges by persistence-based scores, and validate rankings against future-year relevance using nDCG@50.</p>
   </header>
 
   <main id="main" class="container">
     <section class="panel">
-      <h2>One-screen overview</h2>
+      <h2>At a glance</h2>
       <ul>
-        <li><strong>Data:</strong> ~30,000 papers across CHI, UIST, CSCW, UbiComp.</li>
-        <li><strong>Temporal span:</strong> 1999–2025 (CSCW available through 2024).</li>
-        <li><strong>Yearly construction:</strong> each year is recomputed with a historical cutoff at year <em>t</em>.</li>
-        <li><strong>Primary output:</strong> ranked bridge candidates from representative cycle cross-community edges.</li>
-        <li><strong>Evaluation horizon:</strong> future-year relevance with nDCG@50 and lead-time interpretation.</li>
+        <li><strong>Data scope:</strong> approximately 30,000 papers from CHI, UIST, CSCW, and UbiComp.</li>
+        <li><strong>Year range:</strong> 1999–2025 (CSCW coverage through 2024 in the current dataset snapshot).</li>
+        <li><strong>Temporal cutoff logic:</strong> each year t is recomputed using only information available up to t.</li>
+        <li><strong>Main analytical output:</strong> ranked cross-community bridge candidates derived from representative cycle edges.</li>
+        <li><strong>Evaluation horizon:</strong> future-year relevance and ordering quality measured with nDCG@50 and lead-time summaries.</li>
       </ul>
+      <p class="note"><strong>Evidence type:</strong> the site provides observational structural evidence plus retrospective temporal validation; it does not claim causal discovery or guaranteed future topic emergence.</p>
     </section>
 
     <section class="panel">
-      <h2>How to read this supplement</h2>
-      <p>Read Chapters 1→9 in order. The structure is evidence-first: (1) audit and research question, (2) data and mathematics, (3) bridge extraction and ranking, (4) case walkthroughs, (5) claim boundaries and reference integrity.</p>
-      <p class="note">Reviewer shortcut: if you need implementation logic quickly, start at Chapters 4–6, then read Chapters 7–8 for interpretation constraints.</p>
-    </section>
-
-    <section class="panel">
-      <h2>Chapters</h2>
+      <h2>Read in order</h2>
+      <p>Chapters 1–9 are organized to answer a reviewer's core questions from motivation to mathematical definition, ranking logic, case interpretation, claim boundaries, and reference integrity.</p>
       <div id="chapter-cards" class="chapter-grid"></div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>Designed for reviewer legibility: explicit objects, explicit equations, explicit claim boundaries.</p>
+    <p>Designed for reviewer legibility: explicit objects, explicit equations, explicit boundaries of interpretation.</p>
   </footer>
 
   <script src="assets/js/site.js"></script>

@@ -1,23 +1,38 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>05 From Loop to Bridge Candidate</title><link rel="stylesheet" href="../assets/css/style.css"></head>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>05 Loop Meaning and Bridge Extraction</title><link rel="stylesheet" href="../assets/css/style.css"></head>
 <body data-chapter="05-detection" data-root="../"><main class="container"><a href="../index.html">← Home</a><section class="panel chapter-body"><h1 id="chapter-title"></h1><p class="thesis-block" id="chapter-thesis"></p>
 
-<h2>Representative cycle reconstruction rule</h2>
-<p><strong>Plain-language layer:</strong> We reconstruct one readable cycle by combining the birth edge with the shortest path that existed just before that edge appeared.</p>
-<p><strong>Technical layer:</strong> For birth edge e_b = (u,v) at b_k, define representative cycle C_k = e_b ∪ P_{b_k^-}(u,v), where P_{b_k^-} is a shortest path in the graph immediately before birth.</p>
+<h2>F. What a loop means here</h2>
+<p>In this project, a loop means an unresolved boundary configuration in semantic space: nearby concepts are connected around a gap that remains unfilled over a threshold range. A loop does <strong>not</strong> imply that a mature topic already exists, that collaboration has happened, or that a relation will inevitably grow.</p>
+<p>Interpretation depends on <em>local geometry</em>: where concepts sit, which edges appear at birth, and whether cycle edges cross community boundaries in that year.</p>
 
-<h2>Figure 3 — From representative cycle to bridge edges</h2>
-<figure class="viz-frame"><svg viewBox="0 0 760 260" aria-label="cycle to bridge extraction">
-<rect x="20" y="30" width="340" height="200" fill="#ecfeff" stroke="#0891b2"/><text x="30" y="52">Community A</text>
-<rect x="400" y="30" width="340" height="200" fill="#f5f3ff" stroke="#7c3aed"/><text x="410" y="52">Community B</text>
-<circle cx="120" cy="120" r="7"/><circle cx="220" cy="80" r="7"/><circle cx="300" cy="150" r="7"/><circle cx="460" cy="150" r="7"/><circle cx="540" cy="80" r="7"/><circle cx="640" cy="120" r="7"/>
-<polyline points="120,120 220,80 300,150 460,150 540,80 640,120 120,120" fill="none" stroke="#0f172a" stroke-width="2"/>
-<line x1="300" y1="150" x2="460" y2="150" class="bridge-edge"/>
-<line x1="640" y1="120" x2="120" y2="120" class="bridge-edge"/>
-<text x="270" y="175" class="fig-sub">cross-community edge → candidate</text>
-<text x="590" y="145" class="fig-sub">cross-community edge → candidate</text>
-<text x="20" y="248" class="fig-sub">Rule: keep only edges on C_k whose endpoints have different community labels.</text>
-</svg><figcaption><strong>Figure 3.</strong> Candidate bridges are extracted from a representative cycle using an exact rule: keep cross-community cycle edges only. This supports boundary-bridge hypothesis generation; it does not establish causal collaboration or guaranteed future consolidation.</figcaption></figure>
+<div class="meaning-box"><strong>Community boundary.</strong> A community boundary is the interface between concept groups produced by graph partitioning (Louvain in this project). Crossing this boundary means an edge links two semantic regions that are locally close but still partitioned.</div>
 
-<div class="meaning-box"><strong>What this ranking is ranking.</strong> It ranks candidate <em>edges</em> (concept pairs), not whole topics, authors, or venues.</div>
+<h2>G. From representative cycle to bridge candidate</h2>
+<ol>
+<li>Identify a loop feature I_k=[b_k,d_k) and its birth edge e_b=(u,v).</li>
+<li>Find the shortest path P_{b_k^-}(u,v) in the graph just before birth.</li>
+<li>Form the representative cycle C_k = e_b ∪ P_{b_k^-}(u,v).</li>
+<li>Partition the separation graph into communities c_t(·).</li>
+<li>Extract cycle edges (i,j) ∈ C_k with c_t(i) ≠ c_t(j) as bridge candidates.</li>
+</ol>
+
+<h2>Figure 3 — Community boundary and bridge extraction</h2>
+<figure class="viz-frame"><svg viewBox="0 0 760 260" aria-label="community boundary bridge extraction">
+<rect x="18" y="30" width="345" height="200" fill="#ecfeff" stroke="#0891b2"/><text x="28" y="50">Community A</text>
+<rect x="397" y="30" width="345" height="200" fill="#f5f3ff" stroke="#7c3aed"/><text x="407" y="50">Community B</text>
+<circle cx="95" cy="125" r="6"/><circle cx="190" cy="85" r="6"/><circle cx="285" cy="145" r="6"/><circle cx="475" cy="145" r="6"/><circle cx="570" cy="85" r="6"/><circle cx="665" cy="125" r="6"/>
+<polyline points="95,125 190,85 285,145 475,145 570,85 665,125 95,125" fill="none" stroke="#0f172a" stroke-width="2"/>
+<line x1="285" y1="145" x2="475" y2="145" class="bridge-edge"/>
+<line x1="665" y1="125" x2="95" y2="125" class="bridge-edge"/>
+<text x="230" y="176" class="fig-sub">selected: cycle edge crossing A↔B</text>
+<text x="540" y="148" class="fig-sub">selected: cycle edge crossing A↔B</text>
+</svg><figcaption><strong>Figure 3.</strong> The loop itself is in black; extracted bridge candidates are highlighted in one consistent color. Read the colored background first (community assignment), then identify cycle edges whose endpoints fall in different communities. This supports candidate selection logic; it does not by itself prove interdisciplinary collaboration or future dominance.</figcaption></figure>
+
+<div class="meaning-box"><strong>Bridge candidate.</strong> A bridge candidate is a concept pair selected by the explicit cross-community-on-cycle rule. It is a structured hypothesis for follow-up analysis. It is not a claim of certainty, causality, or inevitability.</div>
+
+<section class="refs"><h2>References</h2><ol>
+<li>Blondel, V. D., Guillaume, J.-L., Lambiotte, R., &amp; Lefebvre, E. (2008). Fast unfolding of communities in large networks. <em>Journal of Statistical Mechanics: Theory and Experiment</em>, 2008(10), P10008. https://doi.org/10.1088/1742-5468/2008/10/P10008</li>
+<li>Newman, M. E. J. (2006). Modularity and community structure in networks. <em>Proceedings of the National Academy of Sciences</em>, 103(23), 8577–8582. https://doi.org/10.1073/pnas.0601602103</li>
+</ol></section>
 
 </section><div id="prev-next-nav"></div></main><script src="../assets/js/site.js"></script><script src="../assets/js/chapters.js"></script></body></html>
