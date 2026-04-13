@@ -1,29 +1,35 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>09 Reference Integrity and Implementation Notes</title><link rel="stylesheet" href="../assets/css/style.css"></head>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>09 References and Figure Production Specs</title><link rel="stylesheet" href="../assets/css/style.css"></head>
 <body data-chapter="09-implications" data-root="../"><main class="container"><a href="../index.html">← Home</a><section class="panel chapter-body"><h1 id="chapter-title"></h1><p class="thesis-block" id="chapter-thesis"></p>
 
-<h2>Citation audit (corrected and verified)</h2>
-<table class="compare-table"><thead><tr><th>Method role</th><th>Checked citation</th><th>Metadata check</th></tr></thead><tbody>
-<tr><td>Persistent homology basics</td><td>Edelsbrunner &amp; Harer (2010), <em>Computational Topology</em>.</td><td>Author/title/year checked.</td></tr>
-<tr><td>Persistence algorithm foundations</td><td>Zomorodian &amp; Carlsson (2005), <em>Discrete &amp; Computational Geometry</em>, 33:249–274, DOI 10.1007/s00454-004-1146-y.</td><td>Authors/venue/year/pages/DOI checked.</td></tr>
-<tr><td>Computation roadmap</td><td>Otter et al. (2017), <em>EPJ Data Science</em> 6:17, DOI 10.1140/epjds/s13688-017-0109-5.</td><td>Authors/venue/year/DOI checked.</td></tr>
-<tr><td>Community detection</td><td>Blondel et al. (2008), <em>Journal of Statistical Mechanics</em>, P10008, DOI 10.1088/1742-5468/2008/10/P10008.</td><td>Authors/venue/year/article number/DOI checked.</td></tr>
-<tr><td>Ranked retrieval evaluation</td><td>Järvelin &amp; Kekäläinen (2002), <em>ACM TOIS</em>, 20(4):422–446, DOI 10.1145/582415.582418.</td><td>Authors/venue/year/pages/DOI checked.</td></tr>
-</tbody></table>
+<h2>K. Verified references (metadata-checked)</h2>
+<ol>
+<li>Edelsbrunner, H., &amp; Harer, J. (2010). <em>Computational Topology: An Introduction</em>. American Mathematical Society.</li>
+<li>Zomorodian, A., &amp; Carlsson, G. (2005). Computing persistent homology. <em>Discrete &amp; Computational Geometry</em>, 33(2), 249–274. https://doi.org/10.1007/s00454-004-1146-y</li>
+<li>Ghrist, R. (2008). Barcodes: The persistent topology of data. <em>Bulletin of the American Mathematical Society</em>, 45(1), 61–75. https://doi.org/10.1090/S0273-0979-07-01191-3</li>
+<li>Otter, N., Porter, M. A., Tillmann, U., Grindrod, P., &amp; Harrington, H. A. (2017). A roadmap for the computation of persistent homology. <em>EPJ Data Science</em>, 6, 17. https://doi.org/10.1140/epjds/s13688-017-0109-5</li>
+<li>Blondel, V. D., Guillaume, J.-L., Lambiotte, R., &amp; Lefebvre, E. (2008). Fast unfolding of communities in large networks. <em>Journal of Statistical Mechanics: Theory and Experiment</em>, 2008(10), P10008. https://doi.org/10.1088/1742-5468/2008/10/P10008</li>
+<li>Newman, M. E. J. (2006). Modularity and community structure in networks. <em>Proceedings of the National Academy of Sciences</em>, 103(23), 8577–8582. https://doi.org/10.1073/pnas.0601602103</li>
+<li>Järvelin, K., &amp; Kekäläinen, J. (2002). Cumulated gain-based evaluation of IR techniques. <em>ACM Transactions on Information Systems</em>, 20(4), 422–446. https://doi.org/10.1145/582415.582418</li>
+<li>Manning, C. D., Raghavan, P., &amp; Schütze, H. (2008). <em>Introduction to Information Retrieval</em>. Cambridge University Press.</li>
+<li>Mikolov, T., Sutskever, I., Chen, K., Corrado, G. S., &amp; Dean, J. (2013). Distributed representations of words and phrases and their compositionality. In <em>Advances in Neural Information Processing Systems 26</em>, 3111–3119.</li>
+</ol>
 
 <h2>Figure production specification (implementation-ready)</h2>
 <ol>
-<li><strong>Figure 1 (pipeline):</strong> left-to-right + second row; each box includes exact input/output objects; maintain one accent color for bridge-related outputs.</li>
-<li><strong>Figure 2 (loop mechanics):</strong> fixed node coordinates across ε panels; explicit birth edge and pre-birth shortest path; final panel shows simplex fill for death.</li>
-<li><strong>Figure 3 (bridge extraction):</strong> representative cycle over community partition; highlight only cross-community cycle edges as extracted candidates.</li>
-<li><strong>Figure 4 (ranking + nDCG):</strong> ranked list, score components, future relevance, and toy DCG/IDCG calculation in one frame.</li>
-<li><strong>Figure 5 (case studies):</strong> two real pipeline-based cases with local neighborhood, cycle, communities, candidate edge, and future evidence note.</li>
-<li><strong>Figure 6 (claim boundaries):</strong> three-column matrix: direct evidence, indirect support, and non-established claims.</li>
+<li><strong>Figure 1 — Pipeline.</strong> Layout: 10 boxed stages in three rows; arrows enforce flow direction; each stage must label both input and output object names exactly. Use one consistent highlight color only for bridge-related outputs and the same color across all figures.</li>
+<li><strong>Figure 2 — Loop birth mechanics.</strong> Three aligned ε-panels with identical node coordinates; explicitly highlight birth edge in the middle panel; annotate pre-birth shortest path; show simplex fill for death in panel three. Caption must state what this mechanism supports and what it does not support.</li>
+<li><strong>Figure 3 — Community boundary extraction.</strong> Show representative cycle over two shaded community regions; retain cycle in neutral color; highlight only cross-community cycle edges as candidates. Include inline text: "selected because endpoints have different community labels."</li>
+<li><strong>Figure 4 — Ranking and nDCG.</strong> Three-panel composition: ranked list, rank discount intuition, toy nDCG arithmetic. Ensure readers can understand top-heavy weighting without prior IR background.</li>
+<li><strong>Figure 5 — Case walkthrough.</strong> Use real concept labels and one fixed year per case; panel order must be: local neighborhood → cycle → community boundary → extracted candidate → later evidence → claim-bounded interpretation. Keep each panel under seven textual lines.</li>
+<li><strong>Figure 6 — Claim boundaries (optional but recommended).</strong> 3-column matrix: "Directly shown", "Supported indirectly", "Not established." Keep row-level wording parallel and avoid rhetorical phrasing.</li>
 </ol>
 
-<h2>Warnings / unresolved confirmations</h2>
+<h2>Needs confirmation before camera-ready freeze</h2>
 <ul>
-<li>The CHI 2026 manuscript citation is treated as project-manuscript context; final archival metadata (DOI, proceedings details) should be inserted once officially available.</li>
-<li>Case-study panel labels should be finalized against the exact reproducible output artifacts from the analysis scripts.</li>
+<li>Exact future relevance definition (binary threshold/window length) used in temporal validation code should be inserted verbatim.</li>
+<li>Whether candidate filtering includes zero cumulative co-occurrence as a hard rule in all reported experiments should be explicitly confirmed.</li>
+<li>Second case-study labels/year should be filled from reproducible outputs (project notes mention additional cases, but this page currently includes one fully confirmed case).</li>
+<li>Final archival metadata for the CHI 2026 poster/manuscript should be added once proceedings details and DOI are assigned.</li>
 </ul>
 
 </section><div id="prev-next-nav"></div></main><script src="../assets/js/site.js"></script><script src="../assets/js/chapters.js"></script></body></html>

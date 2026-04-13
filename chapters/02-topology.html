@@ -1,27 +1,16 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>02 Problem and Intuition</title><link rel="stylesheet" href="../assets/css/style.css"></head>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>02 Core Idea</title><link rel="stylesheet" href="../assets/css/style.css"></head>
 <body data-chapter="02-topology" data-root="../"><main class="container"><a href="../index.html">← Home</a><section class="panel chapter-body"><h1 id="chapter-title"></h1><p class="thesis-block" id="chapter-thesis"></p>
-<h2>Why persistence alone is not enough</h2>
-<p><strong>Plain-language layer:</strong> A long-lived loop tells us a boundary stayed open, but not which relation is the most plausible bridge.</p>
-<p><strong>Technical layer:</strong> Persistence identifies durable <em>H</em><sub>1</sub> structure, but bridge recommendation additionally needs cycle reconstruction and community-aware edge selection.</p>
 
-<h2>Why community partition is introduced</h2>
-<p><strong>Plain-language layer:</strong> We need to separate within-area edges from across-area edges.</p>
-<p><strong>Technical layer:</strong> A community partition on the separation graph lets us identify cycle edges <em>(u,v)</em> where endpoints have different community labels, defining candidate bridges.</p>
+<h2>C. Core idea</h2>
+<p><strong>Plain-language explanation.</strong> We look for loop-shaped boundary structure in each year’s concept neighborhood graph. When a reconstructed loop crosses semantic communities, its cross-community edges are treated as interpretable bridge candidates: relations worth attention because they connect nearby but still separated regions.</p>
+<p><strong>Technical explanation.</strong> For each year t, persistent H₁ features are computed on a Vietoris–Rips filtration over concept distances. A representative cycle is reconstructed at loop birth. Community labels on a separation graph are then used to retain only cycle edges (u,v) with c_t(u) ≠ c_t(v), yielding bridge-candidate edges for ranking and temporal validation.</p>
 
-<div class="caution-box"><strong>Why a loop is not automatically a future topic.</strong> A loop is an observed structural condition. It does not by itself establish durable future collaboration, topic naming, or causal mechanism.</div>
-
-<h2>Interpretation checklist</h2>
-<ul>
-<li>Did the loop appear at a specific filtration threshold?</li>
-<li>Was a representative cycle reconstructed from a documented birth edge?</li>
-<li>Are extracted candidate edges cross-community in that year?</li>
-<li>Is future relevance evaluated in a temporally held-out window?</li>
-<li>Does interpretation stay within descriptive and retrospective claim limits?</li>
-</ul>
+<div class="meaning-box"><strong>Persistent homology (quick definition).</strong> Persistent homology tracks which topological features appear and disappear as the distance threshold grows. For H₁, the feature of interest is a loop-like hole. Persistence length indicates how long that hole remains unresolved across thresholds.</div>
+<div class="meaning-box"><strong>Representative cycle.</strong> A representative cycle is a readable witness for one loop feature. In this project it is reconstructed from a birth edge plus a pre-birth shortest path. It supports interpretation, but it is not the only valid witness for the same homology class.</div>
 
 <section class="refs"><h2>References</h2><ol>
 <li>Edelsbrunner, H., &amp; Harer, J. (2010). <em>Computational Topology: An Introduction</em>. American Mathematical Society.</li>
-<li>Zomorodian, A., &amp; Carlsson, G. (2005). Computing Persistent Homology. <em>Discrete &amp; Computational Geometry</em>, 33, 249–274. https://doi.org/10.1007/s00454-004-1146-y</li>
-<li>Blondel, V. D., Guillaume, J.-L., Lambiotte, R., &amp; Lefebvre, E. (2008). Fast unfolding of communities in large networks. <em>Journal of Statistical Mechanics: Theory and Experiment</em>, 2008(10), P10008. https://doi.org/10.1088/1742-5468/2008/10/P10008</li>
+<li>Zomorodian, A., &amp; Carlsson, G. (2005). Computing persistent homology. <em>Discrete &amp; Computational Geometry</em>, 33(2), 249–274. https://doi.org/10.1007/s00454-004-1146-y</li>
+<li>Ghrist, R. (2008). Barcodes: The persistent topology of data. <em>Bulletin of the American Mathematical Society</em>, 45(1), 61–75. https://doi.org/10.1090/S0273-0979-07-01191-3</li>
 </ol></section>
 <div id="prev-next-nav"></div></section></main><script src="../assets/js/site.js"></script><script src="../assets/js/chapters.js"></script></body></html>
