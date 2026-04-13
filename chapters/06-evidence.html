@@ -1,15 +1,31 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>06 Evidence</title><link rel="stylesheet" href="../assets/css/style.css"></head>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>06 Ranking and Temporal Validation</title><link rel="stylesheet" href="../assets/css/style.css"></head>
 <body data-chapter="06-evidence" data-root="../"><main class="container"><a href="../index.html">← Home</a><section class="panel chapter-body"><h1 id="chapter-title"></h1><p class="thesis-block" id="chapter-thesis"></p>
-<figure class="viz-frame"><div data-figure-label="Schematic + paper-derived values"></div><svg viewBox="0 0 360 158" aria-label="micro meso macro evidence flow"><text x="10" y="20" font-size="11">Figure title: Reading evidence across micro, meso, and macro</text><text x="10" y="36" font-size="10" fill="#475569">How to read this figure: inspect a concrete cycle, verify metric cards, then read yearly note.</text><rect x="14" y="52" width="100" height="36" rx="6" fill="#e0f2fe" stroke="#94a3b8"/><text x="32" y="74" font-size="10">A) Micro case</text><text x="117" y="74" font-size="14">→</text><rect x="140" y="52" width="100" height="36" rx="6" fill="#e0f2fe" stroke="#94a3b8"/><text x="155" y="74" font-size="10">B) Metric cards</text><text x="244" y="74" font-size="14">→</text><rect x="267" y="52" width="80" height="36" rx="6" fill="#fff7ed" stroke="#94a3b8"/><text x="281" y="74" font-size="10">C) Yearly note</text><text x="20" y="112" font-size="10" fill="#475569">A: VR–Therapy representative cycle</text><text x="20" y="128" font-size="10" fill="#475569">B: +0.105, p = 0.04, ~2 years, 48–49/50</text><text x="20" y="144" font-size="10" fill="#475569">C: annual boundary state, not same-loop identity</text></svg><figcaption id="figure-caption"></figcaption></figure>
-<div class="caution-box"><strong>Reading note.</strong> <span id="chapter-caution"></span></div>
-<p class="chapter-paragraph">This chapter is the strongest empirical page because it combines readable examples with verified metrics and annual context. The claim is not that one score proves everything; the claim is that micro, meso, and macro views converge on the same boundary-reorganization interpretation <a class="cite" href="#ref1">[1]</a><a class="cite" href="#ref2">[2]</a>.</p>
-<h2>Real case: VR–Therapy representative cycle</h2><p>Representative cycle sequence:</p><p id="case-seq" class="thesis-block"></p>
-<p class="chapter-paragraph">In this case, terms around immersion, exergame, rehabilitation, and therapy become repeatedly adjacent before a fully consolidated field label appears. That pattern matters in HCI because design and application communities often reorganize through intermediate structures before vocabulary stabilizes.</p>
-<p class="chapter-paragraph">Case-level evidence alone is not enough. It can show interpretability but not generality. That is why the next section adds ranking metrics and lead-time behavior, then the yearly reading links those metrics back to annual structural condition.</p>
-<h2>Verified metric cards</h2><div class="metric-grid" id="metric-cards"></div>
-<p class="chapter-paragraph">These values support a bounded but useful statement: topology-aware signals improve candidate ordering in this evaluation setting. They do not imply complete coverage of all future bridges, and they do not remove the need for domain interpretation <a class="cite" href="#ref3">[3]</a>.</p>
-<div class="meaning-box"><strong>Macro reading note.</strong> Read yearly topology summaries as annual structural weather: boundary-heavy years vs closure-heavy years. Use this to contextualize cases, not to replace them.</div>
-<h2>Yearly topology summary</h2><div class="metric-card"><strong>Interpretive use</strong><p class="note">Pair annual persistent H1 totals with closure tendency to describe yearly boundary state. Use this together with the cycle example and metric cards above.</p></div>
-<details class="technical-note"><summary>Technical note (optional): why NDCG@50 and lead-time are reported</summary><div class="note-body"><p class="note">This note explains what the evaluation metrics are intended to capture in this site.</p><ul class="term-list"><li><strong>NDCG@50</strong> weights high-rank correctness more than lower-rank correctness, so it matches the practical use case of inspecting top candidates first.</li><li><strong>Lead-time metric</strong> captures how early a structural signal appears before later observable consolidation indicators.</li><li><strong>Yearly metrics</strong> summarize each year independently; they are annual descriptors, not object-tracking trajectories of one loop instance.</li></ul><p class="note"><strong>What this means here:</strong> evaluation supports ranking utility and timing relevance, while interpretation still depends on transparent case reading and scope discipline.</p></div></details>
-<section class="refs"><h2>References</h2><ol><li id="ref1">Shimizu, K., Komatsu, S., Hayashi, K., &amp; Zempo, K. (2026). Detecting Cross-Area Concept Links in HCI Using Persistent Homology. In <em>Extended Abstracts of the 2026 CHI Conference on Human Factors in Computing Systems</em>.</li><li id="ref2">Gromala, D., Tong, X., Choo, A., Karamnejad, M., &amp; Shaw, C. D. (2015). The Virtual Meditative Walk: Virtual Reality Therapy for Chronic Pain Management. In <em>Proceedings of the 33rd Annual ACM Conference Extended Abstracts on Human Factors in Computing Systems</em>.</li><li id="ref3">Manning, C. D., Raghavan, P., &amp; Schütze, H. (2008). <em>Introduction to Information Retrieval</em>. Cambridge University Press.</li></ol></section>
-<div id="prev-next-nav"></div></section></main><script src="../assets/js/site.js"></script><script src="../assets/js/chapters.js"></script></body></html>
+
+<h2>Ranking function and holdout logic</h2>
+<p class="equation">s(u,v)=max_{\gamma\ni (u,v)} π(γ), with π(γ)=ε_d(γ)−ε_b(γ)</p>
+<p><strong>Interpretation:</strong> an edge is ranked higher if it participates in more persistent cycles.</p>
+<p><strong>Temporal validation:</strong> candidates generated at year <em>t</em> are judged using future evidence from years <em>t+1</em> onward, so ranking quality is evaluated out-of-time.</p>
+
+<h2>How to read nDCG@50</h2>
+<p><strong>Plain-language layer:</strong> nDCG@50 asks whether candidates that later mattered were already near the top 50.</p>
+<p><strong>Technical layer:</strong> DCG discounts relevance by rank position; nDCG normalizes by the ideal ordering so 1.0 means best possible top-50 ordering for that year.</p>
+
+<h2>Figure 4 — Ranking and top-heavy evaluation</h2>
+<figure class="viz-frame"><svg viewBox="0 0 760 280" aria-label="ranking and ndcg">
+<text x="20" y="24">Ranked candidates (year t)</text>
+<rect x="20" y="35" width="220" height="180" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="30" y="60">1. (vr, therapy)  rel=1</text><text x="30" y="84">2. (haptics, rehab) rel=0</text><text x="30" y="108">3. (biofeedback, game) rel=1</text><text x="30" y="132">…</text><text x="30" y="156">50. (...) rel=0</text>
+<text x="280" y="24">Score components</text>
+<rect x="280" y="35" width="210" height="180" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="292" y="60">Cycle persistence π(γ)</text><text x="292" y="84">Cross-community membership</text><text x="292" y="108">Max-over-cycles per edge</text>
+<text x="530" y="24">Toy nDCG@5</text>
+<rect x="530" y="35" width="210" height="180" fill="#f8fafc" stroke="#94a3b8"/>
+<text x="540" y="60">Rel: [1,0,1,0,0]</text><text x="540" y="84">DCG≈1+1/log₂(4)=1.50</text><text x="540" y="108">IDCG≈1+1/log₂(3)=1.63</text><text x="540" y="132">nDCG≈0.92</text><text x="540" y="156">Top ranks contribute more</text>
+<path d="M240 125 H280 M490 125 H530" class="fig-arrow"/>
+</svg><figcaption><strong>Figure 4.</strong> The ranking pipeline produces a candidate list, then nDCG evaluates whether later-relevant links are concentrated near the top. Because discounting is rank-sensitive, early hits matter more than late hits.</figcaption></figure>
+
+<section class="refs"><h2>References</h2><ol>
+<li>Järvelin, K., &amp; Kekäläinen, J. (2002). Cumulated gain-based evaluation of IR techniques. <em>ACM Transactions on Information Systems</em>, 20(4), 422–446. https://doi.org/10.1145/582415.582418</li>
+<li>Manning, C. D., Raghavan, P., &amp; Schütze, H. (2008). <em>Introduction to Information Retrieval</em>. Cambridge University Press.</li>
+</ol></section>
+</section><div id="prev-next-nav"></div></main><script src="../assets/js/site.js"></script><script src="../assets/js/chapters.js"></script></body></html>

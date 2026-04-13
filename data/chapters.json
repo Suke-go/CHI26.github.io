@@ -1,127 +1,65 @@
 [
   {
     "id": "01-why-hci",
-    "title": "Why This Matters in HCI",
-    "thesis": "HCI reorganization often appears first as boundary restructuring before stable topic labels become dominant.",
-    "mainParagraph": "Because HCI combines design, engineering, social inquiry, and application domains, change often emerges as cross-community adjacency before lexical consolidation.",
-    "secondaryParagraph": "Persistent loops provide an explicit way to describe these intermediate structural states without implying causal certainty or inevitable field formation.",
-    "cautionNote": "This is structural interpretation, not deterministic prediction of HCI's future.",
-    "figureCaption": "Three-panel schematic: stable topic, emerging adjacency, unresolved boundary loop.",
-    "relatedTerms": [
-      "concept space",
-      "persistent loop",
-      "structural gap"
-    ]
+    "title": "01 Audit and Research Question",
+    "thesis": "This chapter diagnoses the prior supplement and states the research question in evidence-first terms.",
+    "figureCaption": "Structured audit table mapping diagnosed weaknesses to specific revision actions.",
+    "cautionNote": "The goal is sharper evidence communication, not claim inflation."
   },
   {
     "id": "02-topology",
-    "title": "Topology, in plain terms",
-    "thesis": "Use topology here as a simple way to read when a boundary appears, stays open, and closes.",
-    "mainParagraph": "Birth, persistence, and death indicate when unresolved loop conditions appear, remain, and close under filtration thresholds.",
-    "secondaryParagraph": "Yearly summaries describe annual structural condition, while representative cycles remain explanatory witnesses rather than identity tracking of one loop over time.",
-    "cautionNote": "Yearly summaries compare yearly states; they do not track one identical loop through time.",
-    "figureCaption": "Schematic three-stage figure: dots, loop, and one filled triangle.",
-    "relatedTerms": [
-      "birth edge",
-      "H1 cycle",
-      "Vietoris–Rips complex"
-    ]
+    "title": "02 Problem Intuition and Interpretation Rules",
+    "thesis": "Persistent loops are useful boundary signals, but bridge interpretation requires community-aware cycle logic.",
+    "figureCaption": "Interpretation checklist and conceptual constraints for reading loop evidence.",
+    "cautionNote": "A loop is descriptive structure, not direct proof of future topic formation."
   },
   {
     "id": "03-existing",
-    "title": "Positioning Within Existing Approaches",
-    "thesis": "Topology-based reading extends established bibliometric and semantic methods with boundary-focused interpretation.",
-    "mainParagraph": "Each approach contributes distinct strengths, but unresolved boundary structures remain difficult to read when only volume, citation, or nearest-neighbor signals are used.",
-    "secondaryParagraph": "This project adds a structural lens that emphasizes interpretable boundary conditions.",
-    "cautionNote": "Complementary does not mean replacement.",
-    "figureCaption": "Comparison matrix showing methodological continuity across approach families.",
-    "relatedTerms": [
-      "semantic community",
-      "cross-area link"
-    ]
+    "title": "03 Data and Yearly Construction",
+    "thesis": "Yearly analysis is recomputed under a strict historical cutoff so validation remains temporally honest.",
+    "figureCaption": "Figure 1 pipeline with explicit mathematical objects at each stage.",
+    "cautionNote": "Cross-year comparison is between yearly states, not one preserved object identity."
   },
   {
     "id": "04-data",
-    "title": "Data and Operationalization",
-    "thesis": "Interpretation depends on operational definitions that tie every major term to an explicit measurable object and explicit non-claims.",
-    "mainParagraph": "Concepts, communities, links, cycles, and yearly summaries are each defined in project-specific measurable terms to support reliable discussion.",
-    "secondaryParagraph": "These definitions constrain claims to corpus structure and prevent drift into causal, institutional, or motivational over-interpretation.",
-    "cautionNote": "Cross-area is semantic and operational, not institutional interdisciplinarity.",
-    "figureCaption": "Corpus-to-summary data flow diagram.",
-    "relatedTerms": [
-      "concept space",
-      "semantic community",
-      "cross-area link"
-    ]
+    "title": "04 Mathematical Pipeline",
+    "thesis": "Each equation is presented with operational interpretation so reviewers can map symbols to code-level objects.",
+    "figureCaption": "Figure 2 loop birth/death mechanics with fixed node positions and explicit birth edge.",
+    "cautionNote": "Equations describe computation, not causal mechanism."
   },
   {
     "id": "05-detection",
-    "title": "How outputs are produced",
-    "thesis": "A five-step evidence ladder moves from yearly concept space to readable yearly summaries.",
-    "mainParagraph": "The workflow constructs filtration, extracts persistent H1, reconstructs representative cycles, and aggregates yearly summaries for interpretation.",
-    "secondaryParagraph": "Output scales are explicit: local edges, meso cycles, macro yearly descriptors.",
-    "cautionNote": "Pipeline outputs are evidence for interpretation, not causal mechanisms.",
-    "figureCaption": "Stepwise method reveal from concept space to yearly summary.",
-    "relatedTerms": [
-      "birth edge",
-      "persistent loop",
-      "yearly summary"
-    ]
+    "title": "05 From Loop to Bridge Candidate",
+    "thesis": "Bridge candidates are extracted by a precise rule: cross-community edges on representative cycles.",
+    "figureCaption": "Figure 3 cycle-to-candidate extraction rule.",
+    "cautionNote": "Candidates are hypotheses for review, not guaranteed bridges."
   },
   {
     "id": "06-evidence",
-    "title": "Evidence",
-    "thesis": "Evidence is strongest when micro interpretability, meso ranking performance, and macro yearly summaries are read together.",
-    "mainParagraph": "Micro cases show what the structure looks like, meso metrics show comparative ordering utility, and macro summaries contextualize annual structural condition.",
-    "secondaryParagraph": "This triangulation supports rigorous discussion while keeping causal, identity-tracking, and deterministic claims outside evidence boundaries.",
-    "cautionNote": "Do not interpret yearly summaries as persistent identity tracking of specific loops.",
-    "figureCaption": "VR–Therapy cycle, metric cards, and yearly summary framing.",
-    "relatedTerms": [
-      "representative cycle",
-      "NDCG@50",
-      "triadic closure"
-    ]
+    "title": "06 Ranking and Temporal Validation",
+    "thesis": "nDCG@50 evaluates whether later-relevant candidates are concentrated near the top of the ranked list.",
+    "figureCaption": "Figure 4 ranking logic with toy nDCG example.",
+    "cautionNote": "Validation is retrospective on held-out future years."
   },
   {
     "id": "07-reading",
-    "title": "How to read the outputs (plain language)",
-    "thesis": "Birth, persistence, and closure are simple reading states for boundary change.",
-    "mainParagraph": "Birth indicates emergence, persistence indicates unresolved boundary condition, and death indicates closure or divergence.",
-    "secondaryParagraph": "Representative cycles remain explanatory reconstructions rather than unique truths.",
-    "cautionNote": "Not every disappearing loop becomes a stable field.",
-    "figureCaption": "State transition diagram: birth → persistence → closure/divergence.",
-    "relatedTerms": [
-      "birth edge",
-      "persistent loop",
-      "representative cycle"
-    ]
+    "title": "07 Evidence Walkthroughs",
+    "thesis": "Case walkthroughs connect geometry, loop structure, community boundary, and later relevance evidence.",
+    "figureCaption": "Figure 5 two-case comparative walkthrough.",
+    "cautionNote": "Case narratives should be interpreted with explicit claim boundaries."
   },
   {
     "id": "08-scope",
-    "title": "What this evidence supports (and what needs more evidence)",
-    "thesis": "Set claim boundaries clearly: what is directly supported, and what needs additional evidence before stronger claims.",
-    "mainParagraph": "The method supports structural claims about adjacency, separation, unresolved loops, and annual summaries when linked to clear measurable objects.",
-    "secondaryParagraph": "Some claims need extra data (causal, institutional, intent, and cross-year identity claims).",
-    "cautionNote": "Scope clarity is part of the contribution, not a limitation to hide.",
-    "figureCaption": "Claim-boundary figure from direct support to additional-evidence zone.",
-    "relatedTerms": [
-      "scope",
-      "semantic adjacency",
-      "yearly summary"
-    ]
+    "title": "08 Claim Boundaries",
+    "thesis": "This chapter separates direct evidence, indirect support, and unsupported extrapolation.",
+    "figureCaption": "Figure 6 claim boundary matrix.",
+    "cautionNote": "Avoid sliding from structure description into untested causal statements."
   },
   {
     "id": "09-implications",
-    "title": "Discussion and implications",
-    "thesis": "Use this method to support discussion, planning, and follow-up studies without turning it into a prediction dashboard.",
-    "mainParagraph": "The method contributes a calm analytic layer for bridge dialogue, yearly reflection, and complementarity with science-of-science ranking approaches.",
-    "secondaryParagraph": "The chapter closes with a concrete discussion agenda on reorganization criteria, interpretability thresholds, evidence integration, and boundary-to-field transitions.",
-    "cautionNote": "Interpretability should be preserved when scaling to larger corpora.",
-    "figureCaption": "Three implications blocks plus concluding synthesis.",
-    "relatedTerms": [
-      "bridge hypotheses",
-      "community analysis",
-      "Science of Science"
-    ]
+    "title": "09 Reference Integrity and Figure Specs",
+    "thesis": "Methodological references are metadata-checked and tied to explicit methodological claims.",
+    "figureCaption": "Reference audit table and implementation-ready figure specifications.",
+    "cautionNote": "Insert final archival metadata for the CHI 2026 manuscript when available."
   }
 ]
