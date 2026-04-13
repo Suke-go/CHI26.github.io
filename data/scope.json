@@ -2,49 +2,49 @@
   "captures": [
     {
       "label": "Captures semantic adjacency",
-      "explanation": "The method shows when concepts become structurally near each other in the analyzed semantic space.",
+      "explanation": "The method detects when concepts repeatedly become near each other in the analyzed semantic space under the project's graph construction rules. This gives direct structural evidence that neighborhoods are reorganizing, even before one consolidated topic label dominates frequency counts.",
       "example": "A therapeutic concept can become adjacent to VR through immersion and activity terms before direct co-labeling dominates."
     },
     {
       "label": "Captures community separation",
-      "explanation": "It preserves whether neighboring concepts still sit across community boundaries.",
+      "explanation": "It records whether neighboring concepts still sit across distinct semantic communities while local proximity increases. This helps identify partial integration states where contact grows but full community merger has not occurred.",
       "example": "Two concepts may be close but still belong to distinct semantic communities."
     },
     {
       "label": "Captures unresolved loop structure",
-      "explanation": "Persistent H1 loops indicate a boundary state where closure is not yet complete.",
+      "explanation": "Persistent H1 loops register boundary configurations in which concept regions are connected around a gap that remains unfilled over a nontrivial threshold range. This supports claims about unresolved structural conditions, not just one-time noisy adjacency events.",
       "example": "A ring of concepts appears while key filling edges are still absent."
     },
     {
       "label": "Captures yearly topology-derived summaries",
-      "explanation": "Year-level aggregates describe structural condition per year.",
+      "explanation": "Year-level aggregates describe structural condition per year using persistent-loop and closure-oriented indicators. This enables macro interpretation of changing field conditions while keeping the evidence tied to explicit annual measurements.",
       "example": "Total persistent H1 and triadic closure summarize a year without asserting stable loop identity over time."
     }
   ],
   "doesNotEstablish": [
     {
       "label": "Does not establish causality",
-      "explanation": "Structural adjacency does not identify the social or epistemic cause of integration.",
+      "explanation": "Structural adjacency and loop persistence do not identify the social, organizational, or epistemic mechanisms that produced the pattern. A detected reorganization can therefore be discussed as evidence of condition change, but not as proof of why that change happened.",
       "example": "A loop closing does not prove why that closure happened."
     },
     {
       "label": "Does not establish author intent",
-      "explanation": "The method analyzes published concept structure, not researcher motivations.",
+      "explanation": "The method analyzes textual concept structure in the corpus rather than deliberative goals held by individual researchers. Interpretations about strategic intent require additional evidence sources beyond topology-derived outputs.",
       "example": "It cannot infer whether authors intentionally built a bridge between areas."
     },
     {
       "label": "Does not establish institutional interdisciplinarity",
-      "explanation": "Cross-area in this project is semantic, not organizational.",
+      "explanation": "Cross-area in this project is semantic and operational, defined by community membership and graph adjacency. It should not be read as direct evidence of cross-department, cross-lab, or cross-institution collaboration patterns.",
       "example": "A cross-community loop does not prove collaboration across departments or institutions."
     },
     {
       "label": "Does not establish one unique true path",
-      "explanation": "Representative cycles are readable reconstructions among valid alternatives.",
+      "explanation": "Representative cycles are readable reconstructions among multiple valid witnesses that can reflect the same structural condition. The evidence supports plausibility of boundary reorganization, but not one singular historical trajectory.",
       "example": "Multiple cycle realizations can support the same boundary interpretation."
     },
     {
       "label": "Does not track the same loop across years as a persistent identity",
-      "explanation": "Yearly summaries are recomputed independently by year.",
+      "explanation": "Yearly summaries are recomputed independently by year, so a high-H1 year should be interpreted as annual condition rather than object-level continuity. Cross-year comparisons are therefore about shifts in structural climate, not guaranteed persistence of one identical loop entity.",
       "example": "A high H1 year does not imply one specific loop persisted unchanged from previous years."
     }
   ]
