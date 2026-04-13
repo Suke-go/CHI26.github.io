@@ -1,0 +1,27 @@
+{
+  "intro": "Topology summarizes how concept relationships persist, split, or disappear over time. In this project, H1 persistence tracks durable loops that reflect recurring conceptual bridges.",
+  "steps": [
+    {
+      "title": "Step 1: Build yearly concept simplices",
+      "description": "For each year, co-occurring HCI concepts are converted into simplices representing local structure."
+    },
+    {
+      "title": "Step 2: Track loop persistence",
+      "description": "We compute persistent homology and quantify which H1 loops remain across adjacent years."
+    },
+    {
+      "title": "Step 3: Interpret boundary patterns",
+      "description": "Representative boundary cases are read with domain context to explain integration and non-integration."
+    }
+  ],
+  "captures": [
+    "Durability of multi-concept bridges across years.",
+    "When separate subdomains become structurally connected.",
+    "Whether local closures align with sustained conceptual loops."
+  ],
+  "misses": [
+    "Causal impact of a concept on design outcomes.",
+    "Normative quality or ethical value of a research direction.",
+    "Fine-grained meaning shifts that require close reading of papers."
+  ]
+}
