@@ -10,6 +10,7 @@
 <li><strong>Temporal honesty rule:</strong> year t uses only records up to t; no future leakage into construction.</li>
 </ul>
 <p>Constructing each year from history-only data ensures that temporal validation is meaningful: candidates from year t are generated without access to future years used for evaluation.</p>
+<p><strong>Lead-time (plain meaning).</strong> Lead-time is the number of years between an early candidate signal and later observable relevance.</p>
 
 <h2>Figure 1 — Yearly analytical pipeline (input/output explicit)</h2>
 <figure class="viz-frame"><svg viewBox="0 0 760 320" aria-label="yearly analytical pipeline">
@@ -28,6 +29,8 @@
 
 <path d="M145 45 H165 M305 45 H325 M490 45 H510 M625 72 V116 H145 M145 143 H165 M305 143 H325 M490 143 H510 M625 170 V214 H380 M380 241 H400" class="fig-arrow"/>
 </svg><figcaption><strong>Figure 1.</strong> This pipeline shows what is computed each year and where each output is used next. Read left-to-right, then top-to-bottom. It supports reproducibility of objects and temporal protocol; it does not by itself justify causal interpretation.</figcaption></figure>
+
+
 
 <section class="refs"><h2>References</h2><ol>
 <li>Otter, N., Porter, M. A., Tillmann, U., Grindrod, P., &amp; Harrington, H. A. (2017). A roadmap for the computation of persistent homology. <em>EPJ Data Science</em>, 6, 17. https://doi.org/10.1140/epjds/s13688-017-0109-5</li>

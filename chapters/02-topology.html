@@ -2,11 +2,19 @@
 <body data-chapter="02-topology" data-root="../"><main class="container"><a href="../index.html">← Home</a><section class="panel chapter-body"><h1 id="chapter-title"></h1><p class="thesis-block" id="chapter-thesis"></p>
 
 <h2>C. Core idea</h2>
-<p><strong>Plain-language explanation.</strong> We look for loop-shaped boundary structure in each year’s concept neighborhood graph. When a reconstructed loop crosses semantic communities, its cross-community edges are treated as interpretable bridge candidates: relations worth attention because they connect nearby but still separated regions.</p>
-<p><strong>Technical explanation.</strong> For each year t, persistent H₁ features are computed on a Vietoris–Rips filtration over concept distances. A representative cycle is reconstructed at loop birth. Community labels on a separation graph are then used to retain only cycle edges (u,v) with c_t(u) ≠ c_t(v), yielding bridge-candidate edges for ranking and temporal validation.</p>
+<p><strong>Interpretive view.</strong> We track <strong>boundary loops</strong> in each year’s concept graph. A boundary loop is useful when it crosses semantic communities, because those cross-community edges are concrete candidate relations.</p>
+<p><strong>Operational view.</strong> For each year t, compute persistent H₁ on a Vietoris–Rips filtration. Reconstruct one representative cycle at loop birth. Keep cycle edges (u,v) only when c_t(u) ≠ c_t(v). The retained edges are bridge candidates for ranking and temporal validation.</p>
+<h2>Working definitions used in this site</h2>
+<ul>
+<li><strong>Boundary loop</strong>: a persistent H₁ feature interpreted as an unresolved boundary pattern.</li>
+<li><strong>Bridge candidate</strong>: a cycle edge whose two endpoints have different community labels in the same year.</li>
+<li><strong>Representative cycle</strong>: one computable witness used to read and extract candidate edges.</li>
+</ul>
 
 <div class="meaning-box"><strong>Persistent homology (quick definition).</strong> Persistent homology tracks which topological features appear and disappear as the distance threshold grows. For H₁, the feature of interest is a loop-like hole. Persistence length indicates how long that hole remains unresolved across thresholds.</div>
 <div class="meaning-box"><strong>Representative cycle.</strong> A representative cycle is a readable witness for one loop feature. In this project it is reconstructed from a birth edge plus a pre-birth shortest path. It supports interpretation, but it is not the only valid witness for the same homology class.</div>
+
+
 
 <section class="refs"><h2>References</h2><ol>
 <li>Edelsbrunner, H., &amp; Harer, J. (2010). <em>Computational Topology: An Introduction</em>. American Mathematical Society.</li>
