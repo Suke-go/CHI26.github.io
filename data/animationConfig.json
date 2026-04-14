@@ -1,5 +1,5 @@
 {
-  "heroLoopDurationMs": 5200,
+  "overviewLoopDurationMs": 5200,
   "sectionFadeDurationMs": 320,
   "lineDrawDurationMs": 900,
   "caseRevealDurationMs": 1400,

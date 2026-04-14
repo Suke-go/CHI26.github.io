@@ -1,10 +1,10 @@
-(async function renderHero() {
-  const svg = d3.select('#hero-viz');
+(async function renderOverviewViz() {
+  const svg = d3.select('#overview-viz');
   if (svg.empty()) return;
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const cfg = await fetch('data/animationConfig.json').then(r => r.json()).catch(() => ({ heroLoopDurationMs: 5200 }));
-  const loopDuration = cfg.heroLoopDurationMs || 5200;
+  const cfg = await fetch('data/animationConfig.json').then(r => r.json()).catch(() => ({ overviewLoopDurationMs: 5200 }));
+  const loopDuration = cfg.overviewLoopDurationMs || 5200;
 
   const width = 360;
   const height = 220;

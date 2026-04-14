@@ -2,7 +2,7 @@
 <body data-chapter="05-detection" data-root="../"><main class="container"><a href="../index.html">← Home</a><section class="panel chapter-body"><h1 id="chapter-title"></h1><p class="thesis-block" id="chapter-thesis"></p>
 
 <h2>F. What a loop means here</h2>
-<p>In this project, a loop means an unresolved boundary configuration in semantic space: nearby concepts are connected around a gap that remains unfilled over a threshold range. A loop does <strong>not</strong> imply that a mature topic already exists, that collaboration has happened, or that a relation will inevitably grow.</p>
+<p>In this chapter we use <strong>boundary loop</strong> with the same definition given in Chapter 2. We do not introduce a new term here.</p>
 <p>Interpretation depends on <em>local geometry</em>: where concepts sit, which edges appear at birth, and whether cycle edges cross community boundaries in that year.</p>
 
 <div class="meaning-box"><strong>Community boundary.</strong> A community boundary is the interface between concept groups produced by graph partitioning (Louvain in this project). Crossing this boundary means an edge links two semantic regions that are locally close but still partitioned.</div>
@@ -15,6 +15,8 @@
 <li>Partition the separation graph into communities c_t(·).</li>
 <li>Extract cycle edges (i,j) ∈ C_k with c_t(i) ≠ c_t(j) as bridge candidates.</li>
 </ol>
+<p class="equation">\( E_t^{bridge}=\{(i,j)\in C_k \mid c_t(i)\neq c_t(j)\} \)</p>
+<p>This is the exact extraction rule used in this site. Type-wise, \(E_t^{bridge}\) is a set of concept-pair edges. The output is not a topic label.</p>
 
 <h2>Figure 3 — Community boundary and bridge extraction</h2>
 <figure class="viz-frame"><svg viewBox="0 0 760 260" aria-label="community boundary bridge extraction">
@@ -28,11 +30,13 @@
 <text x="540" y="148" class="fig-sub">selected: cycle edge crossing A↔B</text>
 </svg><figcaption><strong>Figure 3.</strong> The loop itself is in black; extracted bridge candidates are highlighted in one consistent color. Read the colored background first (community assignment), then identify cycle edges whose endpoints fall in different communities. This supports candidate selection logic; it does not by itself prove interdisciplinary collaboration or future dominance.</figcaption></figure>
 
-<div class="meaning-box"><strong>Bridge candidate.</strong> A bridge candidate is a concept pair selected by the explicit cross-community-on-cycle rule. It is a structured hypothesis for follow-up analysis. It is not a claim of certainty, causality, or inevitability.</div>
+<div class="meaning-box"><strong>Bridge candidate.</strong> We keep the Chapter 2 definition. In this chapter we only apply that definition with the explicit extraction rule above.</div>
+
+
 
 <section class="refs"><h2>References</h2><ol>
 <li>Blondel, V. D., Guillaume, J.-L., Lambiotte, R., &amp; Lefebvre, E. (2008). Fast unfolding of communities in large networks. <em>Journal of Statistical Mechanics: Theory and Experiment</em>, 2008(10), P10008. https://doi.org/10.1088/1742-5468/2008/10/P10008</li>
 <li>Newman, M. E. J. (2006). Modularity and community structure in networks. <em>Proceedings of the National Academy of Sciences</em>, 103(23), 8577–8582. https://doi.org/10.1073/pnas.0601602103</li>
 </ol></section>
 
-</section><div id="prev-next-nav"></div></main><script src="../assets/js/site.js"></script><script src="../assets/js/chapters.js"></script></body></html>
+</section><div id="prev-next-nav"></div></main><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script src="../assets/js/site.js"></script><script src="../assets/js/chapters.js"></script></body></html>

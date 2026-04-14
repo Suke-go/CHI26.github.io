@@ -13,11 +13,20 @@
     <p class="eyebrow">CHI 2026 Poster Companion Website</p>
     <h1><span data-site-title></span><br><span data-site-subtitle></span></h1>
     <p class="lede" data-site-tagline></p>
-    <p class="lede"><strong>Plain-language summary.</strong> This companion site explains how yearly topology of HCI concept space is used to identify <em>bridge candidates</em>: concept pairs that sit on unresolved boundaries between semantic communities before direct links become common. The goal is not to predict the future from one signal, but to provide structurally interpretable candidates and evaluate whether later evidence tends to support highly ranked ones.</p>
-    <p class="lede"><strong>Technical summary.</strong> For each year t, we construct a historical concept space from papers published up to year t, compute a Vietoris–Rips filtration, extract persistent H_1 intervals, reconstruct representative cycles from birth events, select cross-community cycle edges as candidates, rank those edges by persistence-based scores, and validate rankings against future-year relevance using nDCG@50.</p>
+    <p class="lede"><strong>Poster recap.</strong> This site asks whether yearly structure in HCI concept space can show boundary reorganization before direct co-occurrence becomes common and stable topic labels appear.</p>
+    <p class="lede"><strong>Additional notes.</strong> This site keeps terminology fixed. The two main terms are <em>boundary loop</em> and <em>bridge candidate</em>. It then adds concrete definitions, equations, and evaluation steps.</p>
   </header>
 
   <main id="main" class="container">
+    <section class="panel">
+      <h2>Animated intuition</h2>
+      <p>This animation gives a quick orientation. Local proximity appears first. Boundary loop structure can persist. Closure may happen later.</p>
+      <figure class="viz-frame">
+        <svg id="overview-viz" viewBox="0 0 360 220" role="img" aria-label="Boundary-loop emergence animation"></svg>
+        <figcaption>The animation is explanatory (not a literal analytic output). For exact definitions, open Chapter 2 and the equation sections in Chapters 4–6.</figcaption>
+      </figure>
+    </section>
+
     <section class="panel">
       <h2>At a glance</h2>
       <ul>
@@ -25,14 +34,21 @@
         <li><strong>Year range:</strong> 1999–2025 (CSCW coverage through 2024 in the current dataset snapshot).</li>
         <li><strong>Temporal cutoff logic:</strong> each year t is recomputed using only information available up to t.</li>
         <li><strong>Main analytical output:</strong> ranked cross-community bridge candidates derived from representative cycle edges.</li>
-        <li><strong>Evaluation horizon:</strong> future-year relevance and ordering quality measured with nDCG@50 and lead-time summaries.</li>
+        <li><strong>Evaluation horizon:</strong> future-year relevance and ordering quality measured with nDCG@50 and lead-time summaries (how many years earlier a useful signal appears).</li>
       </ul>
       <p class="note"><strong>Evidence type:</strong> the site provides observational structural evidence plus retrospective temporal validation; it does not claim causal discovery or guaranteed future topic emergence.</p>
     </section>
 
     <section class="panel">
+      <h2>Baseline definition (Science of science)</h2>
+      <p><strong>Working premise for this companion.</strong> Science of science is an interdisciplinary field that studies how science works by using large-scale data and computational methods. It covers publication/citation patterns, collaboration, peer review, social bias, and policy-facing use of research evidence.</p>
+      <p>This companion is positioned inside that tradition. Our specific contribution is a structural method for detecting cross-community bridge candidates from yearly concept-space topology and evaluating them with future-year relevance.</p>
+    </section>
+
+    <section class="panel">
       <h2>Read in order</h2>
       <p>Chapters 1–9 are organized to answer a reviewer's core questions from motivation to mathematical definition, ranking logic, case interpretation, claim boundaries, and reference integrity.</p>
+      <p class="note"><strong>Reading options.</strong> Each chapter starts with plain-language scope and then moves to formulas, figures, and evaluation steps.</p>
       <div id="chapter-cards" class="chapter-grid"></div>
     </section>
   </main>
@@ -41,6 +57,8 @@
     <p>Designed for reviewer legibility: explicit objects, explicit equations, explicit boundaries of interpretation.</p>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
   <script src="assets/js/site.js"></script>
+  <script src="assets/js/overview-viz.js"></script>
 </body>
 </html>

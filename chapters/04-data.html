@@ -2,20 +2,20 @@
 <body data-chapter="04-data" data-root="../"><main class="container"><a href="../index.html">← Home</a><section class="panel chapter-body"><h1 id="chapter-title"></h1><p class="thesis-block" id="chapter-thesis"></p>
 
 <h2>E. Mathematical pipeline</h2>
-<p class="equation">dᵢⱼ = 1 − (vᵢᵀvⱼ)/(‖vᵢ‖₂‖vⱼ‖₂)</p>
+<p class="equation">\( d_{ij} = 1 - \dfrac{v_i^{\top}v_j}{\lVert v_i \rVert_2 \lVert v_j \rVert_2} \)</p>
 <p>This defines concept distance from vector similarity: nearer concepts have smaller dᵢⱼ, and these distances drive all later topology.</p>
 
-<p class="equation">ℛ<sub>ε</sub>(V<sub>t</sub>) = {σ ⊆ V<sub>t</sub> | dᵢⱼ ≤ ε, ∀ i,j ∈ σ}</p>
+<p class="equation">\( \mathcal{R}_{\varepsilon}(V_t) = \{ \sigma \subseteq V_t \mid d_{ij} \le \varepsilon,\ \forall i,j \in \sigma \} \)</p>
 <p>This is the Vietoris–Rips complex at threshold ε: as ε increases, more edges and simplices appear.</p>
 
-<p class="equation">H₁(ℛ<sub>ε</sub>(V<sub>t</sub>))</p>
+<p class="equation">\( H_1(\mathcal{R}_{\varepsilon}(V_t)) \)</p>
 <p>H₁ captures one-dimensional loop structure in the complex at each threshold.</p>
 
-<p class="equation">I<sub>k</sub> = [b<sub>k</sub>, d<sub>k</sub>), π<sub>k</sub> = d<sub>k</sub> − b<sub>k</sub></p>
+<p class="equation">\( I_k = [b_k, d_k),\ \pi_k = d_k - b_k \)</p>
 <p>For loop feature k, b<sub>k</sub> is birth, d<sub>k</sub> is death, and π<sub>k</sub> is persistence length. Longer persistence indicates a loop that remains unresolved over a wider threshold range.</p>
 
-<p class="equation">C<sub>k</sub> = e<sub>b</sub> ∪ P<sub>b<sub>k</sub>−</sub>(u,v)</p>
-<p>This representative cycle combines the birth edge e<sub>b</sub>=(u,v) with a shortest path just before birth; operationally, it yields a readable loop witness for interpretation.</p>
+<p class="equation">\( C_k = e_b \cup P_{b_k^-}(u,v) \)</p>
+<p>This representative cycle combines the birth edge e<sub>b</sub>=(u,v) with a shortest path just before birth. We use the same representative-cycle definition introduced in Chapter 2.</p>
 
 <h2>Figure 2 — Loop birth and representative cycle mechanics</h2>
 <figure class="viz-frame"><svg viewBox="0 0 760 260" aria-label="loop birth and cycle reconstruction">
@@ -25,4 +25,20 @@
 <g transform="translate(500,35)"><circle cx="35" cy="70" r="6"/><circle cx="95" cy="30" r="6"/><circle cx="155" cy="55" r="6"/><circle cx="155" cy="125" r="6"/><circle cx="95" cy="150" r="6"/><line x1="35" y1="70" x2="95" y2="30"/><line x1="95" y1="30" x2="155" y2="55"/><line x1="155" y1="55" x2="155" y2="125"/><line x1="155" y1="125" x2="95" y2="150"/><line x1="95" y1="150" x2="35" y2="70"/><line x1="35" y1="70" x2="155" y2="55" class="bridge-edge"/><polygon points="35,70 95,30 155,55" fill="#fde68a" stroke="#f59e0b"/><text x="5" y="182" class="fig-sub">2-simplex fills hole ⇒ d_k</text></g>
 </svg><figcaption><strong>Figure 2.</strong> Same node layout across ε-levels reveals loop mechanics without geometric ambiguity. Birth is the moment the highlighted edge appears; death is simplex filling that removes the one-dimensional hole. This supports topological interpretation of boundary states, not claims about causality.</figcaption></figure>
 
-</section><div id="prev-next-nav"></div></main><script src="../assets/js/site.js"></script><script src="../assets/js/chapters.js"></script></body></html>
+<h2>Notation used in Chapters 4–6</h2>
+<ul>
+<li><strong>V_t</strong>: concept set built from data available up to year <em>t</em>.</li>
+<li><strong>d_{ij}</strong>: distance between concept <em>i</em> and <em>j</em>.</li>
+<li><strong>\(\mathcal{R}_{\varepsilon}(V_t)\)</strong>: Vietoris–Rips complex at threshold ε.</li>
+<li><strong>I_k=[b_k,d_k)</strong>: birth/death interval of loop feature <em>k</em>.</li>
+<li><strong>C_k</strong>: representative cycle used for interpretation and extraction.</li>
+</ul>
+
+<section class="refs"><h2>References</h2><ol>
+<li>Edelsbrunner, H., &amp; Harer, J. (2010). <em>Computational Topology: An Introduction</em>. American Mathematical Society.</li>
+<li>Zomorodian, A., &amp; Carlsson, G. (2005). Computing persistent homology. <em>Discrete &amp; Computational Geometry</em>, 33(2), 249–274. https://doi.org/10.1007/s00454-004-1146-y</li>
+</ol></section>
+
+
+
+</section><div id="prev-next-nav"></div></main><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script src="../assets/js/site.js"></script><script src="../assets/js/chapters.js"></script></body></html>

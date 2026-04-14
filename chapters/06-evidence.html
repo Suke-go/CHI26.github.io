@@ -3,13 +3,21 @@
 
 <h2>H. Ranking and temporal validation</h2>
 <p><strong>What is ranked.</strong> The ranked objects are candidate <em>edges</em> (u,v), not full topics, people, or venues.</p>
-<p class="equation">s(u,v) = max<sub>γ ∋ (u,v)</sub> π(γ), π(γ) = ε<sub>d</sub>(γ) − ε<sub>b</sub>(γ)</p>
+<p class="equation">\( s(u,v) = \max_{\gamma \ni (u,v)} \pi(\gamma),\ \pi(\gamma)=\varepsilon_d(\gamma)-\varepsilon_b(\gamma) \)</p>
 <p>This score gives each candidate edge the strongest persistence evidence among cycles that contain it; higher score prioritizes edges participating in longer-lived loop structures.</p>
 
-<p class="equation">DCG@50 = Σ<sub>r=1..50</sub>(2<sup>rel<sub>r</sub></sup>−1)/log₂(r+1), nDCG@50 = DCG@50 / IDCG@50</p>
-<p>DCG discounts relevance by rank position, and nDCG normalizes by the best possible ordering for that year so values are comparable.</p>
+<p class="equation">\( \mathrm{DCG@50}=\sum_{r=1}^{50}\dfrac{2^{rel_r}-1}{\log_2(r+1)},\ \mathrm{nDCG@50}=\dfrac{\mathrm{DCG@50}}{\mathrm{IDCG@50}} \)</p>
+<p>DCG discounts relevance by rank position. IDCG means the ideal DCG for that same year. nDCG divides DCG by IDCG so year-level values are comparable.</p>
 
 <p><strong>Temporal protocol.</strong> Generate candidate rankings at year t; compute relevance only from future years t+1, t+2, .... This keeps evaluation out-of-time relative to candidate generation.</p>
+<h2>Concrete evaluation protocol</h2>
+<ol>
+<li>Choose a target year <em>t</em> (example: 2018).</li>
+<li>Build candidates using data up to year <em>t</em> only.</li>
+<li>Assign relevance from years <em>t+1</em> onward (example: 2019–2025).</li>
+<li>Compute nDCG@50 on that year-specific candidate list.</li>
+<li>Repeat for each year and compare year-level scores.</li>
+</ol>
 
 <div class="meaning-box"><strong>nDCG@50 (quick definition).</strong> nDCG@50 asks whether candidates that later turned out to matter were already placed near the top of the earlier ranked list. Items near rank 1 contribute more than items near rank 50 because of logarithmic discounting. A value closer to 1 means the ordering is closer to the ideal top-50 ordering.</div>
 
@@ -39,8 +47,10 @@
 <path d="M245 128 H270 M490 128 H515" class="fig-arrow"/>
 </svg><figcaption><strong>Figure 4.</strong> This figure links candidate ranking to discounted evaluation in one view. Read left panel (ranked candidates), then middle (why top ranks matter), then right (numerical nDCG example). It supports ranking-utility interpretation under retrospective validation; it does not establish prospective deployment performance by itself.</figcaption></figure>
 
+
+
 <section class="refs"><h2>References</h2><ol>
 <li>Järvelin, K., &amp; Kekäläinen, J. (2002). Cumulated gain-based evaluation of IR techniques. <em>ACM Transactions on Information Systems</em>, 20(4), 422–446. https://doi.org/10.1145/582415.582418</li>
 <li>Manning, C. D., Raghavan, P., &amp; Schütze, H. (2008). <em>Introduction to Information Retrieval</em>. Cambridge University Press.</li>
 </ol></section>
-</section><div id="prev-next-nav"></div></main><script src="../assets/js/site.js"></script><script src="../assets/js/chapters.js"></script></body></html>
+</section><div id="prev-next-nav"></div></main><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script src="../assets/js/site.js"></script><script src="../assets/js/chapters.js"></script></body></html>

@@ -154,7 +154,7 @@ a { color: #0369a1; }
 .term-list li { margin-bottom: 0.3rem; }
 
 .viz-frame { margin: 0; }
-#hero-viz, .mini-viz svg {
+#overview-viz, .mini-viz svg {
   width: 100%;
   height: auto;
   border: 1px solid var(--line);
