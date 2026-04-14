@@ -80,6 +80,54 @@
       <figcaption><strong>Figure 2.</strong> Loop birth mechanics across three &epsilon;-levels. Birth is when the highlighted edge appears; death is when a simplex fills the hole.</figcaption>
     </figure>
 
+    <!-- 5-3b: What intermediaries actually are -->
+    <h2>5-3b. Words, not concepts: what intermediaries actually represent</h2>
+
+    <p>A common misreading is to interpret intermediaries as <strong>conceptual mediators</strong>&mdash;ideas that theoretically bridge two fields. They are not. Intermediaries are <strong>stepping stones in Word2Vec embedding space</strong>: each step connects to the next by vector proximity in the trained model, not by any semantic or theoretical relationship.</p>
+
+    <div class="caution-box">
+      <strong>Key distinction.</strong> The representative cycle is a path through <em>language space</em> (how words are used in paper abstracts), not through <em>concept space</em> (how ideas relate in a theoretical framework). Sometimes these align; often they do not.
+    </div>
+
+    <h3>When language paths are interpretable</h3>
+    <p><strong>speaker &rarr; smart</strong> (2020, integrated, 8 concepts):</p>
+    <div class="meaning-box">
+      speaker &rarr; conversation &rarr; partner &rarr; friend &rarr; family &rarr; household &rarr; home &rarr; smart
+    </div>
+    <p>This path traces a natural semantic gradient from audio/speech through social relationships to domestic computing. Each step is linguistically close to the next, and the overall trajectory is interpretable as &ldquo;voice interfaces entering the home.&rdquo;</p>
+
+    <p><strong>effective &rarr; feedback</strong> (2018, integrated, 6 concepts):</p>
+    <div class="meaning-box">
+      effective &rarr; efficiency &rarr; latency &rarr; force &rarr; haptic &rarr; feedback
+    </div>
+    <p>Short path with a coherent trajectory: performance metrics &rarr; physical interaction &rarr; haptic feedback. The linguistic gradient matches a plausible conceptual connection.</p>
+
+    <h3>When language paths are not interpretable</h3>
+    <p><strong>security &rarr; privacy</strong> (2017, integrated, 14 concepts):</p>
+    <div class="meaning-box">
+      security &rarr; authentication &rarr; scheme &rarr; accurate &rarr; vehicle &rarr; driver &rarr; interruption &rarr; stress &rarr; mental &rarr; health &rarr; woman &rarr; attitude &rarr; concern &rarr; privacy
+    </div>
+    <p>Security and privacy <em>did</em> integrate (max co-occurrence = 9), but the path passes through automotive, mental health, and gender studies. These are not conceptual mediators&mdash;they are simply nearby words in the embedding space that happen to form the shortest distance chain.</p>
+
+    <p><strong>novice &rarr; programming</strong> (2019, decayed, 22 concepts):</p>
+    <div class="meaning-box" style="font-size: 0.9em;">
+      novice &rarr; workflow &rarr; manual &rarr; automatic &rarr; algorithm &rarr; prediction &rarr; metric &rarr; bias &rarr; gender &rarr; facebook &rarr; twitter &rarr; political &rarr; collective &rarr; stakeholder &rarr; participatory &rarr; workshop &rarr; studio &rarr; toolkit &rarr; hardware &rarr; software &rarr; developer &rarr; programming
+    </div>
+    <p>The longest cycle in the dataset (22 concepts). The path wanders through AI/ML, social media, civic tech, and maker culture before reaching programming. This bridge decayed&mdash;no coherent integration trajectory existed despite the structural detection.</p>
+
+    <h3>Summary: intermediaries as signal quality indicator</h3>
+    <table class="compare-table">
+      <thead><tr><th></th><th>Interpretable path</th><th>Non-interpretable path</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Path length</strong></td><td>Short (4&ndash;8 intermediaries)</td><td>Long (10&ndash;20 intermediaries)</td></tr>
+        <tr><td><strong>Semantic coherence</strong></td><td>Steps follow a recognizable gradient</td><td>Steps wander through unrelated fields</td></tr>
+        <tr><td><strong>Integration outcome</strong></td><td>More likely to integrate</td><td>More likely to decay</td></tr>
+        <tr><td><strong>What it means</strong></td><td>Embedding space reflects a real field adjacency</td><td>Embedding space path is a distance artifact</td></tr>
+      </tbody>
+    </table>
+
+    <p>Path interpretability is <em>not guaranteed</em> by the method. It is an <strong>additional quality check</strong> that readers should apply when evaluating bridge candidates. A short, coherent path strengthens the bridge hypothesis; a long, wandering path weakens it.</p>
+
     <!-- 5-4: Bridge scoring -->
     <h2>5-4. Bridge scoring</h2>
     <p>Bridge candidates are cycle edges that cross community boundaries:</p>

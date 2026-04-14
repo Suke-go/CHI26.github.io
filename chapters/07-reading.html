@@ -51,25 +51,81 @@
 
     <!-- 7-3: How to read representative cycles -->
     <h2>7-3. Reading representative cycles</h2>
-    <p>A representative cycle provides a chain of intermediate concepts between the birth-edge endpoints. For example:</p>
-    <div class="meaning-box">
-      <strong>VR &ndash; Therapy cycle:</strong> vr &rarr; immersion &rarr; exergames &rarr; therapies &rarr; therapy<br>
-      <strong>Reading:</strong> The design-technical community (vr, immersion) and the clinical community (therapies, therapy) are connected through the intermediate concept &ldquo;exergames,&rdquo; which sits at the boundary.
-    </div>
-    <p>The representative cycle is <strong>one computable witness</strong> for the homology class. It is not the only valid decomposition of the boundary structure, but it provides a concrete, interpretable chain for reasoning about <em>where</em> integration might occur.</p>
 
-    <h3>Worked examples from data</h3>
-    <p>Using expert validation data (<code>expert_validation_packet.csv</code>):</p>
+    <div class="caution-box">
+      <strong>Reminder from Ch. 5.</strong> Intermediaries are stepping stones in Word2Vec embedding space, not conceptual mediators. The cycle path shows how words are <em>linguistically</em> related in paper abstracts, not how ideas are <em>theoretically</em> related. Sometimes these align&mdash;and when they do, the bridge is more credible.
+    </div>
+
+    <h3>Anatomy of a representative cycle</h3>
     <table class="compare-table">
-      <thead><tr><th>Pair</th><th>Year</th><th>Outcome</th><th>How to read</th></tr></thead>
+      <thead><tr><th>Component</th><th>Definition</th><th>Role</th></tr></thead>
       <tbody>
-        <tr><td>gesture &times; smart</td><td>2012</td><td>Integrated (3 yr)</td><td>Gesture input and smart device communities were structurally adjacent. The bridge resolved as &ldquo;smart gestures&rdquo; consolidated.</td></tr>
-        <tr><td>ar &times; health</td><td>2018</td><td>Integrated (6 yr)</td><td>AR technology and health/clinical communities connected through intermediate concepts. Integration took longer but reached high co-occurrence (8).</td></tr>
-        <tr><td>home &times; vr</td><td>2015</td><td>Integrated (6 yr)</td><td>VR-at-home was structurally anticipated before the consumer VR wave.</td></tr>
-        <tr><td>gaze &times; tabletop</td><td>2014</td><td>Not integrated</td><td>Gaze tracking and tabletop interaction remained separate despite proximity. The boundary persisted&mdash;possibly reflecting methodological incompatibility.</td></tr>
-        <tr><td>message &times; wearable</td><td>2017</td><td>Not integrated</td><td>Messaging and wearable contexts did not converge as a research area.</td></tr>
+        <tr><td><strong>Endpoints</strong></td><td>The two words of the birth edge (u, v)</td><td>The bridge pair itself&mdash;the structurally most distant pair in the cycle</td></tr>
+        <tr><td><strong>Intermediaries</strong></td><td>All path nodes between u and v (excluding endpoints)</td><td>The embedding-space stepping stones. Short, coherent chains suggest a real field adjacency; long, wandering chains suggest a distance artifact</td></tr>
+        <tr><td><strong>Representative cycle</strong></td><td>Birth edge + shortest path before birth</td><td>One computable witness for the H&#x2081; class. It is <em>not</em> the only valid decomposition</td></tr>
       </tbody>
     </table>
+
+    <h3>Integrated bridges: what the cycles look like</h3>
+
+    <p><strong>VR &ndash; Therapy</strong> (2013, integrated in 3 years, 5 concepts):</p>
+    <div class="meaning-box">
+      <strong>vr</strong> &rarr; immersion &rarr; exergames &rarr; therapies &rarr; <strong>therapy</strong>
+    </div>
+    <p>Short path (3 intermediaries). The gradient is interpretable: VR technology &rarr; immersive experience &rarr; exercise games &rarr; therapeutic applications. The boundary concept &ldquo;exergames&rdquo; sits exactly where design-technical and clinical communities meet.</p>
+
+    <p><strong>speaker &rarr; smart</strong> (2020, integrated in 1 year, 8 concepts):</p>
+    <div class="meaning-box">
+      <strong>speaker</strong> &rarr; conversation &rarr; partner &rarr; friend &rarr; family &rarr; household &rarr; home &rarr; <strong>smart</strong>
+    </div>
+    <p>A natural gradient from audio/speech through social relationships to domestic IoT. The path traces &ldquo;voice interfaces entering the home&rdquo;&mdash;a trajectory that was indeed realized in smart speaker research.</p>
+
+    <p><strong>effective &rarr; feedback</strong> (2018, integrated in 1 year, 6 concepts):</p>
+    <div class="meaning-box">
+      <strong>effective</strong> &rarr; efficiency &rarr; latency &rarr; force &rarr; haptic &rarr; <strong>feedback</strong>
+    </div>
+    <p>The shortest integrated cycle (4 intermediaries). Performance metrics &rarr; physical interaction &rarr; haptic feedback. Linguistic proximity mirrors conceptual proximity.</p>
+
+    <p><strong>simulation &rarr; training</strong> (2017, integrated in 2 years, 9 concepts):</p>
+    <div class="meaning-box">
+      <strong>simulation</strong> &rarr; immersive &rarr; virtual &rarr; presence &rarr; sense &rarr; emotional &rarr; mental &rarr; exercise &rarr; <strong>training</strong>
+    </div>
+    <p>VR simulation connects to training through embodied experience and exercise&mdash;reflecting the emerging VR training applications.</p>
+
+    <h3>Decayed bridges: what went wrong</h3>
+
+    <p><strong>novice &rarr; programming</strong> (2019, decayed, 22 concepts):</p>
+    <div class="meaning-box" style="font-size: 0.85em;">
+      <strong>novice</strong> &rarr; workflow &rarr; manual &rarr; automatic &rarr; algorithm &rarr; prediction &rarr; metric &rarr; bias &rarr; gender &rarr; facebook &rarr; twitter &rarr; political &rarr; collective &rarr; stakeholder &rarr; participatory &rarr; workshop &rarr; studio &rarr; toolkit &rarr; hardware &rarr; software &rarr; developer &rarr; <strong>programming</strong>
+    </div>
+    <p>The longest cycle in the dataset (20 intermediaries). The path wanders through AI/ML, social media, civic tech, and maker culture. No coherent integration trajectory exists&mdash;the bridge was a distance artifact in the embedding space.</p>
+
+    <p><strong>tutorial &rarr; live</strong> (2017, decayed, 15 concepts):</p>
+    <div class="meaning-box" style="font-size: 0.9em;">
+      <strong>tutorial</strong> &rarr; editing &rarr; sequence &rarr; manual &rarr; layout &rarr; intuitive &rarr; hybrid &rarr; construction &rarr; studio &rarr; creativity &rarr; meaning &rarr; meaningful &rarr; narrative &rarr; story &rarr; <strong>live</strong>
+    </div>
+    <p>The path meanders through UI design, creativity, and narrative&mdash;never forming a coherent connection between tutorials and live experiences.</p>
+
+    <p><strong>friend &rarr; conversation</strong> (2017, decayed, 13 concepts):</p>
+    <div class="meaning-box" style="font-size: 0.9em;">
+      <strong>friend</strong> &rarr; facebook &rarr; strength &rarr; password &rarr; scheme &rarr; continuous &rarr; capable &rarr; projection &rarr; immersive &rarr; avatar &rarr; presence &rarr; partner &rarr; <strong>conversation</strong>
+    </div>
+    <p>Despite &ldquo;friend&rdquo; and &ldquo;conversation&rdquo; seeming intuitively related, the shortest embedding path traverses social media, security, and VR. The linguistic relationship exists, but the <em>structural</em> relationship in the HCI corpus passes through unrelated fields.</p>
+
+    <h3>Practical reading heuristic</h3>
+    <table class="compare-table">
+      <thead><tr><th>Signal</th><th>Stronger bridge hypothesis</th><th>Weaker bridge hypothesis</th></tr></thead>
+      <tbody>
+        <tr><td>Path length</td><td>Short (4&ndash;8 intermediaries)</td><td>Long (10+ intermediaries)</td></tr>
+        <tr><td>Semantic coherence</td><td>Steps follow a recognizable research trajectory</td><td>Steps wander through unrelated fields</td></tr>
+        <tr><td>Intermediary quality</td><td>Domain-specific nouns (immersion, haptic, household)</td><td>Function words or generic terms (capable, meaningful, scheme)</td></tr>
+        <tr><td>Endpoint specificity</td><td>Both endpoints are domain concepts</td><td>One or both endpoints are generic (effective, along)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="meaning-box">
+      <strong>Bottom line.</strong> A representative cycle is a <em>hypothesis generator</em>, not a proof. Short, coherent cycles with domain-specific intermediaries point to real field adjacencies. Long, wandering cycles with generic words are distance artifacts. The method detects both; the reader must distinguish them.
+    </div>
 
     <h3>Reading guide summary</h3>
     <table class="compare-table">
