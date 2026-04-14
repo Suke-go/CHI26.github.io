@@ -62,6 +62,38 @@
 
     <p class="note">The method is strongest as a structural reading tool with retrospective validation. Use it to generate interpretable hypotheses, not standalone causal claims.</p>
 
+    <!-- 8-3: Known noise in the data -->
+    <h2>8-3. Known noise: noisy bridges from the data</h2>
+    <p>The Word2Vec-based concept extraction does not fully filter functional words and generic terms. From <code>expert_validation_packet.csv</code>, several bridges are semantically noisy:</p>
+
+    <h4>Integrated but semantically thin</h4>
+    <table class="compare-table">
+      <thead><tr><th>Year</th><th>Pair</th><th>Issue</th></tr></thead>
+      <tbody>
+        <tr><td>2011</td><td>along &times; game</td><td>&ldquo;along&rdquo; is a function word, not a concept</td></tr>
+        <tr><td>2013</td><td>gesture &times; increased</td><td>&ldquo;increased&rdquo; is a generic adjective</td></tr>
+        <tr><td>2013</td><td>gaze &times; practice</td><td>&ldquo;practice&rdquo; is too ambiguous</td></tr>
+        <tr><td>2016</td><td>body &times; tag</td><td>&ldquo;tag&rdquo; is polysemous</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Non-integrated and semantically meaningless</h4>
+    <table class="compare-table">
+      <thead><tr><th>Year</th><th>Pair</th><th>Issue</th></tr></thead>
+      <tbody>
+        <tr><td>2011</td><td>query &times; robot</td><td>Semantically unrelated</td></tr>
+        <tr><td>2012</td><td>answer &times; haptic</td><td>Weak connection</td></tr>
+        <tr><td>2015</td><td>email &times; selection</td><td>Coincidental combination</td></tr>
+        <tr><td>2016</td><td>motion &times; organization</td><td>Unrelated</td></tr>
+        <tr><td>2017</td><td>children &times; signal</td><td>No semantic link</td></tr>
+        <tr><td>2018</td><td>researcher &times; tactile</td><td>Coincidental</td></tr>
+      </tbody>
+    </table>
+
+    <div class="meaning-box">
+      <strong>Root cause.</strong> Word2Vec-based concept extraction allows function words and generic terms to pass through. A stricter vocabulary filter (e.g., POS-based filtering, IDF floor) would reduce these cases but may also remove legitimate boundary concepts. This is a known limitation of the current pipeline.
+    </div>
+
     <div id="prev-next-nav"></div>
   </section>
 </main>

@@ -229,6 +229,9 @@ figcaption { margin-top: 0.5rem; font-size: 0.88rem; color: var(--muted); }
   .scope-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
+.correct { color: #16a34a; font-weight: 600; }
+.incorrect { color: #dc2626; font-weight: 600; }
+
 .equation {
   font-family: "Times New Roman", serif;
   font-size: 1.05rem;

@@ -28,8 +28,68 @@
     <h3>Blockchain &ndash; Participatory Design (Decay)</h3>
     <p>In 2018, a bridge formed between &ldquo;Blockchain&rdquo; and &ldquo;Participatory Design.&rdquo; The structural hole did not fill; the bridge dissolved by 2021 as topics drifted apart. The method correctly classified this as decay.</p>
 
+    <h3>Expert validation sample (22 H&#x2081; bridges, 3 periods)</h3>
+    <p>From <code>expert_validation_packet.csv</code>: 22 H&#x2081; bridges were sampled across three time periods, paired with 44 baseline contrasts (triangle deficit + edge betweenness). H&#x2081; achieved 10/22 integrated (45%); baselines achieved 0/44 (0%).</p>
+
+    <h4>Integrated bridges (with lead time)</h4>
+    <table class="compare-table">
+      <thead><tr><th>Year</th><th>Pair</th><th>Lead time</th><th>Future co-oc</th></tr></thead>
+      <tbody>
+        <tr><td>2012</td><td>gesture &times; smart</td><td>3 yr</td><td>7</td></tr>
+        <tr><td>2014</td><td>children &times; performed</td><td>6 yr</td><td>5</td></tr>
+        <tr><td>2015</td><td>home &times; vr</td><td>6 yr</td><td>5</td></tr>
+        <tr><td>2016</td><td>body &times; tag</td><td>2 yr</td><td>0</td></tr>
+        <tr><td>2018</td><td>ar &times; health</td><td>6 yr</td><td>8</td></tr>
+        <tr><td>2019</td><td>ar &times; question</td><td>6 yr</td><td>5</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Non-integrated bridges</h4>
+    <table class="compare-table">
+      <thead><tr><th>Year</th><th>Pair</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>2011</td><td>query &times; robot</td><td>Semantically distant</td></tr>
+        <tr><td>2012</td><td>answer &times; haptic</td><td>Weak connection</td></tr>
+        <tr><td>2014</td><td>gaze &times; tabletop</td><td>Did not converge</td></tr>
+        <tr><td>2017</td><td>message &times; wearable</td><td>Did not converge</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Bridge fate tracking (116 bridges, 2017&ndash;2024)</h3>
+    <p>From <code>bridge_fate.json</code>: 116 bridges tracked over 3-year windows with co-occurrence threshold &ge;5.</p>
+    <ul>
+      <li><strong>40 integrated</strong> (51.9% of non-censored)</li>
+      <li><strong>37 decayed</strong></li>
+      <li><strong>39 censored</strong> (observation window incomplete)</li>
+      <li>Mean lead time: <strong>1.52 years</strong>, median: <strong>1.0 year</strong></li>
+    </ul>
+
+    <h4>Representative integrated bridges</h4>
+    <table class="compare-table">
+      <thead><tr><th>Year</th><th>Pair</th><th>Theme</th><th>Lead</th><th>Max co-oc</th></tr></thead>
+      <tbody>
+        <tr><td>2017</td><td>machine &times; learning</td><td>Education &times; Other</td><td>1 yr</td><td>32</td></tr>
+        <tr><td>2017</td><td>security &times; privacy</td><td>Privacy &times; Privacy</td><td>1 yr</td><td>9</td></tr>
+        <tr><td>2019</td><td>recognition &times; activity</td><td>AI/ML &times; Other</td><td>1 yr</td><td>26</td></tr>
+        <tr><td>2020</td><td>speaker &times; smart</td><td>Audio/Speech &times; Urban</td><td>1 yr</td><td>10</td></tr>
+        <tr><td>2020</td><td>workplace &times; worker</td><td>Other &times; Other</td><td>3 yr</td><td>8</td></tr>
+        <tr><td>2022</td><td>algorithmic &times; algorithm</td><td>AI/ML &times; AI/ML</td><td>1 yr</td><td>13</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Representative decayed bridges</h4>
+    <table class="compare-table">
+      <thead><tr><th>Year</th><th>Pair</th><th>Theme</th><th>Max co-oc</th></tr></thead>
+      <tbody>
+        <tr><td>2018</td><td>touchscreen &times; authentication</td><td>Input &times; Privacy</td><td>1</td></tr>
+        <tr><td>2019</td><td>novice &times; programming</td><td>Education &times; Other</td><td>4</td></tr>
+        <tr><td>2020</td><td>physiological &times; measurement</td><td>Health &times; Other</td><td>2</td></tr>
+        <tr><td>2021</td><td>citizen &times; urban</td><td>Urban &times; Urban</td><td>1</td></tr>
+      </tbody>
+    </table>
+
     <div class="meaning-box">
-      <strong>Interpretation.</strong> Of dissolved bridges, 89.5% followed integration (Scenario A). Decay cases like Blockchain&ndash;PD are the minority but illustrate the method&rsquo;s discriminative capability.
+      <strong>Interpretation.</strong> Integration rate (51.9%) is substantially above chance for cross-community zero-co-occurrence pairs. Decayed bridges are informative: they show the method does not indiscriminately flag all structural gaps as future topics.
     </div>
 
     <!-- 6-2: Meso: ranking evidence -->
@@ -51,6 +111,23 @@
       </tbody>
     </table>
     <p>Graph-structure methods (Triangle Deficit, Link Prediction) achieve higher integration rates because they target edges where connectivity evidence already exists. H&#x2081; bridges target structural voids <em>before</em> edges form&mdash;a fundamentally different and complementary signal (overlap with Louvain Cross-Edges: only 6.4%).</p>
+
+    <h3>Prediction validation (19 named concept pairs)</h3>
+    <p>From <code>prediction_validation.json</code>: overall accuracy 76.5% (13 correct, 4 incorrect, 2 uncertain).</p>
+    <table class="compare-table">
+      <thead><tr><th>Pair</th><th>2015</th><th>2020</th><th>2024</th><th>Pattern</th><th>Outcome</th></tr></thead>
+      <tbody>
+        <tr><td>ai &ndash; trust</td><td>0.18</td><td>0.38</td><td>0.50</td><td>Steady growth</td><td class="correct">Correct</td></tr>
+        <tr><td>ai &ndash; fairness</td><td>0.05</td><td>0.32</td><td>0.42</td><td>Steady growth</td><td class="correct">Correct</td></tr>
+        <tr><td>mental &ndash; health</td><td>0.12</td><td>0.36</td><td>0.42</td><td>Steady growth</td><td class="correct">Correct</td></tr>
+        <tr><td>game &ndash; learning</td><td>0.50</td><td>0.28</td><td>0.08</td><td>Decline (saturation)</td><td class="correct">Correct</td></tr>
+        <tr><td>touch &ndash; gesture</td><td>0.48</td><td>0.32</td><td>0.10</td><td>Decline (saturation)</td><td class="correct">Correct</td></tr>
+        <tr><td>llm &ndash; creativity</td><td>0.00</td><td>0.00</td><td>0.40</td><td>Sudden emergence</td><td class="incorrect">Incorrect</td></tr>
+        <tr><td>chatgpt &ndash; learning</td><td>0.00</td><td>0.00</td><td>0.35</td><td>Sudden emergence</td><td class="incorrect">Incorrect</td></tr>
+        <tr><td>remote &ndash; collaboration</td><td>0.00</td><td>0.52</td><td>0.35</td><td>Event-driven (COVID)</td><td class="incorrect">Incorrect</td></tr>
+      </tbody>
+    </table>
+    <p>The method correctly captures gradual structural trends (ai&ndash;trust, mental&ndash;health) and saturation patterns (game&ndash;learning). It fails for exogenous shocks (LLM emergence, COVID-19)&mdash;an expected limitation of any structure-based method.</p>
 
     <h3>Lead time</h3>
     <p>Among 267 detected bridges (2010&ndash;2020): median lead time = <strong>2 years</strong> (IQR: 1&ndash;3). 40.9% integrated within 1 year; 86.5% within 3 years.</p>

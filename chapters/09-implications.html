@@ -35,6 +35,35 @@
       <li><strong>Aligned embeddings:</strong> Time-aware or aligned embeddings to enable cross-year tracking of specific features.</li>
     </ul>
 
+    <h3>What the data tells us about structural vs. exogenous change</h3>
+    <p>From prediction validation (19 named pairs, accuracy 76.5%):</p>
+    <table class="compare-table">
+      <thead><tr><th>Pattern</th><th>Examples</th><th>Structurally detectable?</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Gradual structural growth</strong></td>
+          <td>ai&ndash;trust (0.18&rarr;0.38&rarr;0.50), mental&ndash;health (0.12&rarr;0.36&rarr;0.42)</td>
+          <td>Yes &mdash; the method&rsquo;s strength</td>
+        </tr>
+        <tr>
+          <td><strong>Saturation / decline</strong></td>
+          <td>game&ndash;learning (0.50&rarr;0.28&rarr;0.08), touch&ndash;gesture (0.48&rarr;0.32&rarr;0.10)</td>
+          <td>Yes &mdash; detectable as closure of structural voids</td>
+        </tr>
+        <tr>
+          <td><strong>Exogenous technology shock</strong></td>
+          <td>llm&ndash;creativity (0.00&rarr;0.00&rarr;0.40), chatgpt&ndash;learning (0.00&rarr;0.00&rarr;0.35)</td>
+          <td>No &mdash; no structural precursor exists</td>
+        </tr>
+        <tr>
+          <td><strong>Event-driven spike</strong></td>
+          <td>remote&ndash;collaboration (0.00&rarr;0.52&rarr;0.35)</td>
+          <td>No &mdash; COVID-19 is an exogenous shock</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>This categorization clarifies the method&rsquo;s scope: it captures endogenous structural evolution but is inherently blind to exogenous disruptions. This is not a failure but a principled boundary.</p>
+
     <div class="meaning-box">
       <strong>Position.</strong> This work is a <em>diagnostic mirror</em> for the community&mdash;not an oracle that predicts trends, but a tool that reveals where the field&rsquo;s structural tensions lie, enabling more reflective decision-making about which integrations to pursue and which separations to maintain.
     </div>
