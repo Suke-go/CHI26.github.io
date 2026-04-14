@@ -16,30 +16,47 @@
 
     <!-- 1-1: Science of Science and field evolution -->
     <h2>1-1. Science of Science and field evolution</h2>
-    <p>Science of Science (SciSci) studies scientific activity through large-scale data and computational methods. It covers not just counting papers, but understanding structure, reorganization, precursors, and explanation in how fields evolve (Fortunato et al., 2018).</p>
-    <p>Science mapping and bibliometrics are key instruments in this endeavor. The goal is to capture field change as <strong>structural change</strong>, not merely frequency change.</p>
 
-    <!-- Placeholder for SciSci conceptual figure -->
+    <p>Science of Science (SciSci) is an interdisciplinary research area that uses large-scale data and computational methods to uncover the mechanisms underlying scientific activity <a class="cite" href="#ref-1">[1]</a><a class="cite" href="#ref-2">[2]</a>. The term itself was coined by Derek J. de Solla Price in 1963, when he proposed treating science as an object of systematic, quantitative study <a class="cite" href="#ref-3">[3]</a>. While related fields such as history of science, philosophy of science, sociology of science, scientometrics, and library and information science also study science, SciSci is distinguished by its <strong>computational approach</strong> to revealing the structures behind scientific practice.</p>
+
+    <p>The scope of SciSci extends well beyond traditional bibliometric indicators such as publication counts, citation networks, and co-authorship patterns. It encompasses the diverse interactions among agents involved in scientific activity, understood across geographic and temporal scales. For example, SciSci researchers analyze peer review systems to inform review policy <a class="cite" href="#ref-4">[4]</a>, examine social biases embedded in science&mdash;including racial and gender disparities in editorial boards, review times, and citations <a class="cite" href="#ref-5">[5]</a><a class="cite" href="#ref-6">[6]</a>&mdash;and investigate how the status of research papers affects how they are read and cited <a class="cite" href="#ref-7">[7]</a>. SciSci also tackles more abstract and general phenomena, such as the quantification of individual scientific impact trajectories <a class="cite" href="#ref-8">[8]</a> and the tension between tradition and innovation in scientists&rsquo; research strategies <a class="cite" href="#ref-9">[9]</a>.</p>
+
+    <p>A further distinctive feature of SciSci is its <strong>policy-oriented dimension</strong>. Beyond academic publications, SciSci leverages diverse research-related information to develop tools and policies that accelerate science. Studies on the commercialization of academic discoveries <a class="cite" href="#ref-10">[10]</a> and the public use and public funding of science <a class="cite" href="#ref-11">[11]</a> are representative of this strand. In recent years, the development of large-scale open datasets&mdash;including OpenAlex <a class="cite" href="#ref-12">[12]</a>, Reliance on Science <a class="cite" href="#ref-13">[13]</a>, and SciSciNet <a class="cite" href="#ref-14">[14]</a>&mdash;has significantly expanded what is possible, enabling new analyses and outputs across the field.</p>
+
+    <p>This project is one narrow contribution within this broader landscape. We do not model all scientific behavior. We focus on a specific task: describing the <strong>structural evolution</strong> of a research field (HCI) using topological methods, and evaluating whether such descriptions can complement existing frequency-based approaches.</p>
+
+    <!-- SciSci conceptual figure -->
     <figure class="viz-frame">
-      <svg viewBox="0 0 600 200" aria-label="SciSci conceptual diagram">
-        <rect x="20" y="70" width="100" height="50" class="fig-box" rx="8"/>
-        <text x="45" y="100">Actors</text>
-        <rect x="150" y="70" width="100" height="50" class="fig-box" rx="8"/>
-        <text x="175" y="100">Papers</text>
-        <rect x="280" y="70" width="100" height="50" class="fig-box" rx="8"/>
-        <text x="310" y="100">Ideas</text>
-        <rect x="410" y="70" width="100" height="50" class="fig-box" rx="8"/>
-        <text x="437" y="100">Fields</text>
-        <rect x="410" y="140" width="100" height="50" class="fig-box" rx="8"/>
-        <text x="422" y="170">Evolution</text>
-        <path d="M120 95 H150 M250 95 H280 M380 95 H410 M460 120 V140" class="fig-arrow" marker-end="none"/>
+      <svg viewBox="0 0 700 260" aria-label="SciSci conceptual diagram">
+        <!-- Row 1: Core objects -->
+        <rect x="20" y="20" width="120" height="50" class="fig-box" rx="8"/>
+        <text x="42" y="50" font-size="12">Actors</text>
+        <rect x="170" y="20" width="120" height="50" class="fig-box" rx="8"/>
+        <text x="192" y="50" font-size="12">Papers</text>
+        <rect x="320" y="20" width="120" height="50" class="fig-box" rx="8"/>
+        <text x="352" y="50" font-size="12">Ideas</text>
+        <rect x="470" y="20" width="120" height="50" class="fig-box" rx="8"/>
+        <text x="500" y="50" font-size="12">Fields</text>
+        <path d="M140 45 H170 M290 45 H320 M440 45 H470" class="fig-arrow"/>
+        <!-- Row 2: SciSci scope -->
+        <rect x="20" y="100" width="180" height="44" fill="#e0f2fe" stroke="#0284c7" rx="6"/>
+        <text x="32" y="126" font-size="11">Peer review &amp; bias</text>
+        <rect x="220" y="100" width="180" height="44" fill="#f0fdf4" stroke="#16a34a" rx="6"/>
+        <text x="232" y="126" font-size="11">Impact &amp; creativity</text>
+        <rect x="420" y="100" width="180" height="44" fill="#fef3c7" stroke="#d97706" rx="6"/>
+        <text x="432" y="126" font-size="11">Policy &amp; open data</text>
+        <!-- Row 3: This project -->
+        <rect x="170" y="175" width="360" height="50" fill="#fce7f3" stroke="#db2777" rx="8"/>
+        <text x="210" y="205" font-size="12" font-weight="bold">This project: structural field evolution</text>
+        <path d="M530 70 V100 M350 144 V175" class="fig-arrow"/>
+        <text x="32" y="250" font-size="10" fill="#475569">[1&ndash;3] definition &amp; history; [4&ndash;9] scope; [10&ndash;14] policy &amp; data</text>
       </svg>
-      <figcaption><strong>Conceptual diagram.</strong> SciSci connects actors, papers, ideas, and fields to study how scientific disciplines evolve. This project focuses on field-level structural evolution.</figcaption>
+      <figcaption><strong>Conceptual diagram.</strong> SciSci encompasses actors, papers, ideas, and fields. Its scope spans peer review and bias analysis, impact and creativity research, and policy-oriented data infrastructure. This project contributes to one specific area: structural analysis of field evolution.</figcaption>
     </figure>
 
     <!-- 1-2: Why HCI is especially difficult to summarize -->
     <h2>1-2. Why HCI is especially difficult to summarize</h2>
-    <p>HCI has <strong>multiple co-existing paradigms</strong> (Harrison et al., 2007), diverse contribution types (systems, empirical studies, design, theory, methods), and contested core concepts. Hornb&aelig;k &amp; Oulasvirta (2017) argued that even the definition of &ldquo;interaction&rdquo; is not sufficiently shared.</p>
+    <p>HCI has <strong>multiple co-existing paradigms</strong> <a class="cite" href="#ref-15">[15]</a>, diverse contribution types (systems, empirical studies, design, theory, methods), and contested core concepts. Hornb&aelig;k &amp; Oulasvirta <a class="cite" href="#ref-16">[16]</a> argued that even the definition of &ldquo;interaction&rdquo; is not sufficiently shared.</p>
     <p>This means simple frequency maps or single co-word networks cannot adequately capture how the field changes. In HCI, field change happens as <strong>re-arrangement of concepts, methods, and application areas</strong>&mdash;not just topic counts.</p>
 
     <!-- HCI plurality figure -->
@@ -77,10 +94,22 @@
     <section class="refs">
       <h2>References</h2>
       <ol>
-        <li>Fortunato, S., et al. (2018). Science of science. <em>Science</em>, 359(6379), eaao0185.</li>
-        <li>Harrison, S., Tatar, D., &amp; Sengers, P. (2007). The three paradigms of HCI. <em>CHI EA</em>.</li>
-        <li>Hornb&aelig;k, K. &amp; Oulasvirta, A. (2017). What is interaction? <em>Proc. CHI</em>.</li>
-        <li>Wang, D. &amp; Barab&aacute;si, A.-L. (2021). <em>The Science of Science</em>. Cambridge University Press.</li>
+        <li id="ref-1">Fortunato, S., Bergstrom, C. T., B&ouml;rner, K., Evans, J. A., Helbing, D., Milojevi&cacute;, S., &hellip; Barab&aacute;si, A.-L. (2018). Science of science. <em>Science</em>, 359(6379), eaao0185. <a href="https://doi.org/10.1126/science.aao0185">doi:10.1126/science.aao0185</a></li>
+        <li id="ref-2">Wang, D. &amp; Barab&aacute;si, A.-L. (2021). <em>The Science of Science</em>. Cambridge University Press.</li>
+        <li id="ref-3">Price, D. J. de Solla. (1963). <em>Little Science, Big Science</em>. Columbia University Press.</li>
+        <li id="ref-4">Tomkins, A., Zhang, M., &amp; Heavlin, W. D. (2017). Reviewer bias in single- versus double-blind peer review. <em>Proceedings of the National Academy of Sciences</em>, 114(48), 12708&ndash;12713. <a href="https://doi.org/10.1073/pnas.1707323114">doi:10.1073/pnas.1707323114</a></li>
+        <li id="ref-5">Liu, F., Rahwan, T., &amp; AlShebli, B. (2023). Non-White scientists appear on fewer editorial boards, spend more time under review, and receive fewer citations. <em>Proceedings of the National Academy of Sciences</em>, 120(13), e2215324120. <a href="https://doi.org/10.1073/pnas.2215324120">doi:10.1073/pnas.2215324120</a></li>
+        <li id="ref-6">Liu, F., Gao, C., Rahwan, T., &amp; AlShebli, B. (2023). Gender inequality and self-publication are common among academic editors. <em>Nature Human Behaviour</em>, 7(3), 353&ndash;364. <a href="https://doi.org/10.1038/s41562-022-01498-1">doi:10.1038/s41562-022-01498-1</a></li>
+        <li id="ref-7">Teplitskiy, M., Duede, E., Engstr&ouml;m, G., &amp; Evans, J. A. (2022). How status of research papers affects the way they are read and cited. <em>Research Policy</em>, 51(4), 104484. <a href="https://doi.org/10.1016/j.respol.2022.104484">doi:10.1016/j.respol.2022.104484</a></li>
+        <li id="ref-8">Sinatra, R., Wang, D., Deville, P., Song, C., &amp; Barab&aacute;si, A.-L. (2016). Quantifying the evolution of individual scientific impact. <em>Science</em>, 354(6312), aaf5239. <a href="https://doi.org/10.1126/science.aaf5239">doi:10.1126/science.aaf5239</a></li>
+        <li id="ref-9">Foster, J. G., Rzhetsky, A., &amp; Evans, J. A. (2015). Tradition and innovation in scientists&rsquo; research strategies. <em>American Sociological Review</em>, 80(5), 875&ndash;908. <a href="https://doi.org/10.1177/0003122415601618">doi:10.1177/0003122415601618</a></li>
+        <li id="ref-10">Marx, M. &amp; Hsu, D. H. (2022). Revisiting the entrepreneurial commercialization of academic science: Evidence from &ldquo;twin&rdquo; discoveries. <em>Management Science</em>, 68(2), 1330&ndash;1352. <a href="https://doi.org/10.1287/mnsc.2021.3966">doi:10.1287/mnsc.2021.3966</a></li>
+        <li id="ref-11">Yin, Y., Dong, Y., Wang, K., Wang, D., &amp; Jones, B. F. (2022). Public use and public funding of science. <em>Nature Human Behaviour</em>, 6(10), 1344&ndash;1350. <a href="https://doi.org/10.1038/s41562-022-01397-5">doi:10.1038/s41562-022-01397-5</a></li>
+        <li id="ref-12">OpenAlex API Documentation. <a href="https://docs.openalex.org/">docs.openalex.org</a></li>
+        <li id="ref-13">Marx, M. (2023). Reliance on Science. Zenodo. <a href="https://doi.org/10.5281/zenodo.7636818">doi:10.5281/zenodo.7636818</a></li>
+        <li id="ref-14">Lin, Z., Yin, Y., Liu, L., &amp; Wang, D. (2023). SciSciNet: A large-scale open data lake for the science of science research. <em>Scientific Data</em>, 10(1), 315. <a href="https://doi.org/10.1038/s41597-023-02198-9">doi:10.1038/s41597-023-02198-9</a></li>
+        <li id="ref-15">Harrison, S., Tatar, D., &amp; Sengers, P. (2007). The three paradigms of HCI. In <em>Proc. CHI EA</em>, 1&ndash;18.</li>
+        <li id="ref-16">Hornb&aelig;k, K. &amp; Oulasvirta, A. (2017). What is interaction? In <em>Proc. CHI</em>. <a href="https://doi.org/10.1145/3025453.3025765">doi:10.1145/3025453.3025765</a></li>
       </ol>
     </section>
 
