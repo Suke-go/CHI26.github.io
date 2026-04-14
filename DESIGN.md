@@ -306,6 +306,7 @@ CHI26.github.io/
 | Date | Version | Description |
 |------|---------|-------------|
 | 2026-04-13 | 0.1 | Initial design requirements |
+| 2026-04-14 | 0.2 | Align implementation to DESIGN.md: restructure all 9 chapters, add Ch.3 (Existing Approaches) and Ch.9 (Implications), add empirical results to Ch.6, fix JS (error handling, caution notes, remove no-op chapters.js), remove 7 orphaned JSON files, add noscript fallback, add figures per spec |
 
 ---
 

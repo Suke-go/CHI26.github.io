@@ -1,33 +1,92 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>01 Why This Question Matters</title><link rel="stylesheet" href="../assets/css/style.css"></head>
-<body data-chapter="01-why-hci" data-root="../"><main class="container"><a href="../index.html">← Home</a>
-<section class="panel chapter-body"><h1 id="chapter-title"></h1><p class="thesis-block" id="chapter-thesis"></p>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>01 Why This Matters in HCI</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-chapter="01-why-hci" data-root="../">
+<main class="container">
+  <a href="../index.html">&larr; Home</a>
+  <section class="panel chapter-body">
+    <h1 id="chapter-title"></h1>
+    <p class="thesis-block" id="chapter-thesis"></p>
+    <div class="caution-box" id="chapter-caution"></div>
 
-<h2>A. Research question and scope</h2>
-<p><strong>Research question.</strong> Can yearly topological structure in HCI concept space reveal boundary reorganization before a topic has a stable label or frequent direct co-occurrence?</p>
-<p><strong>Why this is non-trivial.</strong> Most annual topic summaries are strongest after terms have already consolidated. This project targets earlier boundary states where relation patterns are emerging but still structurally unresolved.</p>
-<div class="meaning-box"><strong>Evidence in this companion.</strong> We combine (i) yearly geometry, (ii) persistent-loop structure, (iii) representative-cycle edge extraction, and (iv) future-year relevance checks. The strongest interpretation is where all four align.</div>
+    <!-- 1-1: Science of Science and field evolution -->
+    <h2>1-1. Science of Science and field evolution</h2>
+    <p>Science of Science (SciSci) studies scientific activity through large-scale data and computational methods. It covers not just counting papers, but understanding structure, reorganization, precursors, and explanation in how fields evolve (Fortunato et al., 2018).</p>
+    <p>Science mapping and bibliometrics are key instruments in this endeavor. The goal is to capture field change as <strong>structural change</strong>, not merely frequency change.</p>
 
-<h2>B. Why this question matters in HCI</h2>
-<p>HCI evolves through frequent recombination across methods, domains, and contexts. If analysis relies only on yearly topic labels, early cross-boundary reorganization can be under-described because labels stabilize after substantial consolidation.</p>
-<p>Direct co-occurrence in later years is informative but incomplete as an early signal: two ideas may become structurally adjacent through intermediate concepts before direct pairing becomes frequent. For HCI, this matters because many influential connections emerge through design, methods, and application layers before a canonical term dominates.</p>
-<h2>Concrete output of this study</h2>
-<ul>
-<li>For each year <em>t</em>, output a ranked list of candidate concept pairs.</li>
-<li>Each candidate is an edge selected from a <strong>boundary loop</strong> that crosses community labels at year <em>t</em>.</li>
-<li>Ranking quality is evaluated only with future years (<em>t+1</em> and later).</li>
-</ul>
-<p>This chapter defines the target and output only. Computation is specified in Chapters 4–6.</p>
+    <!-- Placeholder for SciSci conceptual figure -->
+    <figure class="viz-frame">
+      <svg viewBox="0 0 600 200" aria-label="SciSci conceptual diagram">
+        <rect x="20" y="70" width="100" height="50" class="fig-box" rx="8"/>
+        <text x="45" y="100">Actors</text>
+        <rect x="150" y="70" width="100" height="50" class="fig-box" rx="8"/>
+        <text x="175" y="100">Papers</text>
+        <rect x="280" y="70" width="100" height="50" class="fig-box" rx="8"/>
+        <text x="310" y="100">Ideas</text>
+        <rect x="410" y="70" width="100" height="50" class="fig-box" rx="8"/>
+        <text x="437" y="100">Fields</text>
+        <rect x="410" y="140" width="100" height="50" class="fig-box" rx="8"/>
+        <text x="422" y="170">Evolution</text>
+        <path d="M120 95 H150 M250 95 H280 M380 95 H410 M460 120 V140" class="fig-arrow" marker-end="none"/>
+      </svg>
+      <figcaption><strong>Conceptual diagram.</strong> SciSci connects actors, papers, ideas, and fields to study how scientific disciplines evolve. This project focuses on field-level structural evolution.</figcaption>
+    </figure>
 
-<h2>C. Baseline definition: Science of science</h2>
-<p>In this project, <em>Science of science</em> means computational and data-driven research on how science itself is produced, evaluated, and used. This includes publication and citation dynamics, collaboration structure, peer-review behavior, social bias, and policy use of scientific knowledge.</p>
-<p>Our work is one narrow contribution inside that broader area. We do not model all scientific behavior. We focus on one task: finding early structural bridge candidates in HCI concept space and evaluating them with a future-only protocol.</p>
+    <!-- 1-2: Why HCI is especially difficult to summarize -->
+    <h2>1-2. Why HCI is especially difficult to summarize</h2>
+    <p>HCI has <strong>multiple co-existing paradigms</strong> (Harrison et al., 2007), diverse contribution types (systems, empirical studies, design, theory, methods), and contested core concepts. Hornb&aelig;k &amp; Oulasvirta (2017) argued that even the definition of &ldquo;interaction&rdquo; is not sufficiently shared.</p>
+    <p>This means simple frequency maps or single co-word networks cannot adequately capture how the field changes. In HCI, field change happens as <strong>re-arrangement of concepts, methods, and application areas</strong>&mdash;not just topic counts.</p>
 
+    <!-- HCI plurality figure -->
+    <figure class="viz-frame">
+      <svg viewBox="0 0 500 200" aria-label="HCI plurality diagram">
+        <circle cx="120" cy="100" r="40" fill="#e0f2fe" stroke="#0284c7"/>
+        <text x="95" y="105" font-size="12">Methods</text>
+        <circle cx="250" cy="60" r="40" fill="#f0fdf4" stroke="#16a34a"/>
+        <text x="225" y="65" font-size="12">Systems</text>
+        <circle cx="380" cy="100" r="40" fill="#fef3c7" stroke="#d97706"/>
+        <text x="360" y="105" font-size="12">Theory</text>
+        <circle cx="250" cy="140" r="40" fill="#fce7f3" stroke="#db2777"/>
+        <text x="228" y="145" font-size="12">Design</text>
+        <line x1="155" y1="82" x2="215" y2="68" stroke="#94a3b8" stroke-dasharray="4"/>
+        <line x1="285" y1="68" x2="345" y2="82" stroke="#94a3b8" stroke-dasharray="4"/>
+        <line x1="155" y1="118" x2="215" y2="132" stroke="#94a3b8" stroke-dasharray="4"/>
+        <line x1="285" y1="132" x2="345" y2="118" stroke="#94a3b8" stroke-dasharray="4"/>
+      </svg>
+      <figcaption><strong>HCI plurality.</strong> Methods, systems, theory, and design co-exist as partially overlapping but distinct communities of practice, each with different evaluation cultures.</figcaption>
+    </figure>
 
+    <!-- 1-3: The research question of this project -->
+    <h2>1-3. The research question</h2>
+    <p>This project addresses three questions:</p>
+    <ol>
+      <li><strong>RQ1:</strong> How do HCI subareas become adjacent before they stabilize as named topics?</li>
+      <li><strong>RQ2:</strong> Can early field reorganization be described in a way that is structural and interpretable?</li>
+      <li><strong>RQ3:</strong> Can such descriptions complement existing frequency-based maps of HCI evolution?</li>
+    </ol>
 
-<section class="refs"><h2>References</h2><ol>
-<li>Harrison, S., Tatar, D., &amp; Sengers, P. (2007). The three paradigms of HCI. In <em>Proceedings of CHI 2007 Extended Abstracts on Human Factors in Computing Systems</em> (Alt.CHI), 1–18.</li>
-<li>Fortunato, S., Bergstrom, C. T., Börner, K., Evans, J. A., Helbing, D., Milojević, S., ... Barabási, A.-L. (2018). Science of science. <em>Science</em>, 359(6379), eaao0185. https://doi.org/10.1126/science.aao0185</li>
-<li>Wang, D., &amp; Barabási, A.-L. (2021). <em>The Science of Science</em>. Cambridge University Press.</li>
-<li>Price, D. J. de Solla. (1963). <em>Little Science, Big Science</em>. Columbia University Press.</li>
-</ol></section>
-<div id="prev-next-nav"></div></section></main><script src="../assets/js/site.js"></script><script src="../assets/js/chapters.js"></script></body></html>
+    <div class="meaning-box">
+      <strong>Transition.</strong> To answer these questions, we need a way of describing more than local similarity or direct co-occurrence. This is where topology becomes useful.
+    </div>
+
+    <section class="refs">
+      <h2>References</h2>
+      <ol>
+        <li>Fortunato, S., et al. (2018). Science of science. <em>Science</em>, 359(6379), eaao0185.</li>
+        <li>Harrison, S., Tatar, D., &amp; Sengers, P. (2007). The three paradigms of HCI. <em>CHI EA</em>.</li>
+        <li>Hornb&aelig;k, K. &amp; Oulasvirta, A. (2017). What is interaction? <em>Proc. CHI</em>.</li>
+        <li>Wang, D. &amp; Barab&aacute;si, A.-L. (2021). <em>The Science of Science</em>. Cambridge University Press.</li>
+      </ol>
+    </section>
+
+    <div id="prev-next-nav"></div>
+  </section>
+</main>
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

@@ -1,44 +1,80 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>04 Mathematical Pipeline</title><link rel="stylesheet" href="../assets/css/style.css"></head>
-<body data-chapter="04-data" data-root="../"><main class="container"><a href="../index.html">← Home</a><section class="panel chapter-body"><h1 id="chapter-title"></h1><p class="thesis-block" id="chapter-thesis"></p>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>04 Data and Operationalization</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-chapter="04-data" data-root="../">
+<main class="container">
+  <a href="../index.html">&larr; Home</a>
+  <section class="panel chapter-body">
+    <h1 id="chapter-title"></h1>
+    <p class="thesis-block" id="chapter-thesis"></p>
+    <div class="caution-box" id="chapter-caution"></div>
 
-<h2>E. Mathematical pipeline</h2>
-<p class="equation">\( d_{ij} = 1 - \dfrac{v_i^{\top}v_j}{\lVert v_i \rVert_2 \lVert v_j \rVert_2} \)</p>
-<p>This defines concept distance from vector similarity: nearer concepts have smaller dᵢⱼ, and these distances drive all later topology.</p>
+    <!-- 4-1: Corpus -->
+    <h2>4-1. Corpus</h2>
+    <ul>
+      <li><strong>Venues:</strong> CHI, UIST, CSCW, UbiComp</li>
+      <li><strong>Time span:</strong> 1999&ndash;2024 (~30,000 papers)</li>
+      <li><strong>Temporal honesty:</strong> Each year <em>t</em> uses only data available up to <em>t</em>. No future leakage.</li>
+    </ul>
 
-<p class="equation">\( \mathcal{R}_{\varepsilon}(V_t) = \{ \sigma \subseteq V_t \mid d_{ij} \le \varepsilon,\ \forall i,j \in \sigma \} \)</p>
-<p>This is the Vietoris–Rips complex at threshold ε: as ε increases, more edges and simplices appear.</p>
+    <!-- 4-2: Concepts -->
+    <h2>4-2. Concept extraction</h2>
+    <p>Concepts are noun phrases extracted from titles and abstracts using spaCy. Stopwords and rare concepts (appearing in fewer than 5 papers cumulatively) are filtered. Top 500 concepts by frequency are retained for each year.</p>
 
-<p class="equation">\( H_1(\mathcal{R}_{\varepsilon}(V_t)) \)</p>
-<p>H₁ captures one-dimensional loop structure in the complex at each threshold.</p>
+    <!-- 4-3: Year-specific embeddings -->
+    <h2>4-3. Year-specific embeddings</h2>
+    <p>For each year <em>t</em>, a Word2Vec model (d=100, window=5, min_count=5) is trained on the cumulative corpus up to <em>t</em>. Distance is angular distance: d<sub>ij</sub> = arccos(cos_sim) / &pi;.</p>
 
-<p class="equation">\( I_k = [b_k, d_k),\ \pi_k = d_k - b_k \)</p>
-<p>For loop feature k, b<sub>k</sub> is birth, d<sub>k</sub> is death, and π<sub>k</sub> is persistence length. Longer persistence indicates a loop that remains unresolved over a wider threshold range.</p>
+    <!-- 4-4: Semantic communities -->
+    <h2>4-4. Semantic communities</h2>
+    <p>A k-NN graph (k=15) is built from the distance matrix. Community detection uses the Louvain algorithm on an &epsilon;-separated graph (where &epsilon; is chosen at the 30% largest-component threshold). This partitions concepts into semantic communities.</p>
 
-<p class="equation">\( C_k = e_b \cup P_{b_k^-}(u,v) \)</p>
-<p>This representative cycle combines the birth edge e<sub>b</sub>=(u,v) with a shortest path just before birth. We use the same representative-cycle definition introduced in Chapter 2.</p>
+    <!-- 4-5: Candidate pairs -->
+    <h2>4-5. Candidate pairs</h2>
+    <p>A candidate pair must satisfy two conditions:</p>
+    <ol>
+      <li><strong>Cross-community:</strong> The two concepts belong to different Louvain communities.</li>
+      <li><strong>Zero cumulative co-occurrence:</strong> The pair has never co-occurred in the same paper up to year <em>t</em>.</li>
+    </ol>
+    <div class="meaning-box">
+      <strong>Important.</strong> &ldquo;Cross-area link&rdquo; here means a boundary between semantic communities in concept space. It does <em>not</em> mean institutional interdisciplinarity or collaboration between departments.
+    </div>
 
-<h2>Figure 2 — Loop birth and representative cycle mechanics</h2>
-<figure class="viz-frame"><svg viewBox="0 0 760 260" aria-label="loop birth and cycle reconstruction">
-<text x="20" y="20">ε₁: pre-birth</text><text x="260" y="20">ε₂=bₖ: birth</text><text x="505" y="20">ε₃: death at simplex fill</text>
-<g transform="translate(20,35)"><circle cx="35" cy="70" r="6"/><circle cx="95" cy="30" r="6"/><circle cx="155" cy="55" r="6"/><circle cx="155" cy="125" r="6"/><circle cx="95" cy="150" r="6"/><line x1="35" y1="70" x2="95" y2="30"/><line x1="95" y1="30" x2="155" y2="55"/><line x1="155" y1="55" x2="155" y2="125"/><line x1="155" y1="125" x2="95" y2="150"/><line x1="95" y1="150" x2="35" y2="70"/><text x="2" y="182" class="fig-sub">Path P_bk−(u,v) exists</text></g>
-<g transform="translate(260,35)"><circle cx="35" cy="70" r="6"/><circle cx="95" cy="30" r="6"/><circle cx="155" cy="55" r="6"/><circle cx="155" cy="125" r="6"/><circle cx="95" cy="150" r="6"/><line x1="35" y1="70" x2="95" y2="30"/><line x1="95" y1="30" x2="155" y2="55"/><line x1="155" y1="55" x2="155" y2="125"/><line x1="155" y1="125" x2="95" y2="150"/><line x1="95" y1="150" x2="35" y2="70"/><line x1="35" y1="70" x2="155" y2="55" class="bridge-edge"/><text x="3" y="182" class="fig-sub">Birth edge e_b closes the cycle</text></g>
-<g transform="translate(500,35)"><circle cx="35" cy="70" r="6"/><circle cx="95" cy="30" r="6"/><circle cx="155" cy="55" r="6"/><circle cx="155" cy="125" r="6"/><circle cx="95" cy="150" r="6"/><line x1="35" y1="70" x2="95" y2="30"/><line x1="95" y1="30" x2="155" y2="55"/><line x1="155" y1="55" x2="155" y2="125"/><line x1="155" y1="125" x2="95" y2="150"/><line x1="95" y1="150" x2="35" y2="70"/><line x1="35" y1="70" x2="155" y2="55" class="bridge-edge"/><polygon points="35,70 95,30 155,55" fill="#fde68a" stroke="#f59e0b"/><text x="5" y="182" class="fig-sub">2-simplex fills hole ⇒ d_k</text></g>
-</svg><figcaption><strong>Figure 2.</strong> Same node layout across ε-levels reveals loop mechanics without geometric ambiguity. Birth is the moment the highlighted edge appears; death is simplex filling that removes the one-dimensional hole. This supports topological interpretation of boundary states, not claims about causality.</figcaption></figure>
+    <!-- Analysis object flow figure -->
+    <figure class="viz-frame">
+      <svg viewBox="0 0 760 100" aria-label="Analysis object flow">
+        <rect x="10" y="25" width="120" height="50" class="fig-box" rx="6"/>
+        <text x="30" y="55" font-size="12">Papers &le; t</text>
+        <rect x="160" y="25" width="120" height="50" class="fig-box" rx="6"/>
+        <text x="178" y="55" font-size="12">Concepts V<tspan baseline-shift="sub" font-size="9">t</tspan></text>
+        <rect x="310" y="25" width="130" height="50" class="fig-box" rx="6"/>
+        <text x="318" y="55" font-size="12">Embedding space</text>
+        <rect x="470" y="25" width="130" height="50" class="fig-box" rx="6"/>
+        <text x="480" y="55" font-size="12">Communities</text>
+        <rect x="630" y="25" width="120" height="50" class="fig-box" rx="6"/>
+        <text x="638" y="55" font-size="12">Candidates</text>
+        <path d="M130 50 H160 M280 50 H310 M440 50 H470 M600 50 H630" class="fig-arrow"/>
+      </svg>
+      <figcaption><strong>Figure 1.</strong> Analysis object flow: papers &rarr; concepts &rarr; embedding space &rarr; communities &rarr; candidate pairs. Each step uses only data available up to year <em>t</em>.</figcaption>
+    </figure>
 
-<h2>Notation used in Chapters 4–6</h2>
-<ul>
-<li><strong>V_t</strong>: concept set built from data available up to year <em>t</em>.</li>
-<li><strong>d_{ij}</strong>: distance between concept <em>i</em> and <em>j</em>.</li>
-<li><strong>\(\mathcal{R}_{\varepsilon}(V_t)\)</strong>: Vietoris–Rips complex at threshold ε.</li>
-<li><strong>I_k=[b_k,d_k)</strong>: birth/death interval of loop feature <em>k</em>.</li>
-<li><strong>C_k</strong>: representative cycle used for interpretation and extraction.</li>
-</ul>
+    <section class="refs">
+      <h2>References</h2>
+      <ol>
+        <li>Mikolov, T. et al. (2013). Distributed representations. <em>NeurIPS</em>.</li>
+        <li>Blondel, V. D. et al. (2008). Fast unfolding of communities. <em>JSTAT</em>, P10008.</li>
+        <li>Honnibal, M. et al. (2020). spaCy.</li>
+      </ol>
+    </section>
 
-<section class="refs"><h2>References</h2><ol>
-<li>Edelsbrunner, H., &amp; Harer, J. (2010). <em>Computational Topology: An Introduction</em>. American Mathematical Society.</li>
-<li>Zomorodian, A., &amp; Carlsson, G. (2005). Computing persistent homology. <em>Discrete &amp; Computational Geometry</em>, 33(2), 249–274. https://doi.org/10.1007/s00454-004-1146-y</li>
-</ol></section>
-
-
-
-</section><div id="prev-next-nav"></div></main><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script src="../assets/js/site.js"></script><script src="../assets/js/chapters.js"></script></body></html>
+    <div id="prev-next-nav"></div>
+  </section>
+</main>
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

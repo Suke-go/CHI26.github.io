@@ -1,65 +1,65 @@
 [
   {
     "id": "01-why-hci",
-    "title": "01 Why This Question Matters",
-    "thesis": "Boundary reorganization in HCI can be structurally visible before stable yearly topic labels emerge.",
-    "figureCaption": "Motivation framing with evidence overview.",
-    "cautionNote": "Interest is in structural reorganization, not hype about prediction."
+    "title": "01 Why This Matters in HCI",
+    "thesis": "Describing field evolution is a core SciSci challenge. HCI makes it especially hard because of its multiple paradigms, diverse contributions, and contested core concepts.",
+    "figureCaption": "SciSci conceptual diagram and HCI plurality visualization.",
+    "cautionNote": "Interest is in structural reorganization, not prediction or hype."
   },
   {
     "id": "02-topology",
-    "title": "02 Core Idea",
-    "thesis": "Persistent loops provide boundary signals; community-aware cycle analysis turns them into interpretable bridge hypotheses.",
-    "figureCaption": "Two-layer explanation (plain-language + technical).",
+    "title": "02 Topology: Minimal Background",
+    "thesis": "Topology reads connectivity and holes. This project reads connectivity change in concept point clouds. Birth edge, loop, and closure are the three key ideas.",
+    "figureCaption": "Filtration schematic and birth edge highlight.",
     "cautionNote": "A loop is not itself a mature topic or causal mechanism."
   },
   {
     "id": "03-existing",
-    "title": "03 Data and Temporal Construction",
-    "thesis": "Yearly spaces are built with strict historical cutoffs so validation remains temporally honest.",
-    "figureCaption": "Figure 1 pipeline with stage-level input/output objects.",
-    "cautionNote": "Cross-year comparison concerns yearly states, not one fixed object identity."
+    "title": "03 Existing Approaches",
+    "thesis": "Each existing method has a clear target. This project complements rather than replaces them, focusing on pre-topic boundary states.",
+    "figureCaption": "Comparison table of method families.",
+    "cautionNote": "We do not claim existing methods fail; we address a different target."
   },
   {
     "id": "04-data",
-    "title": "04 Mathematical Pipeline",
-    "thesis": "Formulas are mapped directly to operational steps and plain-language interpretations.",
-    "figureCaption": "Figure 2 loop birth and representative cycle mechanics.",
-    "cautionNote": "Mathematical definitions specify computation, not causality."
+    "title": "04 Data and Operationalization",
+    "thesis": "Yearly spaces are built with strict historical cutoffs so validation remains temporally honest. Cross-area link means semantic community boundary, not institutional interdisciplinarity.",
+    "figureCaption": "Figure 1: Analysis object flow from papers to candidate pairs.",
+    "cautionNote": "Cross-year comparison concerns yearly states, not one fixed object identity."
   },
   {
     "id": "05-detection",
-    "title": "05 Loop Meaning and Bridge Extraction",
-    "thesis": "Representative cycles and community boundaries define bridge candidates with an explicit, reproducible rule.",
-    "figureCaption": "Figure 3 community boundary and cross-community edge extraction.",
-    "cautionNote": "Bridge candidates are ranked hypotheses, not guaranteed future outcomes."
+    "title": "05 Detecting Boundary Structures",
+    "thesis": "The method operates at local (birth edge), meso (persistent loop), and macro (yearly summaries) scales simultaneously.",
+    "figureCaption": "Figure 2: Pipeline and loop birth mechanics.",
+    "cautionNote": "Mathematical definitions specify computation, not causality."
   },
   {
     "id": "06-evidence",
-    "title": "06 Ranking and Temporal Validation",
-    "thesis": "Ranking quality is judged by whether later-relevant candidates appear near the top of early-year lists.",
-    "figureCaption": "Figure 4 nDCG@50 explanation and top-heavy evaluation intuition.",
+    "title": "06 Evidence",
+    "thesis": "Observations are organized by scale: micro (representative cases), meso (ranking quality), and macro (yearly structure).",
+    "figureCaption": "Figures 3-5: Case studies, baseline comparison, and structural tension.",
     "cautionNote": "Validation is retrospective and out-of-time, not prospective deployment proof."
   },
   {
     "id": "07-reading",
-    "title": "07 Case Walkthroughs",
-    "thesis": "Case analysis ties local geometry, cycle structure, community boundaries, and later evidence into claim-bounded interpretations.",
-    "figureCaption": "Figure 5 real case walkthroughs.",
+    "title": "07 How to Read the Outputs",
+    "thesis": "Cross-area means between semantic communities. Birth means boundary formation. Persistence means unresolved boundary. Death means possible resolution.",
+    "figureCaption": "Reading guide summary.",
     "cautionNote": "Case narratives illustrate plausibility, not inevitability."
   },
   {
     "id": "08-scope",
-    "title": "08 Claim Boundaries",
+    "title": "08 What This Captures / What It Does Not",
     "thesis": "Direct outputs, supported interpretations, and non-established claims are explicitly separated.",
-    "figureCaption": "Figure 6 claim boundary matrix.",
+    "figureCaption": "Two-column claims table.",
     "cautionNote": "Do not conflate structural signals with social causation."
   },
   {
     "id": "09-implications",
-    "title": "09 References and Figure Production Specs",
-    "thesis": "References are metadata-checked and figure specifications are detailed enough for reproducible implementation.",
-    "figureCaption": "Verified bibliography and implementation-oriented figure instructions.",
-    "cautionNote": "Uncertain dataset/protocol details are explicitly listed for confirmation."
+    "title": "09 Implications for HCI and SciSci",
+    "thesis": "For HCI: reading subarea reorganization. For SciSci: interpretable structural descriptors. Future: expert validation, corpus expansion, aligned embeddings.",
+    "figureCaption": "",
+    "cautionNote": "Implications are framed as contributions, not universal prescriptions."
   }
 ]

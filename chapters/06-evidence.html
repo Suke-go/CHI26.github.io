@@ -1,56 +1,84 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>06 Ranking and Temporal Validation</title><link rel="stylesheet" href="../assets/css/style.css"></head>
-<body data-chapter="06-evidence" data-root="../"><main class="container"><a href="../index.html">← Home</a><section class="panel chapter-body"><h1 id="chapter-title"></h1><p class="thesis-block" id="chapter-thesis"></p>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>06 Evidence</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-chapter="06-evidence" data-root="../">
+<main class="container">
+  <a href="../index.html">&larr; Home</a>
+  <section class="panel chapter-body">
+    <h1 id="chapter-title"></h1>
+    <p class="thesis-block" id="chapter-thesis"></p>
+    <div class="caution-box" id="chapter-caution"></div>
 
-<h2>H. Ranking and temporal validation</h2>
-<p><strong>What is ranked.</strong> The ranked objects are candidate <em>edges</em> (u,v), not full topics, people, or venues.</p>
-<p class="equation">\( s(u,v) = \max_{\gamma \ni (u,v)} \pi(\gamma),\ \pi(\gamma)=\varepsilon_d(\gamma)-\varepsilon_b(\gamma) \)</p>
-<p>This score gives each candidate edge the strongest persistence evidence among cycles that contain it; higher score prioritizes edges participating in longer-lived loop structures.</p>
+    <!-- 6-1: Micro: representative cases -->
+    <h2>6-1. Micro: representative cases</h2>
 
-<p class="equation">\( \mathrm{DCG@50}=\sum_{r=1}^{50}\dfrac{2^{rel_r}-1}{\log_2(r+1)},\ \mathrm{nDCG@50}=\dfrac{\mathrm{DCG@50}}{\mathrm{IDCG@50}} \)</p>
-<p>DCG discounts relevance by rank position. IDCG means the ideal DCG for that same year. nDCG divides DCG by IDCG so year-level values are comparable.</p>
+    <h3>VR &ndash; Therapy (Integration)</h3>
+    <p>In 2013, &ldquo;VR&rdquo; (hardware/design community) and &ldquo;Therapy&rdquo; (clinical/wellbeing community) were in separate Louvain communities with zero co-occurrence. TDA detected a boundary loop with the birth edge (vr, therapy).</p>
+    <ul>
+      <li><strong>Representative cycle path:</strong> vr &rarr; immersion &rarr; exergames &rarr; therapies &rarr; therapy</li>
+      <li><strong>Lead time:</strong> 3 years (detected 2013, co-occurrence &ge;5 by 2016)</li>
+      <li><strong>Outcome:</strong> By 2019, &ldquo;VR Healthcare&rdquo; became an established CHI track.</li>
+    </ul>
 
-<p><strong>Temporal protocol.</strong> Generate candidate rankings at year t; compute relevance only from future years t+1, t+2, .... This keeps evaluation out-of-time relative to candidate generation.</p>
-<h2>Concrete evaluation protocol</h2>
-<ol>
-<li>Choose a target year <em>t</em> (example: 2018).</li>
-<li>Build candidates using data up to year <em>t</em> only.</li>
-<li>Assign relevance from years <em>t+1</em> onward (example: 2019–2025).</li>
-<li>Compute nDCG@50 on that year-specific candidate list.</li>
-<li>Repeat for each year and compare year-level scores.</li>
-</ol>
+    <h3>Blockchain &ndash; Participatory Design (Decay)</h3>
+    <p>In 2018, a bridge formed between &ldquo;Blockchain&rdquo; and &ldquo;Participatory Design.&rdquo; The structural hole did not fill; the bridge dissolved by 2021 as topics drifted apart. The method correctly classified this as decay.</p>
 
-<div class="meaning-box"><strong>nDCG@50 (quick definition).</strong> nDCG@50 asks whether candidates that later turned out to matter were already placed near the top of the earlier ranked list. Items near rank 1 contribute more than items near rank 50 because of logarithmic discounting. A value closer to 1 means the ordering is closer to the ideal top-50 ordering.</div>
+    <div class="meaning-box">
+      <strong>Interpretation.</strong> Of dissolved bridges, 89.5% followed integration (Scenario A). Decay cases like Blockchain&ndash;PD are the minority but illustrate the method&rsquo;s discriminative capability.
+    </div>
 
-<h2>Figure 4 — Ranking and nDCG explanation</h2>
-<figure class="viz-frame"><svg viewBox="0 0 760 280" aria-label="ranking and ndcg intuition">
-<text x="20" y="24">Ranked list at year t</text>
-<rect x="20" y="35" width="225" height="185" fill="#f8fafc" stroke="#94a3b8"/>
-<text x="30" y="60">1. (vr, therapy)   future rel=1</text>
-<text x="30" y="84">2. (haptics, rehab) future rel=0</text>
-<text x="30" y="108">3. (biofeedback, game) rel=1</text>
-<text x="30" y="132">...</text><text x="30" y="156">50. (...) rel=0</text>
+    <!-- 6-2: Meso: ranking evidence -->
+    <h2>6-2. Meso: ranking evidence</h2>
 
-<text x="270" y="24">Discount intuition</text>
-<rect x="270" y="35" width="220" height="185" fill="#f8fafc" stroke="#94a3b8"/>
-<text x="280" y="64">rank 1 hit → full credit</text>
-<text x="280" y="92">rank 10 hit → reduced credit</text>
-<text x="280" y="120">rank 50 hit → much less credit</text>
-<text x="280" y="148">Top-heavy ordering is rewarded</text>
+    <h3>Baseline comparison (Precision@50, mean over 9 windows 2010&ndash;2018)</h3>
+    <table class="compare-table">
+      <thead>
+        <tr><th>Method</th><th>Integrated (Raw)</th><th>Integrated (IDF-filtered)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Random baseline</td><td>2.67%</td><td>2.22%</td></tr>
+        <tr><td>Semantic &times; Under-cooccurrence</td><td>8.44%</td><td>8.44%</td></tr>
+        <tr><td>Triangle Deficit</td><td>94.00%</td><td>94.00%</td></tr>
+        <tr><td>Link Prediction (AA+RA)</td><td>91.11%</td><td>91.11%</td></tr>
+        <tr><td>Edge Betweenness</td><td>75.33%</td><td>75.33%</td></tr>
+        <tr><td>Louvain Cross-Edges</td><td>82.00%</td><td>82.00%</td></tr>
+        <tr><td><strong>H&#x2081; Boundary (Ours)</strong></td><td><strong>69.56%</strong></td><td><strong>69.56%</strong></td></tr>
+      </tbody>
+    </table>
+    <p>Graph-structure methods (Triangle Deficit, Link Prediction) achieve higher integration rates because they target edges where connectivity evidence already exists. H&#x2081; bridges target structural voids <em>before</em> edges form&mdash;a fundamentally different and complementary signal (overlap with Louvain Cross-Edges: only 6.4%).</p>
 
-<text x="515" y="24">Toy nDCG@5</text>
-<rect x="515" y="35" width="225" height="185" fill="#f8fafc" stroke="#94a3b8"/>
-<text x="525" y="60">Rel=[1,0,1,0,0]</text>
-<text x="525" y="88">DCG≈1+1/log₂(4)=1.50</text>
-<text x="525" y="116">IDCG≈1+1/log₂(3)=1.63</text>
-<text x="525" y="144">nDCG≈0.92</text>
-<text x="525" y="172">Interpretation: strong top ordering</text>
-<path d="M245 128 H270 M490 128 H515" class="fig-arrow"/>
-</svg><figcaption><strong>Figure 4.</strong> This figure links candidate ranking to discounted evaluation in one view. Read left panel (ranked candidates), then middle (why top ranks matter), then right (numerical nDCG example). It supports ranking-utility interpretation under retrospective validation; it does not establish prospective deployment performance by itself.</figcaption></figure>
+    <h3>Lead time</h3>
+    <p>Among 267 detected bridges (2010&ndash;2020): median lead time = <strong>2 years</strong> (IQR: 1&ndash;3). 40.9% integrated within 1 year; 86.5% within 3 years.</p>
 
+    <!-- 6-3: Macro: yearly structure -->
+    <h2>6-3. Macro: yearly structure</h2>
+    <p>Yearly H&#x2081; summaries reveal a structural pattern across HCI eras:</p>
+    <ul>
+      <li><strong>2005:</strong> Dominant loop concepts were <em>patterns, multimodal integration, educational</em>&mdash;second-wave cognitive/systematic design.</li>
+      <li><strong>2015:</strong> Shifted to <em>mobile, haptic, touch, gaze</em>&mdash;embodied, tangible, ubiquitous interaction.</li>
+      <li><strong>2023:</strong> Current loops connect <em>mental health, social connectedness, misinformation, generative AI, privacy/security</em>&mdash;societal impact and AI ethics.</li>
+    </ul>
+    <p>The structural shape of voids itself changes: 2005 loops were localized within methodological clusters, while 2023 loops span <em>between</em> paradigmatic communities (AI/ML vs. social computing vs. critical HCI).</p>
 
+    <div class="meaning-box">
+      <strong>Note.</strong> These are yearly topology-derived summary measures, not direct tracking of the same loop across time. Each year&rsquo;s topology is computed independently.
+    </div>
 
-<section class="refs"><h2>References</h2><ol>
-<li>Järvelin, K., &amp; Kekäläinen, J. (2002). Cumulated gain-based evaluation of IR techniques. <em>ACM Transactions on Information Systems</em>, 20(4), 422–446. https://doi.org/10.1145/582415.582418</li>
-<li>Manning, C. D., Raghavan, P., &amp; Schütze, H. (2008). <em>Introduction to Information Retrieval</em>. Cambridge University Press.</li>
-</ol></section>
-</section><div id="prev-next-nav"></div></main><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script src="../assets/js/site.js"></script><script src="../assets/js/chapters.js"></script></body></html>
+    <section class="refs">
+      <h2>References</h2>
+      <ol>
+        <li>J&auml;rvelin, K. &amp; Kek&auml;l&auml;inen, J. (2002). Cumulated gain-based evaluation. <em>ACM TOIS</em>, 20(4), 422&ndash;446.</li>
+      </ol>
+    </section>
+
+    <div id="prev-next-nav"></div>
+  </section>
+</main>
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

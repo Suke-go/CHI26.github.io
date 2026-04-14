@@ -1,39 +1,83 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>03 Data and Temporal Construction</title><link rel="stylesheet" href="../assets/css/style.css"></head>
-<body data-chapter="03-existing" data-root="../"><main class="container"><a href="../index.html">← Home</a><section class="panel chapter-body"><h1 id="chapter-title"></h1><p class="thesis-block" id="chapter-thesis"></p>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>03 Existing Approaches</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-chapter="03-existing" data-root="../">
+<main class="container">
+  <a href="../index.html">&larr; Home</a>
+  <section class="panel chapter-body">
+    <h1 id="chapter-title"></h1>
+    <p class="thesis-block" id="chapter-thesis"></p>
+    <div class="caution-box" id="chapter-caution"></div>
 
-<h2>D. Data and temporal construction</h2>
-<ul>
-<li><strong>Corpus scope:</strong> CHI, UIST, CSCW, and UbiComp.</li>
-<li><strong>Time span:</strong> 1999–2025 in the current project materials, with CSCW available through 2024.</li>
-<li><strong>Concept extraction:</strong> noun-phrase level concepts from titles/abstracts, followed by project-defined filtering.</li>
-<li><strong>Representation logic:</strong> year-specific concept representation and distance structure are recomputed for each year.</li>
-<li><strong>Temporal honesty rule:</strong> year t uses only records up to t; no future leakage into construction.</li>
-</ul>
-<p>Constructing each year from history-only data ensures that temporal validation is meaningful: candidates from year t are generated without access to future years used for evaluation.</p>
-<p><strong>Lead-time (plain meaning).</strong> Lead-time is the number of years between an early candidate signal and later observable relevance.</p>
+    <!-- 3-1: Citation-based mappings -->
+    <h2>3-1. Citation-based mappings</h2>
+    <p>Citation analysis, co-citation, and bibliographic coupling reveal <strong>intellectual lineage</strong> and knowledge clusters. CiteSpace (Chen, 2006) visualizes citation bursts and emerging fronts. These methods are strongest at capturing established knowledge structures and influential works.</p>
 
-<h2>Figure 1 — Yearly analytical pipeline (input/output explicit)</h2>
-<figure class="viz-frame"><svg viewBox="0 0 760 320" aria-label="yearly analytical pipeline">
-<rect x="15" y="18" width="130" height="54" class="fig-box"/><text x="23" y="40">1) Corpus ≤ t</text><text x="23" y="58" class="fig-sub">Input: papers</text>
-<rect x="165" y="18" width="140" height="54" class="fig-box"/><text x="173" y="40">2) Concept extraction</text><text x="173" y="58" class="fig-sub">Output: V_t</text>
-<rect x="325" y="18" width="165" height="54" class="fig-box"/><text x="333" y="40">3) Representation</text><text x="333" y="58" class="fig-sub">Output: vectors + D_t</text>
-<rect x="510" y="18" width="230" height="54" class="fig-box"/><text x="518" y="40">4) Vietoris–Rips filtration</text><text x="518" y="58" class="fig-sub">Output: {ℛ_ε(V_t)}_ε</text>
+    <!-- 3-2: Co-word and co-occurrence mappings -->
+    <h2>3-2. Co-word and co-occurrence mappings</h2>
+    <p>Co-word networks built from titles, abstracts, or keywords identify <strong>visible thematic clusters</strong> and their evolution. VOSviewer (van Eck &amp; Waltman, 2010) is widely used for this. Co-occurrence methods excel at mapping what <em>is</em> connected, but they inherently rely on terms that already appear together in publications.</p>
 
-<rect x="15" y="116" width="130" height="54" class="fig-box"/><text x="23" y="138">5) Persistent H₁</text><text x="23" y="156" class="fig-sub">Output: [b_k,d_k)</text>
-<rect x="165" y="116" width="140" height="54" class="fig-box"/><text x="173" y="138">6) Cycle reconstruction</text><text x="173" y="156" class="fig-sub">Output: C_k</text>
-<rect x="325" y="116" width="165" height="54" class="fig-box"/><text x="333" y="138">7) Community partition</text><text x="333" y="156" class="fig-sub">Output: c_t(·)</text>
-<rect x="510" y="116" width="230" height="54" class="fig-box"/><text x="518" y="138">8) Bridge extraction</text><text x="518" y="156" class="fig-sub">Output: E_t^bridge ⊆ C_k</text>
+    <!-- 3-3: Topic and semantic mappings -->
+    <h2>3-3. Topic and semantic mappings</h2>
+    <p>Topic models (LDA; Blei et al., 2003) and semantic embeddings (Word2Vec; Mikolov et al., 2013) capture latent themes and <strong>semantic proximity</strong>. These methods can suggest what <em>could</em> be connected based on vector similarity, even without direct co-occurrence.</p>
 
-<rect x="220" y="214" width="160" height="54" class="fig-box"/><text x="228" y="236">9) Ranking</text><text x="228" y="254" class="fig-sub">Output: ranked edge list</text>
-<rect x="400" y="214" width="230" height="54" class="fig-box"/><text x="408" y="236">10) Temporal validation</text><text x="408" y="254" class="fig-sub">Output: nDCG@50, lead-time</text>
+    <!-- 3-4: Graph-based prediction -->
+    <h2>3-4. Graph-based prediction</h2>
+    <p>Link prediction methods (Adamic-Adar, Resource Allocation, common neighbors) and triangle-closing heuristics predict missing edges based on <strong>existing graph density</strong>. These are powerful for near-term closure prediction where shared neighbors already exist.</p>
 
-<path d="M145 45 H165 M305 45 H325 M490 45 H510 M625 72 V116 H145 M145 143 H165 M305 143 H325 M490 143 H510 M625 170 V214 H380 M380 241 H400" class="fig-arrow"/>
-</svg><figcaption><strong>Figure 1.</strong> This pipeline shows what is computed each year and where each output is used next. Read left-to-right, then top-to-bottom. It supports reproducibility of objects and temporal protocol; it does not by itself justify causal interpretation.</figcaption></figure>
+    <figure class="viz-frame">
+      <svg viewBox="0 0 400 120" aria-label="Triangle closing schematic">
+        <circle cx="80" cy="60" r="5" fill="#0284c7"/>
+        <circle cx="200" cy="30" r="5" fill="#0284c7"/>
+        <circle cx="200" cy="90" r="5" fill="#0284c7"/>
+        <line x1="80" y1="60" x2="200" y2="30" stroke="#7dd3fc" stroke-width="2"/>
+        <line x1="80" y1="60" x2="200" y2="90" stroke="#7dd3fc" stroke-width="2"/>
+        <line x1="200" y1="30" x2="200" y2="90" stroke="#dc2626" stroke-width="2" stroke-dasharray="6"/>
+        <text x="215" y="65" font-size="11" fill="#475569">Predicted edge</text>
+        <text x="50" y="110" font-size="10" fill="#475569">Common neighbors &rarr; predict closure</text>
+      </svg>
+      <figcaption><strong>Schematic.</strong> Graph-based methods predict edges where shared neighbors create triadic closure pressure. This works well for near-closure but misses low-evidence cross-community pairs.</figcaption>
+    </figure>
 
+    <!-- 3-5: Where this project sits -->
+    <h2>3-5. Where this project sits</h2>
+    <p>Each method family has a distinct strength:</p>
+    <table class="compare-table">
+      <thead>
+        <tr><th>Method family</th><th>Target</th><th>Strength</th><th>Limitation</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Citation-based</td><td>Intellectual lineage</td><td>Established knowledge structure</td><td>Lags behind emerging work</td></tr>
+        <tr><td>Co-word / co-occurrence</td><td>Visible topics</td><td>What <em>is</em> connected</td><td>Requires prior co-occurrence</td></tr>
+        <tr><td>Topic / semantic</td><td>Latent similarity</td><td>What <em>could</em> be connected</td><td>No structural gap detection</td></tr>
+        <tr><td>Graph-based prediction</td><td>Near-closure edges</td><td>High precision where evidence exists</td><td>Weak for zero-evidence pairs</td></tr>
+        <tr><td><strong>This project</strong></td><td><strong>Pre-topic boundary states</strong></td><td><strong>What <em>resists</em> connection</strong></td><td>Requires topology; interpretability effort</td></tr>
+      </tbody>
+    </table>
+    <p>This project does not claim that existing methods fail. It addresses a <strong>different target</strong>: boundary states that are not yet stable topics or dense neighborhoods. The 6.4% overlap between H&#x2081; bridges and graph-based methods confirms this complementarity.</p>
 
+    <div class="meaning-box">
+      <strong>Transition.</strong> We now turn from methodological positioning to the actual corpus and how the analytical objects in this project are defined.
+    </div>
 
-<section class="refs"><h2>References</h2><ol>
-<li>Otter, N., Porter, M. A., Tillmann, U., Grindrod, P., &amp; Harrington, H. A. (2017). A roadmap for the computation of persistent homology. <em>EPJ Data Science</em>, 6, 17. https://doi.org/10.1140/epjds/s13688-017-0109-5</li>
-<li>Mikolov, T., Sutskever, I., Chen, K., Corrado, G. S., &amp; Dean, J. (2013). Distributed representations of words and phrases and their compositionality. In <em>Advances in Neural Information Processing Systems 26</em>, 3111–3119.</li>
-</ol></section>
-<div id="prev-next-nav"></div></section></main><script src="../assets/js/site.js"></script><script src="../assets/js/chapters.js"></script></body></html>
+    <section class="refs">
+      <h2>References</h2>
+      <ol>
+        <li>Chen, C. (2006). CiteSpace II. <em>JASIST</em>, 57(3), 359&ndash;377.</li>
+        <li>van Eck, N. J. &amp; Waltman, L. (2010). VOSviewer. <em>Scientometrics</em>, 84(2), 523&ndash;538.</li>
+        <li>Blei, D. M., Ng, A. Y., &amp; Jordan, M. I. (2003). Latent Dirichlet allocation. <em>JMLR</em>, 3, 993&ndash;1022.</li>
+        <li>Mikolov, T. et al. (2013). Distributed representations of words. <em>NeurIPS</em>.</li>
+      </ol>
+    </section>
+
+    <div id="prev-next-nav"></div>
+  </section>
+</main>
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

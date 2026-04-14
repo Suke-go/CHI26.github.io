@@ -4,57 +4,74 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Topological Bridges | CHI 2026 Companion</title>
-  <meta name="description" content="Publication-ready CHI poster companion: topological bridge detection, ranking, and temporal validation in HCI concept space." />
+  <meta name="description" content="Supplementary site for the CHI 2026 Extended Abstract: Topological Bridges in HCI Research." />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body data-page="home" data-root="">
   <a class="skip-link" href="#main">Skip to main content</a>
   <header class="site-header">
-    <p class="eyebrow">CHI 2026 Poster Companion Website</p>
-    <h1><span data-site-title></span><br><span data-site-subtitle></span></h1>
+    <p class="eyebrow">CHI 2026 Extended Abstract &mdash; Supplementary Site</p>
+    <h1>
+      <span data-site-title>Topological Bridges</span><br>
+      <span data-site-subtitle>Detecting Cross-Cluster Concept Relationships in HCI Research</span>
+    </h1>
+    <noscript><p class="lede">This site requires JavaScript for navigation and interactive figures.</p></noscript>
     <p class="lede" data-site-tagline></p>
-    <p class="lede"><strong>Poster recap.</strong> This site asks whether yearly structure in HCI concept space can show boundary reorganization before direct co-occurrence becomes common and stable topic labels appear.</p>
-    <p class="lede"><strong>Additional notes.</strong> This site keeps terminology fixed. The two main terms are <em>boundary loop</em> and <em>bridge candidate</em>. It then adds concrete definitions, equations, and evaluation steps.</p>
   </header>
 
   <main id="main" class="container">
+    <!-- 0-1: What this site is about -->
     <section class="panel">
-      <h2>Animated intuition</h2>
-      <p>This animation gives a quick orientation. Local proximity appears first. Boundary loop structure can persist. Closure may happen later.</p>
+      <h2>What this site is about</h2>
+      <p>Changes in HCI may occur before they become visible as named topics or frequent co-occurrences. This project asks how such early field reorganization can be described structurally and interpretably.</p>
+      <p>This supplementary site covers the background (Science of Science and HCI meta-science), a minimal introduction to topology, the relationship to existing bibliometric methods, and a guide to reading the analysis outputs.</p>
+    </section>
+
+    <!-- 0-2: The core question -->
+    <section class="panel">
+      <h2>The core question</h2>
+      <p>Can we detect and describe the internal reorganization of HCI research fields <em>before</em> that reorganization stabilizes as a named topic or shows up in frequency-based maps?</p>
+      <div class="meaning-box">
+        <strong>Design philosophy.</strong> This site is not a topology tutorial. It shares how to read the internal reorganization of HCI as a field. Topology is introduced only to the minimum extent necessary for that purpose.
+      </div>
+    </section>
+
+    <!-- 0-3: How to read this site -->
+    <section class="panel">
+      <h2>How to read this site</h2>
+      <p>The site is organized into three layers:</p>
+      <ul>
+        <li><strong>Layer A &mdash; Grasp</strong> (Ch. 1): What problem is being addressed, and why it matters in HCI and SciSci.</li>
+        <li><strong>Layer B &mdash; Understand</strong> (Ch. 2&ndash;5): Why topology is useful, how the analysis works, and how it relates to existing methods.</li>
+        <li><strong>Layer C &mdash; Interpret</strong> (Ch. 6&ndash;9): What is found, how to read it, and where the limits are.</li>
+      </ul>
+      <div id="chapter-cards" class="chapter-grid"></div>
+    </section>
+
+    <!-- Hero animation -->
+    <section class="panel">
+      <h2>Visual intuition</h2>
       <figure class="viz-frame">
-        <svg id="overview-viz" viewBox="0 0 360 220" role="img" aria-label="Boundary-loop emergence animation"></svg>
-        <figcaption>The animation is explanatory (not a literal analytic output). For exact definitions, open Chapter 2 and the equation sections in Chapters 4–6.</figcaption>
+        <svg id="overview-viz" viewBox="0 0 360 220" role="img" aria-label="Schematic: established topic clusters vs emerging boundary structures"></svg>
+        <figcaption><strong>Schematic.</strong> Left: conventional topic clustering. Right: boundary loop emergence between clusters. This is an explanatory animation, not analytic output.</figcaption>
       </figure>
     </section>
 
+    <!-- At a glance -->
     <section class="panel">
       <h2>At a glance</h2>
       <ul>
-        <li><strong>Data scope:</strong> approximately 30,000 papers from CHI, UIST, CSCW, and UbiComp.</li>
-        <li><strong>Year range:</strong> 1999–2025 (CSCW coverage through 2024 in the current dataset snapshot).</li>
-        <li><strong>Temporal cutoff logic:</strong> each year t is recomputed using only information available up to t.</li>
-        <li><strong>Main analytical output:</strong> ranked cross-community bridge candidates derived from representative cycle edges.</li>
-        <li><strong>Evaluation horizon:</strong> future-year relevance and ordering quality measured with nDCG@50 and lead-time summaries (how many years earlier a useful signal appears).</li>
+        <li><strong>Data:</strong> ~30,000 papers from CHI, UIST, CSCW, UbiComp (1999&ndash;2024).</li>
+        <li><strong>Method:</strong> Persistent homology (H&#x2081;) detects structural voids; representative cycles extract interpretable bridge candidates.</li>
+        <li><strong>Key finding:</strong> H&#x2081; bridges achieve 69.56% integration rate; median lead time of 2 years before integration.</li>
+        <li><strong>Position:</strong> Not a prediction tool, but a structural diagnostic mirror for the community.</li>
       </ul>
-      <p class="note"><strong>Evidence type:</strong> the site provides observational structural evidence plus retrospective temporal validation; it does not claim causal discovery or guaranteed future topic emergence.</p>
-    </section>
-
-    <section class="panel">
-      <h2>Baseline definition (Science of science)</h2>
-      <p><strong>Working premise for this companion.</strong> Science of science is an interdisciplinary field that studies how science works by using large-scale data and computational methods. It covers publication/citation patterns, collaboration, peer review, social bias, and policy-facing use of research evidence.</p>
-      <p>This companion is positioned inside that tradition. Our specific contribution is a structural method for detecting cross-community bridge candidates from yearly concept-space topology and evaluating them with future-year relevance.</p>
-    </section>
-
-    <section class="panel">
-      <h2>Read in order</h2>
-      <p>Chapters 1–9 are organized to answer a reviewer's core questions from motivation to mathematical definition, ranking logic, case interpretation, claim boundaries, and reference integrity.</p>
-      <p class="note"><strong>Reading options.</strong> Each chapter starts with plain-language scope and then moves to formulas, figures, and evaluation steps.</p>
-      <div id="chapter-cards" class="chapter-grid"></div>
+      <p class="note"><strong>Evidence type:</strong> observational structural evidence with retrospective temporal validation. No causal claims.</p>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>Designed for reviewer legibility: explicit objects, explicit equations, explicit boundaries of interpretation.</p>
+    <p>To see why this question matters, start with <a href="chapters/01-why-hci.html">Chapter 1</a>.</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>

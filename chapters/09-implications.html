@@ -1,37 +1,56 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>09 References and Figure Production Specs</title><link rel="stylesheet" href="../assets/css/style.css"></head>
-<body data-chapter="09-implications" data-root="../"><main class="container"><a href="../index.html">← Home</a><section class="panel chapter-body"><h1 id="chapter-title"></h1><p class="thesis-block" id="chapter-thesis"></p>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>09 Implications for HCI and SciSci</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-chapter="09-implications" data-root="../">
+<main class="container">
+  <a href="../index.html">&larr; Home</a>
+  <section class="panel chapter-body">
+    <h1 id="chapter-title"></h1>
+    <p class="thesis-block" id="chapter-thesis"></p>
+    <div class="caution-box" id="chapter-caution"></div>
 
-<h2>K. Verified references (metadata-checked)</h2>
-<ol>
-<li>Edelsbrunner, H., &amp; Harer, J. (2010). <em>Computational Topology: An Introduction</em>. American Mathematical Society.</li>
-<li>Zomorodian, A., &amp; Carlsson, G. (2005). Computing persistent homology. <em>Discrete &amp; Computational Geometry</em>, 33(2), 249–274. https://doi.org/10.1007/s00454-004-1146-y</li>
-<li>Ghrist, R. (2008). Barcodes: The persistent topology of data. <em>Bulletin of the American Mathematical Society</em>, 45(1), 61–75. https://doi.org/10.1090/S0273-0979-07-01191-3</li>
-<li>Otter, N., Porter, M. A., Tillmann, U., Grindrod, P., &amp; Harrington, H. A. (2017). A roadmap for the computation of persistent homology. <em>EPJ Data Science</em>, 6, 17. https://doi.org/10.1140/epjds/s13688-017-0109-5</li>
-<li>Blondel, V. D., Guillaume, J.-L., Lambiotte, R., &amp; Lefebvre, E. (2008). Fast unfolding of communities in large networks. <em>Journal of Statistical Mechanics: Theory and Experiment</em>, 2008(10), P10008. https://doi.org/10.1088/1742-5468/2008/10/P10008</li>
-<li>Newman, M. E. J. (2006). Modularity and community structure in networks. <em>Proceedings of the National Academy of Sciences</em>, 103(23), 8577–8582. https://doi.org/10.1073/pnas.0601602103</li>
-<li>Järvelin, K., &amp; Kekäläinen, J. (2002). Cumulated gain-based evaluation of IR techniques. <em>ACM Transactions on Information Systems</em>, 20(4), 422–446. https://doi.org/10.1145/582415.582418</li>
-<li>Manning, C. D., Raghavan, P., &amp; Schütze, H. (2008). <em>Introduction to Information Retrieval</em>. Cambridge University Press.</li>
-<li>Mikolov, T., Sutskever, I., Chen, K., Corrado, G. S., &amp; Dean, J. (2013). Distributed representations of words and phrases and their compositionality. In <em>Advances in Neural Information Processing Systems 26</em>, 3111–3119.</li>
-</ol>
+    <!-- 9-1: Implications for HCI -->
+    <h2>9-1. Implications for HCI</h2>
+    <p><strong>For researchers:</strong> High-persistence voids mark regions where integration is not merely absent but actively resisted. Bridging such voids requires explicit methodological negotiation, not just technical novelty. The representative cycle provides a map of which intermediate concepts might facilitate that negotiation.</p>
+    <p><strong>For reviewers and program committees:</strong> A submission on a persistent void boundary should not be evaluated as &ldquo;between communities&rdquo; (often a rejection rationale) but as a potential bridge requiring expertise from both sides. The persistence score provides a structural measure of how significant the void is.</p>
+    <p><strong>For the field&rsquo;s self-reflection:</strong> The pattern of voids&mdash;which persist, which close, which emerge&mdash;constitutes a structural signature of HCI&rsquo;s evolution. The shift from 2005&rsquo;s cognitive-methodological loops to 2023&rsquo;s cross-paradigmatic tensions (AI &harr; ethics &harr; social computing) suggests HCI is navigating increasingly complex structural terrain.</p>
 
-<h2>Figure production specification (implementation-ready)</h2>
-<ol>
-<li><strong>Figure 1 — Pipeline.</strong> Layout: 10 boxed stages in three rows; arrows enforce flow direction; each stage must label both input and output object names exactly. Use one consistent highlight color only for bridge-related outputs and the same color across all figures.</li>
-<li><strong>Figure 2 — Loop birth mechanics.</strong> Three aligned ε-panels with identical node coordinates; explicitly highlight birth edge in the middle panel; annotate pre-birth shortest path; show simplex fill for death in panel three. Caption must state what this mechanism supports and what it does not support.</li>
-<li><strong>Figure 3 — Community boundary extraction.</strong> Show representative cycle over two shaded community regions; retain cycle in neutral color; highlight only cross-community cycle edges as candidates. Include inline text: "selected because endpoints have different community labels."</li>
-<li><strong>Figure 4 — Ranking and nDCG.</strong> Three-panel composition: ranked list, rank discount intuition, toy nDCG arithmetic. Ensure readers can understand top-heavy weighting without prior IR background.</li>
-<li><strong>Figure 5 — Case walkthrough.</strong> Use real concept labels and one fixed year per case; panel order must be: local neighborhood → cycle → community boundary → extracted candidate → later evidence → claim-bounded interpretation. Keep each panel under seven textual lines.</li>
-<li><strong>Figure 6 — Claim boundaries (optional but recommended).</strong> 3-column matrix: "Directly shown", "Supported indirectly", "Not established." Keep row-level wording parallel and avoid rhetorical phrasing.</li>
-</ol>
+    <!-- 9-2: Implications for SciSci -->
+    <h2>9-2. Implications for Science of Science</h2>
+    <p>This work contributes <strong>interpretable structural descriptors</strong> to the SciSci toolkit. Unlike topic models or co-citation networks, persistent homology measures what resists connection, not what is connected. The representative cycle mechanism turns abstract topological features into readable, auditable descriptions of field structure.</p>
+    <p>The approach generalizes beyond HCI: any field with concept-level embeddings and temporal corpus data could apply the same pipeline.</p>
 
-<h2>Needs confirmation before camera-ready freeze</h2>
-<ul>
-<li>Exact future relevance definition (binary threshold/window length) used in temporal validation code should be inserted verbatim.</li>
-<li>Whether candidate filtering includes zero cumulative co-occurrence as a hard rule in all reported experiments should be explicitly confirmed.</li>
-<li>Second case-study labels/year should be filled from reproducible outputs (project notes mention additional cases, but this page currently includes one fully confirmed case).</li>
-<li>Final archival metadata for the CHI 2026 poster/manuscript should be added once proceedings details and DOI are assigned.</li>
-</ul>
+    <!-- 9-3: Future directions -->
+    <h2>9-3. Future directions</h2>
+    <ul>
+      <li><strong>Void dynamics:</strong> Track how specific voids emerge, persist, and close over time to reveal the &ldquo;structural metabolism&rdquo; of a field.</li>
+      <li><strong>Review outcome correlation:</strong> Do papers on high-persistence void boundaries receive more split reviews?</li>
+      <li><strong>Cross-field comparison:</strong> Compare HCI&rsquo;s void structure with psychology, design, or CS theory.</li>
+      <li><strong>Expert validation:</strong> Structured evaluation of bridge cards by domain experts.</li>
+      <li><strong>Aligned embeddings:</strong> Time-aware or aligned embeddings to enable cross-year tracking of specific features.</li>
+    </ul>
 
+    <div class="meaning-box">
+      <strong>Position.</strong> This work is a <em>diagnostic mirror</em> for the community&mdash;not an oracle that predicts trends, but a tool that reveals where the field&rsquo;s structural tensions lie, enabling more reflective decision-making about which integrations to pursue and which separations to maintain.
+    </div>
 
+    <section class="refs">
+      <h2>References</h2>
+      <ol>
+        <li>Fortunato, S. et al. (2018). Science of science. <em>Science</em>, 359(6379), eaao0185.</li>
+        <li>Harrison, S. et al. (2007). The three paradigms of HCI. <em>CHI EA</em>.</li>
+        <li>Burt, R. S. (1992). <em>Structural holes</em>. Harvard University Press.</li>
+      </ol>
+    </section>
 
-</section><div id="prev-next-nav"></div></main><script src="../assets/js/site.js"></script><script src="../assets/js/chapters.js"></script></body></html>
+    <div id="prev-next-nav"></div>
+  </section>
+</main>
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

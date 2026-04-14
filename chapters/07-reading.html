@@ -1,30 +1,76 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>07 Case Walkthroughs</title><link rel="stylesheet" href="../assets/css/style.css"></head>
-<body data-chapter="07-reading" data-root="../"><main class="container"><a href="../index.html">← Home</a><section class="panel chapter-body"><h1 id="chapter-title"></h1><p class="thesis-block" id="chapter-thesis"></p>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>07 How to Read the Outputs</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-chapter="07-reading" data-root="../">
+<main class="container">
+  <a href="../index.html">&larr; Home</a>
+  <section class="panel chapter-body">
+    <h1 id="chapter-title"></h1>
+    <p class="thesis-block" id="chapter-thesis"></p>
+    <div class="caution-box" id="chapter-caution"></div>
 
-<h2>I. Case walkthroughs</h2>
-<p><strong>Case 1 (from project materials): VR–Therapy.</strong> Local neighborhood terms include <em>vr</em>, <em>immersion</em>, <em>exergames</em>, <em>therapies</em>, and <em>therapy</em>. The representative cycle places (vr, therapy) on a boundary-crossing path between communities interpreted as design-technical versus clinical/wellbeing language. The extracted edge is then checked against later-year relevance; the interpretation is that it is a plausible early boundary bridge signal, not proof of a single causal trajectory.</p>
-<p><strong>Case 2 (to finalize with artifact-linked labels).</strong> Project notes indicate additional cases (including decay patterns) should be shown with the same six elements: local geometry, representative cycle, community boundary, extracted edge, later evidence, bounded interpretation. Final labels and years should be copied directly from reproducible outputs before camera-ready release.</p>
+    <!-- 7-1: What "cross-area link" means here -->
+    <h2>7-1. What &ldquo;cross-area link&rdquo; means here</h2>
+    <p>In this project, a &ldquo;cross-area link&rdquo; means a pair of concepts that belong to <strong>different Louvain communities in the year-specific semantic graph</strong>. It does <em>not</em> mean:</p>
+    <ul>
+      <li>Institutional interdisciplinarity (departments collaborating)</li>
+      <li>Author-level boundary crossing</li>
+      <li>Funding-stream overlap</li>
+    </ul>
+    <p>The communities are semantic, not social or institutional.</p>
 
-<h2>Figure 5 — Real case walkthrough (with one confirmed case)</h2>
-<figure class="viz-frame"><svg viewBox="0 0 760 300" aria-label="case walkthrough">
-<text x="20" y="22">Confirmed case: VR–Therapy</text>
-<rect x="20" y="34" width="350" height="246" fill="#f8fafc" stroke="#94a3b8"/>
-<text x="30" y="62">Local neighborhood: vr, immersion, exergames, therapies, therapy</text>
-<text x="30" y="92">Representative cycle: birth edge + pre-birth shortest path</text>
-<text x="30" y="122">Community boundary: technical-design vs clinical terms</text>
-<text x="30" y="152">Extracted candidate edge: (vr, therapy)</text>
-<text x="30" y="182">Later signal: increased future-year relevance</text>
-<text x="30" y="212" class="fig-sub">Interpretation: early boundary-adjacency evidence (retrospective)</text>
+    <!-- 7-2: How to read cycle birth, persistence, and death -->
+    <h2>7-2. Reading cycle birth, persistence, and death</h2>
+    <table class="compare-table">
+      <thead>
+        <tr><th>Event</th><th>Meaning</th><th>What it suggests</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Birth</strong></td>
+          <td>A loop closes in concept space</td>
+          <td>A boundary structure has formed: communities approach without merging</td>
+        </tr>
+        <tr>
+          <td><strong>Persistence</strong></td>
+          <td>The loop survives across thresholds</td>
+          <td>The boundary is structurally robust, not an artifact of a specific distance cutoff</td>
+        </tr>
+        <tr>
+          <td><strong>Death</strong></td>
+          <td>A simplex fills the loop interior</td>
+          <td>Possible resolution: either integration (concepts merge) or structural collapse</td>
+        </tr>
+      </tbody>
+    </table>
 
-<text x="390" y="22">Second case slot (artifact-confirmed labels required)</text>
-<rect x="390" y="34" width="350" height="246" fill="#f8fafc" stroke="#94a3b8"/>
-<text x="400" y="62">Insert reproducible case with exact year and concept labels</text>
-<text x="400" y="92">Include same reading sequence as left panel</text>
-<text x="400" y="122">1) local geometry 2) cycle 3) communities</text>
-<text x="400" y="152">4) candidate edge 5) future evidence 6) interpretation</text>
-<text x="400" y="182" class="fig-sub">Do not use illustrative placeholders in final artifact</text>
-</svg><figcaption><strong>Figure 5.</strong> The left panel demonstrates a complete, claim-bounded reading from local structure to later evidence. The right panel is intentionally reserved for a second reproducible case so the final site uses only artifact-verified labels. This supports transparent case interpretation and avoids overclaiming.</figcaption></figure>
+    <!-- 7-3: How to read representative cycles -->
+    <h2>7-3. Reading representative cycles</h2>
+    <p>A representative cycle provides a chain of intermediate concepts between the birth-edge endpoints. For example:</p>
+    <div class="meaning-box">
+      <strong>VR &ndash; Therapy cycle:</strong> vr &rarr; immersion &rarr; exergames &rarr; therapies &rarr; therapy<br>
+      <strong>Reading:</strong> The design-technical community (vr, immersion) and the clinical community (therapies, therapy) are connected through the intermediate concept &ldquo;exergames,&rdquo; which sits at the boundary.
+    </div>
+    <p>The representative cycle is <strong>one computable witness</strong> for the homology class. It is not the only valid decomposition of the boundary structure, but it provides a concrete, interpretable chain for reasoning about <em>where</em> integration might occur.</p>
 
+    <h3>Reading guide summary</h3>
+    <table class="compare-table">
+      <thead><tr><th>Output</th><th>Read as</th><th>Do not read as</th></tr></thead>
+      <tbody>
+        <tr><td>Bridge pair (u, v)</td><td>Structurally significant cross-community boundary</td><td>Guaranteed future research topic</td></tr>
+        <tr><td>Persistence score</td><td>Robustness of the structural void</td><td>Importance or impact ranking</td></tr>
+        <tr><td>Representative cycle</td><td>Hypothesis about intermediate bridging concepts</td><td>The one true path between communities</td></tr>
+      </tbody>
+    </table>
 
-
-</section><div id="prev-next-nav"></div></main><script src="../assets/js/site.js"></script><script src="../assets/js/chapters.js"></script></body></html>
+    <div id="prev-next-nav"></div>
+  </section>
+</main>
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

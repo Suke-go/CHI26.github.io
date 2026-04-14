@@ -1,42 +1,125 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>05 Loop Meaning and Bridge Extraction</title><link rel="stylesheet" href="../assets/css/style.css"></head>
-<body data-chapter="05-detection" data-root="../"><main class="container"><a href="../index.html">← Home</a><section class="panel chapter-body"><h1 id="chapter-title"></h1><p class="thesis-block" id="chapter-thesis"></p>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>05 Detecting Boundary Structures</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-chapter="05-detection" data-root="../">
+<main class="container">
+  <a href="../index.html">&larr; Home</a>
+  <section class="panel chapter-body">
+    <h1 id="chapter-title"></h1>
+    <p class="thesis-block" id="chapter-thesis"></p>
+    <div class="caution-box" id="chapter-caution"></div>
 
-<h2>F. What a loop means here</h2>
-<p>In this chapter we use <strong>boundary loop</strong> with the same definition given in Chapter 2. We do not introduce a new term here.</p>
-<p>Interpretation depends on <em>local geometry</em>: where concepts sit, which edges appear at birth, and whether cycle edges cross community boundaries in that year.</p>
+    <!-- 5-1: From distances to filtration -->
+    <h2>5-1. From distances to filtration</h2>
+    <p>The angular distance matrix defines concept proximity. A Vietoris&ndash;Rips filtration is built by adding edges in order of increasing distance, constructing simplicial complexes at each threshold &epsilon;.</p>
 
-<div class="meaning-box"><strong>Community boundary.</strong> A community boundary is the interface between concept groups produced by graph partitioning (Louvain in this project). Crossing this boundary means an edge links two semantic regions that are locally close but still partitioned.</div>
+    <details class="technical-note">
+      <summary>Equations</summary>
+      <div class="note-body">
+        <p>d<sub>ij</sub> = 1 &minus; cos(v<sub>i</sub>, v<sub>j</sub>) (cosine distance)</p>
+        <p>R<sub>&epsilon;</sub>(V<sub>t</sub>) = {&sigma; &sube; V<sub>t</sub> | d<sub>ij</sub> &le; &epsilon; for all i,j &isin; &sigma;}</p>
+        <p>Computational optimization: Flag complex of k-NN graph (k=15) approximates the full Rips complex.</p>
+      </div>
+    </details>
 
-<h2>G. From representative cycle to bridge candidate</h2>
-<ol>
-<li>Identify a loop feature I_k=[b_k,d_k) and its birth edge e_b=(u,v).</li>
-<li>Find the shortest path P_{b_k^-}(u,v) in the graph just before birth.</li>
-<li>Form the representative cycle C_k = e_b ∪ P_{b_k^-}(u,v).</li>
-<li>Partition the separation graph into communities c_t(·).</li>
-<li>Extract cycle edges (i,j) ∈ C_k with c_t(i) ≠ c_t(j) as bridge candidates.</li>
-</ol>
-<p class="equation">\( E_t^{bridge}=\{(i,j)\in C_k \mid c_t(i)\neq c_t(j)\} \)</p>
-<p>This is the exact extraction rule used in this site. Type-wise, \(E_t^{bridge}\) is a set of concept-pair edges. The output is not a topic label.</p>
+    <!-- 5-2: Persistent H1 and structural gaps -->
+    <h2>5-2. Persistent H&#x2081; and structural gaps</h2>
+    <p>Persistent homology computes H&#x2081; features: loop-like holes that are born and die as &epsilon; grows. Each feature has an interval [b<sub>k</sub>, d<sub>k</sub>) and persistence &pi;<sub>k</sub> = d<sub>k</sub> &minus; b<sub>k</sub>. Features with &pi; &ge; 0.05 are retained as robust structural signals.</p>
 
-<h2>Figure 3 — Community boundary and bridge extraction</h2>
-<figure class="viz-frame"><svg viewBox="0 0 760 260" aria-label="community boundary bridge extraction">
-<rect x="18" y="30" width="345" height="200" fill="#ecfeff" stroke="#0891b2"/><text x="28" y="50">Community A</text>
-<rect x="397" y="30" width="345" height="200" fill="#f5f3ff" stroke="#7c3aed"/><text x="407" y="50">Community B</text>
-<circle cx="95" cy="125" r="6"/><circle cx="190" cy="85" r="6"/><circle cx="285" cy="145" r="6"/><circle cx="475" cy="145" r="6"/><circle cx="570" cy="85" r="6"/><circle cx="665" cy="125" r="6"/>
-<polyline points="95,125 190,85 285,145 475,145 570,85 665,125 95,125" fill="none" stroke="#0f172a" stroke-width="2"/>
-<line x1="285" y1="145" x2="475" y2="145" class="bridge-edge"/>
-<line x1="665" y1="125" x2="95" y2="125" class="bridge-edge"/>
-<text x="230" y="176" class="fig-sub">selected: cycle edge crossing A↔B</text>
-<text x="540" y="148" class="fig-sub">selected: cycle edge crossing A↔B</text>
-</svg><figcaption><strong>Figure 3.</strong> The loop itself is in black; extracted bridge candidates are highlighted in one consistent color. Read the colored background first (community assignment), then identify cycle edges whose endpoints fall in different communities. This supports candidate selection logic; it does not by itself prove interdisciplinary collaboration or future dominance.</figcaption></figure>
+    <!-- 5-3: Birth edge and representative cycle -->
+    <h2>5-3. Birth edge and representative cycle</h2>
+    <p>The birth edge e<sub>b</sub> = (u, v) is the edge whose addition creates the loop. The representative cycle is:</p>
+    <p style="text-align:center;"><strong>C<sub>k</sub> = e<sub>b</sub> &cup; P(u, v)</strong></p>
+    <p>where P(u, v) is the shortest path between u and v in the graph just <em>before</em> birth. This cycle provides an interpretable chain of intermediate concepts.</p>
 
-<div class="meaning-box"><strong>Bridge candidate.</strong> We keep the Chapter 2 definition. In this chapter we only apply that definition with the explicit extraction rule above.</div>
+    <!-- Loop birth figure (from old 04-data) -->
+    <figure class="viz-frame">
+      <svg viewBox="0 0 760 260" aria-label="Loop birth and cycle reconstruction">
+        <text x="20" y="20" font-size="11" fill="#475569">&epsilon;&#x2081;: pre-birth</text>
+        <text x="260" y="20" font-size="11" fill="#475569">&epsilon;&#x2082; = b<tspan baseline-shift="sub" font-size="9">k</tspan>: birth</text>
+        <text x="505" y="20" font-size="11" fill="#475569">&epsilon;&#x2083;: death (simplex fill)</text>
+        <g transform="translate(20,35)">
+          <circle cx="35" cy="70" r="6" fill="#0284c7"/><circle cx="95" cy="30" r="6" fill="#0284c7"/>
+          <circle cx="155" cy="55" r="6" fill="#0284c7"/><circle cx="155" cy="125" r="6" fill="#0284c7"/>
+          <circle cx="95" cy="150" r="6" fill="#0284c7"/>
+          <line x1="95" y1="30" x2="155" y2="55" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="155" y1="55" x2="155" y2="125" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="155" y1="125" x2="95" y2="150" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="95" y1="150" x2="35" y2="70" stroke="#7dd3fc" stroke-width="1.5"/>
+          <text x="2" y="182" class="fig-sub">Path P(u,v) exists</text>
+        </g>
+        <g transform="translate(260,35)">
+          <circle cx="35" cy="70" r="6" fill="#0284c7"/><circle cx="95" cy="30" r="6" fill="#0284c7"/>
+          <circle cx="155" cy="55" r="6" fill="#0284c7"/><circle cx="155" cy="125" r="6" fill="#0284c7"/>
+          <circle cx="95" cy="150" r="6" fill="#0284c7"/>
+          <line x1="95" y1="30" x2="155" y2="55" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="155" y1="55" x2="155" y2="125" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="155" y1="125" x2="95" y2="150" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="95" y1="150" x2="35" y2="70" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="35" y1="70" x2="95" y2="30" class="bridge-edge"/>
+          <text x="3" y="182" class="fig-sub">Birth edge closes the cycle</text>
+        </g>
+        <g transform="translate(500,35)">
+          <circle cx="35" cy="70" r="6" fill="#0284c7"/><circle cx="95" cy="30" r="6" fill="#0284c7"/>
+          <circle cx="155" cy="55" r="6" fill="#0284c7"/><circle cx="155" cy="125" r="6" fill="#0284c7"/>
+          <circle cx="95" cy="150" r="6" fill="#0284c7"/>
+          <line x1="95" y1="30" x2="155" y2="55" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="155" y1="55" x2="155" y2="125" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="155" y1="125" x2="95" y2="150" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="95" y1="150" x2="35" y2="70" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="35" y1="70" x2="95" y2="30" class="bridge-edge"/>
+          <polygon points="35,70 95,30 155,55" fill="#fde68a" stroke="#f59e0b"/>
+          <text x="5" y="182" class="fig-sub">2-simplex fills &rarr; H&#x2081; dies</text>
+        </g>
+      </svg>
+      <figcaption><strong>Figure 2.</strong> Loop birth mechanics across three &epsilon;-levels. Birth is when the highlighted edge appears; death is when a simplex fills the hole.</figcaption>
+    </figure>
 
+    <!-- 5-4: Bridge scoring -->
+    <h2>5-4. Bridge scoring</h2>
+    <p>Bridge candidates are cycle edges that cross community boundaries:</p>
+    <p style="text-align:center;"><strong>E<sup>bridge</sup><sub>t</sub> = {(i,j) &isin; C<sub>k</sub> | c<sub>t</sub>(i) &ne; c<sub>t</sub>(j)}</strong></p>
+    <p>Each edge is scored by the maximum persistence of any H&#x2081; cycle it participates in. Top-50 edges by persistence are output for evaluation.</p>
 
+    <!-- Community boundary figure (from old 05-detection) -->
+    <figure class="viz-frame">
+      <svg viewBox="0 0 760 260" aria-label="Community boundary and bridge extraction">
+        <rect x="18" y="30" width="345" height="200" fill="#ecfeff" stroke="#0891b2"/>
+        <text x="28" y="50" font-size="12">Community A</text>
+        <rect x="397" y="30" width="345" height="200" fill="#f5f3ff" stroke="#7c3aed"/>
+        <text x="407" y="50" font-size="12">Community B</text>
+        <circle cx="95" cy="125" r="6" fill="#0284c7"/><circle cx="190" cy="85" r="6" fill="#0284c7"/>
+        <circle cx="285" cy="145" r="6" fill="#0284c7"/><circle cx="475" cy="145" r="6" fill="#0284c7"/>
+        <circle cx="570" cy="85" r="6" fill="#0284c7"/><circle cx="665" cy="125" r="6" fill="#0284c7"/>
+        <polyline points="95,125 190,85 285,145 475,145 570,85 665,125 95,125" fill="none" stroke="#0f172a" stroke-width="2"/>
+        <line x1="285" y1="145" x2="475" y2="145" class="bridge-edge"/>
+        <line x1="665" y1="125" x2="95" y2="125" class="bridge-edge"/>
+        <text x="310" y="176" class="fig-sub">Bridge: crosses A &harr; B</text>
+      </svg>
+      <figcaption><strong>Figure 3.</strong> The representative cycle (black) spans two communities (blue/purple). Red edges cross the community boundary and are extracted as bridge candidates.</figcaption>
+    </figure>
 
-<section class="refs"><h2>References</h2><ol>
-<li>Blondel, V. D., Guillaume, J.-L., Lambiotte, R., &amp; Lefebvre, E. (2008). Fast unfolding of communities in large networks. <em>Journal of Statistical Mechanics: Theory and Experiment</em>, 2008(10), P10008. https://doi.org/10.1088/1742-5468/2008/10/P10008</li>
-<li>Newman, M. E. J. (2006). Modularity and community structure in networks. <em>Proceedings of the National Academy of Sciences</em>, 103(23), 8577–8582. https://doi.org/10.1073/pnas.0601602103</li>
-</ol></section>
+    <!-- 5-5: Yearly topology summaries -->
+    <h2>5-5. Yearly topology summaries</h2>
+    <p>At the macro level, yearly summaries include: total persistence (sum of all H&#x2081; feature persistence), number of persistent features, and triadic closure rate. These characterize the field's structural state: whether it is boundary-heavy (many unresolved loops) or closure-heavy (loops being filled).</p>
 
-</section><div id="prev-next-nav"></div></main><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script src="../assets/js/site.js"></script><script src="../assets/js/chapters.js"></script></body></html>
+    <section class="refs">
+      <h2>References</h2>
+      <ol>
+        <li>Edelsbrunner, H. &amp; Harer, J. (2010). <em>Computational Topology</em>. AMS.</li>
+        <li>Blondel, V. D. et al. (2008). Fast unfolding of communities. <em>JSTAT</em>, P10008.</li>
+        <li>Otter, N. et al. (2017). A roadmap for persistent homology. <em>EPJ Data Science</em>, 6, 17.</li>
+      </ol>
+    </section>
+
+    <div id="prev-next-nav"></div>
+  </section>
+</main>
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

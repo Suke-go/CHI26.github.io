@@ -1,24 +1,164 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>02 Core Idea</title><link rel="stylesheet" href="../assets/css/style.css"></head>
-<body data-chapter="02-topology" data-root="../"><main class="container"><a href="../index.html">← Home</a><section class="panel chapter-body"><h1 id="chapter-title"></h1><p class="thesis-block" id="chapter-thesis"></p>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>02 Topology: Minimal Background</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-chapter="02-topology" data-root="../">
+<main class="container">
+  <a href="../index.html">&larr; Home</a>
+  <section class="panel chapter-body">
+    <h1 id="chapter-title"></h1>
+    <p class="thesis-block" id="chapter-thesis"></p>
+    <div class="caution-box" id="chapter-caution"></div>
 
-<h2>C. Core idea</h2>
-<p><strong>Interpretive view.</strong> We track <strong>boundary loops</strong> in each year’s concept graph. A boundary loop is useful when it crosses semantic communities, because those cross-community edges are concrete candidate relations.</p>
-<p><strong>Operational view.</strong> For each year t, compute persistent H₁ on a Vietoris–Rips filtration. Reconstruct one representative cycle at loop birth. Keep cycle edges (u,v) only when c_t(u) ≠ c_t(v). The retained edges are bridge candidates for ranking and temporal validation.</p>
-<h2>Working definitions used in this site</h2>
-<ul>
-<li><strong>Boundary loop</strong>: a persistent H₁ feature interpreted as an unresolved boundary pattern.</li>
-<li><strong>Bridge candidate</strong>: a cycle edge whose two endpoints have different community labels in the same year.</li>
-<li><strong>Representative cycle</strong>: one computable witness used to read and extract candidate edges.</li>
-</ul>
+    <!-- 2-1: What topology looks at -->
+    <h2>2-1. What topology looks at</h2>
+    <p>Topology studies <strong>connectivity patterns</strong> rather than coordinate details. Given a set of points, it reads clusters, loops, and filled regions from their arrangement.</p>
+    <figure class="viz-frame">
+      <svg viewBox="0 0 400 150" aria-label="Toy point cloud, unconnected">
+        <circle cx="60" cy="50" r="5" fill="#0284c7"/>
+        <circle cx="120" cy="80" r="5" fill="#0284c7"/>
+        <circle cx="90" cy="120" r="5" fill="#0284c7"/>
+        <circle cx="200" cy="45" r="5" fill="#0284c7"/>
+        <circle cx="260" cy="70" r="5" fill="#0284c7"/>
+        <circle cx="230" cy="110" r="5" fill="#0284c7"/>
+        <circle cx="340" cy="60" r="5" fill="#0284c7"/>
+        <circle cx="350" cy="100" r="5" fill="#0284c7"/>
+      </svg>
+      <figcaption><strong>Schematic.</strong> A set of points with no connections yet. Topology will ask: as we gradually connect nearby points, what structures appear?</figcaption>
+    </figure>
 
-<div class="meaning-box"><strong>Persistent homology (quick definition).</strong> Persistent homology tracks which topological features appear and disappear as the distance threshold grows. For H₁, the feature of interest is a loop-like hole. Persistence length indicates how long that hole remains unresolved across thresholds.</div>
-<div class="meaning-box"><strong>Representative cycle.</strong> A representative cycle is a readable witness for one loop feature. In this project it is reconstructed from a birth edge plus a pre-birth shortest path. It supports interpretation, but it is not the only valid witness for the same homology class.</div>
+    <!-- 2-2: Vietoris-Rips as growing connectivity -->
+    <h2>2-2. Vietoris&ndash;Rips as growing connectivity</h2>
+    <p>The Vietoris&ndash;Rips construction raises a distance threshold &epsilon; and connects all points within that distance. As &epsilon; increases, the structure changes step by step.</p>
+    <figure class="viz-frame">
+      <svg viewBox="0 0 760 180" aria-label="Four-panel filtration schematic">
+        <text x="30" y="18" font-size="11" fill="#475569">(i) Isolated</text>
+        <g transform="translate(20,25)">
+          <circle cx="40" cy="40" r="4" fill="#0284c7"/><circle cx="90" cy="30" r="4" fill="#0284c7"/>
+          <circle cx="70" cy="80" r="4" fill="#0284c7"/><circle cx="130" cy="70" r="4" fill="#0284c7"/>
+          <circle cx="110" cy="110" r="4" fill="#0284c7"/>
+        </g>
+        <text x="210" y="18" font-size="11" fill="#475569">(ii) Local clusters</text>
+        <g transform="translate(200,25)">
+          <circle cx="40" cy="40" r="4" fill="#0284c7"/><circle cx="90" cy="30" r="4" fill="#0284c7"/>
+          <circle cx="70" cy="80" r="4" fill="#0284c7"/><circle cx="130" cy="70" r="4" fill="#0284c7"/>
+          <circle cx="110" cy="110" r="4" fill="#0284c7"/>
+          <line x1="40" y1="40" x2="90" y2="30" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="130" y1="70" x2="110" y2="110" stroke="#7dd3fc" stroke-width="1.5"/>
+        </g>
+        <text x="390" y="18" font-size="11" fill="#475569">(iii) Loop appears</text>
+        <g transform="translate(380,25)">
+          <circle cx="40" cy="40" r="4" fill="#0284c7"/><circle cx="90" cy="30" r="4" fill="#0284c7"/>
+          <circle cx="70" cy="80" r="4" fill="#0284c7"/><circle cx="130" cy="70" r="4" fill="#0284c7"/>
+          <circle cx="110" cy="110" r="4" fill="#0284c7"/>
+          <line x1="40" y1="40" x2="90" y2="30" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="90" y1="30" x2="130" y2="70" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="130" y1="70" x2="110" y2="110" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="110" y1="110" x2="70" y2="80" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="70" y1="80" x2="40" y2="40" stroke="#0ea5e9" stroke-width="2"/>
+          <text x="20" y="135" font-size="10" fill="#475569">H&#x2081; born</text>
+        </g>
+        <text x="570" y="18" font-size="11" fill="#475569">(iv) Loop fills in</text>
+        <g transform="translate(560,25)">
+          <circle cx="40" cy="40" r="4" fill="#0284c7"/><circle cx="90" cy="30" r="4" fill="#0284c7"/>
+          <circle cx="70" cy="80" r="4" fill="#0284c7"/><circle cx="130" cy="70" r="4" fill="#0284c7"/>
+          <circle cx="110" cy="110" r="4" fill="#0284c7"/>
+          <line x1="40" y1="40" x2="90" y2="30" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="90" y1="30" x2="130" y2="70" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="130" y1="70" x2="110" y2="110" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="110" y1="110" x2="70" y2="80" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="70" y1="80" x2="40" y2="40" stroke="#7dd3fc" stroke-width="1.5"/>
+          <polygon points="40,40 90,30 70,80" fill="#fde68a" fill-opacity="0.5" stroke="#f59e0b"/>
+          <polygon points="90,30 130,70 70,80" fill="#fde68a" fill-opacity="0.5" stroke="#f59e0b"/>
+          <text x="20" y="135" font-size="10" fill="#475569">H&#x2081; dies</text>
+        </g>
+      </svg>
+      <figcaption><strong>Schematic.</strong> Four stages of Vietoris&ndash;Rips filtration. A loop (H&#x2081; feature) is born when the cycle closes without being filled, and dies when triangles fill the interior.</figcaption>
+    </figure>
 
+    <!-- 2-3: Persistent homology and H1 -->
+    <h2>2-3. Persistent homology and H&#x2081;</h2>
+    <p>Persistent homology tracks <strong>when</strong> structures appear (birth) and <strong>when</strong> they disappear (death). For H&#x2081; features, we track loop-like holes. The <strong>persistence</strong> (death &minus; birth) measures how long the hole survives across distance thresholds.</p>
 
+    <details class="technical-note">
+      <summary>Mathematical detail (collapsible)</summary>
+      <div class="note-body">
+        <p>A feature is born at threshold &epsilon;<sub>b</sub> and dies at &epsilon;<sub>d</sub>. Persistence &pi; = &epsilon;<sub>d</sub> &minus; &epsilon;<sub>b</sub>. High persistence (&pi; &ge; 0.05 in this project) signals a robust topological feature, not an artifact of a specific threshold choice.</p>
+        <p>The persistence diagram plots (birth, death) for each feature. Points far from the diagonal represent long-lived structures.</p>
+      </div>
+    </details>
 
-<section class="refs"><h2>References</h2><ol>
-<li>Edelsbrunner, H., &amp; Harer, J. (2010). <em>Computational Topology: An Introduction</em>. American Mathematical Society.</li>
-<li>Zomorodian, A., &amp; Carlsson, G. (2005). Computing persistent homology. <em>Discrete &amp; Computational Geometry</em>, 33(2), 249–274. https://doi.org/10.1007/s00454-004-1146-y</li>
-<li>Ghrist, R. (2008). Barcodes: The persistent topology of data. <em>Bulletin of the American Mathematical Society</em>, 45(1), 61–75. https://doi.org/10.1090/S0273-0979-07-01191-3</li>
-</ol></section>
-<div id="prev-next-nav"></div></section></main><script src="../assets/js/site.js"></script><script src="../assets/js/chapters.js"></script></body></html>
+    <!-- 2-4: Birth edge, loop, and closure -->
+    <h2>2-4. Birth edge, loop, and closure in this project</h2>
+    <p>This research uses topology at three observation levels:</p>
+    <ul>
+      <li><strong>Local &mdash; birth edge:</strong> Which specific pair of concepts, when connected, creates the loop? This is the pair most structurally significant for that boundary.</li>
+      <li><strong>Meso &mdash; persistent loop:</strong> The unfilled boundary structure that persists across thresholds, representing a structural void between communities.</li>
+      <li><strong>Macro &mdash; yearly summaries:</strong> Aggregate measures (total persistence, triadic closure) that characterize the field's structural state each year.</li>
+    </ul>
+
+    <figure class="viz-frame">
+      <svg viewBox="0 0 600 180" aria-label="Birth edge, loop formation, and closure">
+        <text x="20" y="18" font-size="11" fill="#475569">Just before birth</text>
+        <g transform="translate(10,25)">
+          <circle cx="30" cy="60" r="5" fill="#0284c7"/><circle cx="80" cy="30" r="5" fill="#0284c7"/>
+          <circle cx="130" cy="50" r="5" fill="#0284c7"/><circle cx="130" cy="100" r="5" fill="#0284c7"/>
+          <circle cx="80" cy="120" r="5" fill="#0284c7"/>
+          <line x1="80" y1="30" x2="130" y2="50" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="130" y1="50" x2="130" y2="100" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="130" y1="100" x2="80" y2="120" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="80" y1="120" x2="30" y2="60" stroke="#7dd3fc" stroke-width="1.5"/>
+          <text x="8" y="148" font-size="10" fill="#475569">Path exists, no loop yet</text>
+        </g>
+        <text x="220" y="18" font-size="11" fill="#475569">Birth edge added &rarr; loop</text>
+        <g transform="translate(210,25)">
+          <circle cx="30" cy="60" r="5" fill="#0284c7"/><circle cx="80" cy="30" r="5" fill="#0284c7"/>
+          <circle cx="130" cy="50" r="5" fill="#0284c7"/><circle cx="130" cy="100" r="5" fill="#0284c7"/>
+          <circle cx="80" cy="120" r="5" fill="#0284c7"/>
+          <line x1="80" y1="30" x2="130" y2="50" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="130" y1="50" x2="130" y2="100" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="130" y1="100" x2="80" y2="120" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="80" y1="120" x2="30" y2="60" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="30" y1="60" x2="80" y2="30" stroke="#dc2626" stroke-width="3"/>
+          <text x="8" y="148" font-size="10" fill="#dc2626">Birth edge (red) closes cycle</text>
+        </g>
+        <text x="420" y="18" font-size="11" fill="#475569">Closure &rarr; loop dies</text>
+        <g transform="translate(410,25)">
+          <circle cx="30" cy="60" r="5" fill="#0284c7"/><circle cx="80" cy="30" r="5" fill="#0284c7"/>
+          <circle cx="130" cy="50" r="5" fill="#0284c7"/><circle cx="130" cy="100" r="5" fill="#0284c7"/>
+          <circle cx="80" cy="120" r="5" fill="#0284c7"/>
+          <line x1="80" y1="30" x2="130" y2="50" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="130" y1="50" x2="130" y2="100" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="130" y1="100" x2="80" y2="120" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="80" y1="120" x2="30" y2="60" stroke="#7dd3fc" stroke-width="1.5"/>
+          <line x1="30" y1="60" x2="80" y2="30" stroke="#7dd3fc" stroke-width="1.5"/>
+          <polygon points="30,60 80,30 130,50" fill="#fde68a" fill-opacity="0.5" stroke="#f59e0b"/>
+          <text x="8" y="148" font-size="10" fill="#475569">Triangle fills &rarr; H&#x2081; dies</text>
+        </g>
+      </svg>
+      <figcaption><strong>Birth edge mechanics.</strong> The representative cycle = birth edge + shortest path before birth. The birth edge (red) is the pair that creates the loop; it is the structurally most distant pair in the cycle.</figcaption>
+    </figure>
+
+    <div class="meaning-box">
+      <strong>Transition.</strong> With this intuition in place, we can now position our approach among existing ways of mapping research fields.
+    </div>
+
+    <section class="refs">
+      <h2>References</h2>
+      <ol>
+        <li>Edelsbrunner, H. &amp; Harer, J. (2010). <em>Computational Topology: An Introduction</em>. AMS.</li>
+        <li>Zomorodian, A. &amp; Carlsson, G. (2005). Computing persistent homology. <em>DCG</em>, 33(2), 249&ndash;274.</li>
+        <li>Ghrist, R. (2008). Barcodes: The persistent topology of data. <em>Bull. AMS</em>, 45(1), 61&ndash;75.</li>
+      </ol>
+    </section>
+
+    <div id="prev-next-nav"></div>
+  </section>
+</main>
+<script src="../assets/js/site.js"></script>
+</body>
+</html>
